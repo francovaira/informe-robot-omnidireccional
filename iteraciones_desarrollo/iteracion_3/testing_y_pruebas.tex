@@ -1,0 +1,62 @@
+\subsection{Testing y pruebas}
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_03\_00 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & Calculador de trayectorias \\
+    \hline
+        Requerimiento       & RF7 \\
+    \hline
+        Nombre              & Cálculo de trayectorias en un mapa con obstáculos, trayectoria resoluble \\
+    \hline
+        Descripción         & Calcular la secuencia de coordenadas a seguir para llegar a un punto A a un punto B del mapa, con obstáculos dispuestos de modo que existe al menos una trayectoria posible \\
+    \hline
+        Precondición        & PRECOND\_E \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al PathFinder una coordenada origen y una destino de modo que exista un camino soluble entre ellas
+                                \item Verificar que la salida del PathFinder consiste en la secuencia de coordenadas del mapa que se deben visitar para llegar del origen al destino
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & Se obtiene la secuencia adecuada para los puntos dados y se cumple la restricción de solo movimientos horizontales o verticales \\
+    \hline
+        Resultado obtenido  & La secuencia de coordenadas calculadas se corresponden a las más óptimas para cada par de puntos y se cumple la restricción de movimiento \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_03\_01 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & Calculador de trayectorias \\
+    \hline
+        Requerimiento       & RF7 \\
+    \hline
+        Nombre              & Cálculo de trayectorias en un mapa con obstáculos, trayectoria irresoluble \\
+    \hline
+        Descripción         & Calcular la secuencia de coordenadas a seguir para llegar a un punto A a un punto B del mapa, con obstáculos dispuestos de modo que no existe ninguna trayectoria posible \\
+    \hline
+        Precondición        & PRECOND\_F \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al PathFinder una coordenada origen y una destino de modo que no exista camino posible entre ellas
+                                \item Verificar que la salida del PathFinder es un error
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & Se obtiene un mensaje de error informando que no existe trayectoria posible \\
+    \hline
+        Resultado obtenido  & El error se presenta solo cuando se define el mapa de modo que entre un punto A y un punto B no existe camino posible \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}

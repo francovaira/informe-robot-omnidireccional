@@ -1,0 +1,84 @@
+\documentclass[a4paper, oneside]{book}
+\usepackage[a4paper, total={6in, 9.5in}]{geometry}
+\usepackage{blindtext}
+\usepackage{titlesec}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{helvet}
+\usepackage{ragged2e}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{chngcntr}
+\usepackage{tabularx}
+%\usepackage{refcheck} % para activar checkeo de citas no usadas
+\usepackage[table]{xcolor}
+\graphicspath{{images/}} %configuring the graphicx package
+
+% para que numere las imagenes por secciones y no capitulos
+\counterwithin{figure}{section}
+
+% definiciones para la bibliografia
+\nocite{*}
+\bibliographystyle{IEEEtran}
+
+% para no solapar el texto en el indice de imagenes
+\makeatletter
+\renewcommand*\l@figure{\@dottedtocline{1}{1em}{3em}}
+\makeatother
+
+% definiciones de nombres
+\renewcommand{\chaptername}{Capítulo}
+\renewcommand{\contentsname}{Tabla de contenido}
+\renewcommand{\listfigurename}{Índice de imágenes}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\bibname}{Bibliografía}
+
+% definiciones de colores
+\definecolor{test_header_color}{HTML}{D5E5FF}
+\definecolor{precond_header_color}{HTML}{8EC0EE}
+
+% definiciones de formato de tablas para tests
+\newenvironment{testtableformat}{
+    \sffamily \small \begin{center} \begin{tabular}{|p{3cm}|p{11.5cm}|} 
+}{ 
+    \end{tabular} \end{center} \normalsize \normalfont
+}
+
+% profundidades de la tabla de contenido
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+% https://manualdelatex.com/tutoriales/estructura-de-un-documento
+% https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+% https://docs.aspose.com/tex/es/java/latex-math-subscripts-superscripts/
+
+\title{Proyecto Integrador}
+\author{\\Franco Vaira \\ Antonio Tolay}
+\date{Diciembre 2024}
+
+\makeatletter 
+\let\newtitle\@title
+\let\newauthor\@author
+\let\newdate\@date
+\makeatother
+
+\begin{document}
+
+\include{portada}
+\tableofcontents
+\input{indice_de_imagenes}
+\input{resumen}
+\input{motivacion}
+\input{objetivos}
+\input{requerimientos}
+\input{riesgos}
+\input{propuesta_alto_nivel}
+\input{marco_teorico/marco_teorico}
+\input{desarrollo}
+\input{integracion_de_sistema}
+\input{trabajos_futuros}
+\input{conclusiones}
+\bibliography{referencias}
+\input{anexos}
+
+\end{document}

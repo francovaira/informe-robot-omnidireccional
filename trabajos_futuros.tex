@@ -1,0 +1,18 @@
+\newpage
+\chapter{Trabajos futuros}
+
+El desarrollo del proyecto ha abierto diversas oportunidades para realizar mejoras y ampliaciones en futuras iteraciones, con el objetivo de optimizar aún más el desempeño del sistema y su interacción con el entorno.
+
+\begin{itemize}
+    \item \underline{Compensación de trayectoria con códigos QR:} \\
+    La implementación de un sistema de compensación de trayectoria basado en la captura de códigos QR proporcionaría al Filtro de Kalman con mediciones para mejorar la precisión de las estimaciones y corregir la posición del robot en tiempo real. \\
+
+    \item \underline{Optimización de la comunicación:} \\
+    Actualmente, la dependencia de la red para la compensación de trayectoria y el envío de feedback al Filtro de Kalman representa un cuello de botella en el sistema. Para abordar esta limitación, se propone trasladar la ejecución del Filtro de Kalman directamente al robot, eliminando la necesidad de comunicación constante con la interfaz Python a través de la red. \\
+
+    \item \underline{Reemplazo de Python por una alternativa más adecuada:} \\
+    Python, aunque versátil y ampliamente utilizado, presenta limitaciones significativas en la gestión de procesos concurrentes, lo que afecta el diseño del sistema en escenarios que requieren alta concurrencia. Por ello, se sugiere explorar otras plataformas o lenguajes de programación que ofrezcan mejores capacidades de concurrencia y escalabilidad, como ser C, C++ o Java. \\
+
+    \item \underline{Integración con otros robots en el espacio:} \\
+    Este enfoque permitiría coordinar varios robots omnidireccionales para trabajar de manera colaborativa en un mismo espacio, además de la ejecución de trayectorias complejas y presentarse escenarios de re-cálculo de trayectoria por conflictos. Esto llevaría a explotar aún más la concurrencia del sistema y por ende la complejidad del mismo.
+\end{itemize}

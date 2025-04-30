@@ -1,0 +1,63 @@
+\subsection{Pruebas y testing}
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_00 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & Determinar cuanto se desplazó el robot\\
+    \hline
+        Requerimiento       & RF3\\
+    \hline
+        Nombre              & Cálculo de la distancia recorrida \\
+    \hline
+        Descripción         & Se pretende calcular la distancia recorrida por el robot contando las cantidad de ranuras que se atraviesan utilizando el contador de pulsos del microcontrolador ESP32 \\
+    \hline
+        Precondición        & PRECOND\_A \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Crear un programa que habilite el contador de pulsos incorporado en el microcontrolador ESP32
+                                \item Compilar el proyecto
+                                \item Grabar el programa en el microcontrolador
+                                \item Contar la cantidad de ranuras que atraviesa el opto acoplador y mediante la formula $distancia_recorrida = 2.\pi.r\ /\ ranuras_del_encoder$ obtener la distancia recorrida por la rueda del robot
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & Obtener de forma precisa el desplazamiento realizado por la rueda del robot \\
+    \hline
+        Resultado obtenido  & Se pudo determinar cuanto es el desplazamiento de la rueda mediante el contador de pulsos pero en frecuencias baja pierde mucha precisión por lo que se decidió realizar varias lecturas de la medición y realizar el promedio de las mismas \\
+    \hline
+        Observaciones       & - \\
+    \hline
+ \end{testtableformat}
+
+\begin{testtableformat}
+   \hline \rowcolor{test_header_color}
+       Test ID             & TC\_01\_01 \\
+   \hline
+       Tipo de test        & Test unitario \\
+   \hline
+       Objeto de prueba    & Ejecutar un programa simple en el microcontrolador ESP32 \\
+   \hline
+       Requerimiento       & RF6 \\
+   \hline
+       Nombre              & Programa en C que logra establecer conexión WiFi \\
+   \hline
+       Descripción         & Crear, compilar y grabar un programa simple que logre establecer una conexión inalambrica usando el protocolo WiFi \\
+   \hline
+       Precondición        & PRECOND\_A \\
+   \hline
+       Pasos del test      & \begin{enumerate}
+                               \item Crear un proyecto en C para el microcontrolador ESP32 usando la librería provista por Espressif
+                               \item Compilar el proyecto
+                               \item Grabar el programa en el microcontrolador
+                               \item Establecer una conexión inalambrica WiFi
+                           \end{enumerate} \\
+   \hline
+       Resultado esperado  &  El microcontrolador debe establecer la conexión inalámbrica sin errores \\
+   \hline
+       Resultado obtenido  & El microcontrolador establece la conexión WiFi \\
+   \hline
+       Observaciones       & - \\
+   \hline
+\end{testtableformat}

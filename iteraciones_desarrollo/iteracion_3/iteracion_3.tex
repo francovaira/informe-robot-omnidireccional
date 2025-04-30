@@ -1,0 +1,88 @@
+\newpage
+\section{Iteración 3: Modelo del mapa e interfaz}
+
+\subsection{Introducción}
+Durante el desarrollo de la iteración anterior se logró construir y optimizar el robot, integrando compensaciones en el sistema de control para mejorar su estabilidad y precisión operativa.
+
+En la presente iteración se busca avanzar aún más en las capacidades del robot mediante el modelado del espacio en el que operará, esto mediante la creación de una representación del mapa de su entorno.
+
+Además, se buscará desarrollar una interfaz de usuario que facilitará la interacción y monitoreo del sistema.
+
+\subsection{Requerimientos}
+En esta iteración abordaremos los siguientes requerimientos funcionales:
+
+\begin{center} \begin{tabular}{|c|c|}
+\hline
+    ID & Descripción \\
+\hline
+    RF7 & Debe existir un modo de calcular trayectorias automáticamente. \\
+\hline
+    RF10 & Debe existir una interfaz de usuario para control y monitoreo. \\
+\hline
+\end{tabular} \end{center}
+
+Por otra parte, los requerimientos no funcionales que trataremos son:
+
+\begin{center} \begin{tabular}{|p{0.10\linewidth}|p{0.65\linewidth}|}
+\hline
+    ID & Descripción \\
+\hline
+    RNF1 & Debería tener tiempos de respuesta aceptables para el buen funcionamiento del sistema de control. \\
+\hline
+    RNF2 & El software debería contar con pruebas unitarias y de integración. \\
+\hline
+    RNF4 & El código debería contar con documentación.\\
+\hline
+\end{tabular} \end{center}
+
+\subsection{Desarrollo}
+
+\input{iteraciones_desarrollo/iteracion_3/modelado_del_mapa}
+
+\input{iteraciones_desarrollo/iteracion_3/path_finder}
+
+\input{iteraciones_desarrollo/iteracion_3/interfaz_de_usuario}
+
+\input{iteraciones_desarrollo/iteracion_3/diseño_pista}
+
+\input{iteraciones_desarrollo/iteracion_3/testing_y_pruebas}
+
+\subsection{Resultados}
+Uno de los principales resultados fue el desarrollo de una interfaz de usuario simple que facilita el control y la supervisión del robot. Aparejado con ello, se introdujo un calculador de trayectorias que optimiza los movimientos del robot en el espacio modelado.
+
+Por último se logró implementar una pista fabricada con madera MDF, con imanes integrados, la cual garantiza estabilidad y uniformidad en las pruebas del sistema. Esta pista, además, fue modelada y representada tanto en el mapa desarrollado como en la interfaz, manteniendo la coherencia del entorno del robot.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{images/robot_en_pista_final.png}
+    \caption{Robot en la pista con imanes}
+    \label{fig:robotpistaconimanes}
+\end{figure}
+
+\subsection{Riesgos superados}
+En esta iteración pudimos demostrar que los nuevos componentes integrados al sistema interactúan efectivamente con los ya desarrollados en las iteraciones previas, por lo que se avanza sobre el riesgo RI-02.
+
+Del mismo modo, se supera en parte el riesgo RI-05 por tener una alta disponibilidad de servicios de corte láser en MDF y los imanes son muy accesibles.
+
+\begin{center}
+\begin{tabular}{|c|c|} 
+    \hline
+        ID & Riesgo \\
+    \hline
+        RI-02 & Intercomunicación de componentes ineficiente o ineficaz \\
+    \hline
+        RI-05 & Dificultad en conseguir determinados componentes. \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsection{Conclusiones}
+
+En esta iteración del proyecto se han alcanzado avances fundamentales, como la inclusión de un calculador de trayectorias que optimiza los movimientos del robot dentro de la pista, marcando un avance fundamental para su rendimiento.
+
+Asimismo, se avanzó con la creación de una interfaz de usuario funcional y sencilla permitiendo un control y monitoreo más efectivo del sistema. 
+
+Por su parte, la implementación de una pista de superficie consistente que representa el espacio de movimiento del robot ha proporcionado un entorno operacional estable, ideal para las pruebas del robot.
+
+En definitiva, el proyecto avanza hacia su consolidación como una solución robusta, eficiente y adaptable.

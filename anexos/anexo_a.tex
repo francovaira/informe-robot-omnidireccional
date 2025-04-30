@@ -1,0 +1,148 @@
+\section{Anexo A: Precondiciones de tests y pruebas}
+
+\sffamily \small \begin{center} \begin{tabular} {|p{3cm}|p{9cm}|}
+    \hline \rowcolor{precond_header_color}
+        ID Precondición     & PRECOND\_A \\
+    \hline
+        Precond. previas    & - \\
+    \hline
+        Descripción         & \begin{enumerate}
+                                \item Microcontrolador y driver encendido. Alimentación 12V.
+                                \item Motor con rueda y encoder rotativo.
+                            \end{enumerate} \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{tabular} \end{center} \normalsize \normalfont
+
+
+\sffamily \small \begin{center} \begin{tabular} {|p{3cm}|p{9cm}|}
+    \hline \rowcolor{precond_header_color}
+        ID Precondición     & PRECOND\_B \\
+    \hline
+        Precond. previas    & PRECOND\_A para todas las ruedas del motor \\
+    \hline
+        Descripción         & \begin{enumerate}
+                                \item Robot colocado en el espacio en la coordenada origen
+                            \end{enumerate} \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{tabular} \end{center} \normalsize \normalfont
+
+
+\sffamily \small \begin{center} \begin{tabular} {|p{3cm}|p{9cm}|}
+    \hline \rowcolor{precond_header_color}
+        ID Precondición     & PRECOND\_C \\
+    \hline
+        Precond. previas    & PRECOND\_B \\
+    \hline
+        Descripción         & \begin{enumerate}
+                                \item Robot con seguidor de línea magnética colocado en un entorno con imanes
+                            \end{enumerate} \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{tabular} \end{center} \normalsize \normalfont
+
+
+\sffamily \small \begin{center} \begin{tabular} {|p{3cm}|p{9cm}|}
+    \hline \rowcolor{precond_header_color}
+        ID Precondición     & PRECOND\_D \\
+    \hline
+        Precond. previas    & - \\
+    \hline
+        Descripción         & \begin{enumerate}
+                                \item Interfaz en Python ejecutándose
+                                \item Modelo del mapa sin obstáculos creado
+                            \end{enumerate} \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{tabular} \end{center} \normalsize \normalfont
+
+
+\sffamily \small \begin{center} \begin{tabular} {|p{3cm}|p{9cm}|}
+    \hline \rowcolor{precond_header_color}
+        ID Precondición     & PRECOND\_E \\
+    \hline
+        Precond. previas    & - \\
+    \hline
+        Descripción         & \begin{enumerate}
+                                \item Interfaz en Python ejecutándose
+                                \item Modelo del mapa creado con obstáculos y trayectorias resolubles
+                            \end{enumerate} \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{tabular} \end{center} \normalsize \normalfont
+
+
+\sffamily \small \begin{center} \begin{tabular} {|p{3cm}|p{9cm}|}
+    \hline \rowcolor{precond_header_color}
+        ID Precondición     & PRECOND\_F \\
+    \hline
+        Precond. previas    & - \\
+    \hline
+        Descripción         & \begin{enumerate}
+                                \item Interfaz en Python ejecutándose
+                                \item Modelo del mapa creado con obstáculos y trayectorias irresolubles
+                            \end{enumerate} \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{tabular} \end{center} \normalsize \normalfont
+
+
+\sffamily \small \begin{center} \begin{tabular} {|p{3cm}|p{9cm}|}
+    \hline \rowcolor{precond_header_color}
+        ID Precondición     & PRECOND\_G \\
+    \hline
+        Precond. previas    & PRECOND\_C \\
+    \hline
+        Descripción         & \begin{enumerate}
+                                \item Interfaz en Python ejecutándose
+                                \item Modelo del mapa creado
+                                \item Red de Petri y Monitor ejecutándose
+                            \end{enumerate} \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{tabular} \end{center} \normalsize \normalfont
+
+
+\sffamily \small \begin{center} \begin{tabular} {|p{3cm}|p{9cm}|}
+    \hline \rowcolor{precond_header_color}
+        ID Precondición     & PRECOND\_H \\
+    \hline
+        Precond. previas    & PRECOND\_C \\
+    \hline
+        Descripción         & \begin{enumerate}
+                                \item Interfaz en Python ejecutándose
+                                \item Modelo del mapa creado
+                                \item Red de Petri y Monitor ejecutándose
+                                \item Proceso de estimación de Kalman activo
+                            \end{enumerate} \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{tabular} \end{center} \normalsize \normalfont
+
+
+\sffamily \small \begin{center} \begin{tabular} {|p{3cm}|p{9cm}|}
+    \hline \rowcolor{precond_header_color}
+        ID Precondición     & PRECOND\_I \\
+    \hline
+        Precond. previas    & PRECOND\_C \\
+    \hline
+        Descripción         & \begin{enumerate}
+                                \item Interfaz en Python ejecutándose
+                                \item Modelo del mapa creado
+                                \item Red de Petri y Monitor ejecutándose
+                                \item Proceso de estimación de Kalman activo
+                                \item Proceso de compensación de Kalman activo
+                            \end{enumerate} \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{tabular} \end{center} \normalsize \normalfont

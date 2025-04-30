@@ -1,0 +1,57 @@
+\section{Codiseño hardware-software}
+
+El codiseño hardware-software es un enfoque metodológico que busca optimizar el rendimiento, la eficiencia y la funcionalidad de un sistema mediante la integración y colaboración estrecha entre el diseño del software y el hardware desde las etapas iniciales del desarrollo. En el contexto de un robot omnidireccional, la arquitectura de alto nivel debe ser cuidadosamente planificada para garantizar que ambos componentes trabajen de manera sinérgica, maximizando las capacidades del sistema y minimizando sus limitaciones. En nuestro caso se trata de un cyberphysical system dado que combina elementos de hardware, software y conectividad.
+
+A continuación, se presentan las consideraciones clave y los tópicos más relevantes en el proceso de codiseño.
+
+\subsection{Consideraciones clave}
+El desarrollo de un sistema robótico eficiente y funcional requiere una definición clara y precisa de los requerimientos tanto funcionales como no funcionales. Al definirlos podemos encontrar aspectos como la precisión en la navegación, la capacidad de procesamiento en tiempo real, el consumo energético y la escalabilidad del diseño. Además, es esencial considerar las restricciones técnicas vinculadas al tamaño, el peso, el costo y la disponibilidad de los componentes, ya que estos factores tienen un impacto directo en las decisiones de diseño del sistema.
+
+Un robot omnidireccional necesita realizar múltiples tareas de manera simultánea, como el procesamiento de datos sensoriales, la planificación de trayectorias y el control de los actuadores. Por ello resulta indispensable evaluar qué partes del sistema pueden ejecutarse de forma concurrente y distribuir las tareas entre el hardware y el software de modo eficiente.
+
+La interacción entre el software y el hardware debe estar diseñada para garantizar una comunicación fluida y eficiente, minimizando los cuellos de botella que puedan limitar el rendimiento del sistema. Este aspecto incluye la selección adecuada de protocolos de comunicación, como SPI, I2C o Ethernet, así como la optimización del flujo de datos con el objetivo de reducir la latencia y mejorar la capacidad de respuesta general. \cite{lee2017introduction}
+
+El uso equilibrado de los recursos hardware, como memoria, capacidad de cómputo y energía, con las demandas del software es otro factor esencial para optimizar el rendimiento del sistema. Se pueden implementar técnicas de optimización, como la compresión de datos o la reducción en la frecuencia de muestreo, siempre y cuando no se comprometa la funcionalidad del robot.
+
+La arquitectura del sistema se diseña bajo principios de modularidad y escalabilidad, permitiendo la incorporación de nuevas funcionalidades o actualizaciones de componentes sin que se vea afectado el diseño global. Esta aproximación facilita la adaptabilidad del sistema a las necesidades futuras y contribuye a mitigar los costos asociados con la obsolescencia tecnológica.
+
+Además, para garantizar la estabilidad y confiabilidad del sistema, es fundamental incorporar mecanismos de redundancia y recuperación ante fallos tanto en el hardware como en el software. La implementación de sistemas de monitoreo en tiempo real permite detectar errores de manera proactiva y corregirlos antes de que impacten la funcionalidad general del robot, asegurando así su robustez y tolerancia ante posibles fallos.
+
+
+\subsection{Análisis de elementos necesarios}
+
+Se analizan los elementos esenciales con los que debemos contar para así lograr la realización del proyecto. Estos elementos constituyen la base del proyecto, por lo que las decisiones tomadas al comienzo pueden repercutir en una etapa avanzada del mismo.
+
+
+\subsubsection{Plataforma de hardware}
+
+La selección de la plataforma hardware constituye un aspecto fundamental en el diseño de un sistema robótico, ya que debe equilibrar aspectos como la potencia de cálculo, el consumo energético y el costo. Entre las opciones disponibles, se encuentran los microcontroladores, como los basados en ARM Cortex u otros tales como Raspberry Pi, NVIDIA Jetson y las FPGAs. Están destinados a contener la lógica de control, monitoreo y comunicación inalámbrica. La plataforma elegida debe ser capaz de realizar operaciones en tiempo real.
+
+También resulta crucial integrar componentes como sensores y actuadores que interactúen con el entorno. Los actuadores son los dispositivos encargados de interactuar con el medio en el que el robot se dispone y los sensores son los encargados de tomar muestras de magnitudes físicas de interés, como velocidad y distancia. \cite{lee2017introduction}
+
+Dado que el robot debe operar con baterías y éstas son de capacidad limitada, la gestión de energía se convierte en un factor crítico. Optimizar el consumo energético requiere técnicas como el escalado dinámico de frecuencia o la hibernación de componentes no utilizados. También es recomendable incluir baterías de alta capacidad o sistemas de recarga automática para extender la autonomía del robot y mejorar su sostenibilidad operativa.
+
+
+\subsubsection{Plataforma de software}
+En cuanto a la arquitectura de procesamiento, es necesario definir si el diseño será centralizado, con un único procesador, o distribuido, utilizando múltiples procesadores o núcleos. Para sistemas complejos, como los robots omnidireccionales, una arquitectura distribuida suele ser preferible, ya que permite asignar tareas específicas a unidades de procesamiento dedicadas. Esta estrategia no solo optimiza el rendimiento del sistema, sino que también incrementa su eficiencia operativa en escenarios exigentes.
+
+El desarrollo de software debe realizarse utilizando sistemas operativos en tiempo real o frameworks especializados, como ROS (Robot Operating System) o FreeRTOS, que permiten una gestión eficiente de tareas y recursos. A su vez, es fundamental implementar algoritmos optimizados para funciones clave como la navegación, la localización y el control, con el objetivo de garantizar un desempeño confiable en condiciones reales.
+
+Debe señalarse además que son necesarios mecanismos lógicos de control para modelar todo el sistema junto con sus reglas. Para esto existen herramientas como Redes de Petri, que nos permiten modelar sistemas complejos con elementos sencillos.
+
+Del mismo modo, la plataforma de software debe proveer al usuario de una interfaz interactiva donde pueda ejecutar órdenes y monitorear el estado de los robots en todo momento.
+
+
+\subsubsection{Comunicación y sincronización}
+El diseño de la comunicación y sincronización entre los distintos módulos del robot es esencial para garantizar un funcionamiento fluido y coordinado. Es indispensable implementar un sistema de comunicación eficiente que conecte sensores, actuadores y la unidad de control, además de mecanismos de sincronización que aseguren que las tareas se ejecuten en el orden y momento correctos, optimizando así el rendimiento global del sistema. \cite{lee2017introduction}
+
+Al mismo tiempo, la latencia resulta crítica en aplicaciones robóticas. Una baja latencia asegura que el robot pueda reaccionar de manera inmediata a cambios en su entorno, como la aparición de obstáculos o la necesidad de ajustar su trayectoria. Esto es particularmente importante en entornos dinámicos, donde los retrasos en la toma de decisiones pueden resultar en colisiones o fallos en la navegación.
+
+
+\subsubsection{Localización en tiempo real}
+
+Para lograr que el robot navegue de modo autónomo, debemos utilizar los sensores y algoritmos avanzados de control, navegación y aprendizaje automático. Un sistema de cómputo potente permite implementar técnicas como el Filtro de Kalman para la estimación de la posición, algoritmos de planificación de rutas y sistemas de control predictivo, lo que mejora la precisión y eficiencia del robot. Todo esto permite la implementación de navegación autónoma, junto con la detección y evitación de obstáculos en tiempo real, además de integrar tareas de reconocimiento y aprendizaje.
+
+Para justificar esto, debemos pensar que un robot omnidireccional dependerá de una gran cantidad de datos provenientes de sensores (cámaras, sensores de proximidad, giroscopios, etc.) para navegar y evitar obstáculos. Estos datos deben ser procesados en tiempo real para tomar decisiones rápidas y precisas, por lo cual un sistema de cómputo con alta capacidad de cálculo permite realizar operaciones complejas, como la fusión de datos sensoriales, la ejecución de algoritmos de localización y mapeo (SLAM, Simultaneous Localization and Mapping), y la planificación de trayectorias, de manera eficiente y sin retrasos. Esto implica la necesidad de procesamiento de datos en tiempo real. \cite{sariffpathplan}
+
+En las subsiguientes secciones de este capítulo se profundiza sobre los distintos aspectos que nos son necesarios para la realización del proyecto.

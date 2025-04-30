@@ -1,0 +1,312 @@
+\subsection{Testing y pruebas}
+
+% https://en.wikibooks.org/wiki/LaTeX/Tables
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_00 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & Comunicación inalámbrica \\
+    \hline
+        Requerimiento       & RF6 \\
+    \hline
+        Nombre              & Comunicación inalámbrica para monitoreo y envío de comandos por MQTT \\
+    \hline
+        Descripción         & Verificar que los comandos son recibidos correctamente en el robot y que el robot envía información de estado en el formato correcto \\
+    \hline
+        Precondición        & PRECOND\_A \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar un nuevo setpoint con parámetros de distancia [50cm $\sim$ 200cm] y velocidad $\pm$[0.25m/seg $\sim$ 0.75m/seg]
+                                \item Verificar que el robot recibe el comando correctamente y que envía reportes
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot recibe e interpreta los comandos, al mismo tiempo que reporta información sobre su estado periódicamente \\
+    \hline
+        Resultado obtenido  & El robot realiza el comportamiento esperado, envía, recibe e interpreta comandos \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_01 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & PWM - Medidor de RPM \\
+    \hline
+        Requerimiento       & RF1 - RF5 \\
+    \hline
+        Nombre              & Medidor de RPM \\
+    \hline
+        Descripción         & Comprobar que al establecer el motor a determinada velocidad ésta se corresponda con la medición obtenida por el medidor de RPM \\
+    \hline
+        Precondición        & PRECOND\_A \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar un valor de PWM al controlador del motor entre [0 $\sim$ 1023]
+                                \item Verificar que el motor se establece a la velocidad deseada y que el medidor de RPM informa el valor correcto
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & Se obtiene el valor correcto de RPM medido en cada iteración \\
+    \hline
+        Resultado obtenido  & En todas las iteraciones las mediciones reportan una velocidad cercana a la establecida \\
+    \hline
+        Observaciones       & La velocidad máxima que podemos obtener del motor sin carga son 92 RPM (PWM = 1023) y el motor comienza a girar continuamente cuando las RPM se establecen en una velocidad mínima de 55 RPM (PWM $\cong$ 420) \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_02 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & PID - PWM - Medidor de RPM \\
+    \hline
+        Requerimiento       & RF1 - RF5 \\
+    \hline
+        Nombre              & PID sin carga \\
+    \hline
+        Descripción         & Verificar que el PID establece correctamente la velocidad de la rueda al recibir el setpoint en RPM sin carga vinculada a la rueda \\
+    \hline
+        Precondición        & PRECOND\_A \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar un valor de RPM al controlador PID del motor entre [0 $\sim$ 92] RPM
+                                \item Verificar que el motor se establece a las RPM deseadas y que el medidor de RPM informa el valor correcto
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & Se obtiene el valor de RPM correcta en cada iteración \\
+    \hline
+        Resultado obtenido  & En todas las iteraciones se obtuvo que la rueda gira a una velocidad cercana a la establecida \\
+    \hline
+        Observaciones       & La velocidad máxima que podemos obtener del motor sin carga son 92 RPM y el motor comienza a girar continuamente cuando las RPM se establecen en una velocidad mínima de 55 RPM \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_03 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & PID - PWM - Medidor de RPM \\
+    \hline
+        Requerimiento       & RF1 - RF5 \\
+    \hline
+        Nombre              & PID con carga \\
+    \hline
+        Descripción         & Verificar que el PID establece correctamente la velocidad de la rueda al recibir el setpoint en RPM con una carga aproximadamente igual al peso del robot \\
+    \hline
+        Precondición        & PRECOND\_A \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar un valor de RPM al controlador PID del motor entre [0 $\sim$ 92] RPM
+                                \item Verificar que el motor se establece a las RPM deseadas y que el medidor de RPM informa el valor correcto
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & Se obtiene el valor de RPM correcta en cada iteración \\
+    \hline
+        Resultado obtenido  & En todas las iteraciones se obtuvo que la rueda gira a una velocidad cercana a la establecida \\
+    \hline
+        Observaciones       & La velocidad máxima que podemos obtener del motor con una carga presente son 88 RPM y el motor comienza a girar continuamente cuando las RPM se establecen en una velocidad mínima de 63 RPM \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_04 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & Modelo Cinemático \\
+    \hline
+        Requerimiento       & RF2 - RF4 \\
+    \hline
+        Nombre              & Modelo Cinemático en línea recta \\
+    \hline
+        Descripción         & Comprobar que el Modelo Cinemático calcula adecuadamente las velocidades de las ruedas según un setpoint en línea recta \\
+    \hline
+        Precondición        & PRECOND\_B \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al Modelo Cinemático un vector de velocidad en linea recta con valores entre $\pm$[0.25m/seg $\sim$ 0.75m/seg]
+                                \item Colocar cada una de las ruedas a la velocidad calculada por el Modelo Cinemático y verificar que el robot se mueve a lo largo del vector definido
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot se mueve en línea recta en la dirección del vector dado por $V_x$ y $V_y$ \\
+    \hline
+        Resultado obtenido  & Se observa que el robot realiza el comportamiento esperado \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_05 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & Modelo Cinemático \\
+    \hline
+        Requerimiento       & RF2 - RF4 \\
+    \hline
+        Nombre              & Modelo Cinemático en trayectorias curvas \\
+    \hline
+        Descripción         & Comprobar que el Modelo Cinemático calcula adecuadamente las velocidades de las ruedas según un setpoint con velocidad rotacional distinta de cero \\
+    \hline
+        Precondición        & PRECOND\_B \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al Modelo Cinemático un vector de velocidad lineal nula y velocidad rotacional distinta de cero con valores entre $\pm$[0RPM $\sim$ 30RPM]
+                                \item Colocar cada una de las ruedas a la velocidad calculada por el Modelo Cinemático y verificar que el robot gira sobre su eje según la velocidad rotacional dada
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot gira sobre su eje a distintas velocidades \\
+    \hline
+        Resultado obtenido  & Se observa que el robot realiza el comportamiento esperado \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_06 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & Modelo Cinemático \\
+    \hline
+        Requerimiento       & RF2 - RF4 \\
+    \hline
+        Nombre              & Modelo Cinemático en trayectorias elípticas (lineal y curva en simultáneo) \\
+    \hline
+        Descripción         & Comprobar que el Modelo Cinemático calcula adecuadamente las velocidades de las ruedas según un vector de movimiento dado por velocidades lineales y velocidades angulares al mismo tiempo \\
+    \hline
+        Precondición        & PRECOND\_B \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al Modelo Cinemático un vector de velocidad lineal y rotacional distintas de cero con valores para $V_x$ y $V_y$ entre $\pm$[0.25m/seg $\sim$ 0.75m/seg] y $V_r$ entre $\pm$[0RPM $\sim$ 30RPM]
+                                \item Colocar cada una de las ruedas a la velocidad calculada por el Modelo Cinemático y verificar que el robot describe una trayectoria elíptica que se corresponde con el vector dado
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot realiza trayectorias elípticas a distintas velocidades y radios de movimiento \\
+    \hline
+        Resultado obtenido  & El robot describe una trayectoria elíptica variable en radio y velocidad según se modifique el setpoint \\
+    \hline
+        Observaciones       & Al inicio hasta su convergencia, se observa un patrón en espiral y luego se torna un recorrido constante \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_07 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & Odometría - Modelo cinemático \\
+    \hline
+        Requerimiento       & RF2 - RF3 - RF4 - RF5 \\
+    \hline
+        Nombre              & Odometría en línea recta \\
+    \hline
+        Descripción         & Verificar que el robot recorre la distancia establecida \\
+    \hline
+        Precondición        & PRECOND\_B \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot un setpoint en linea recta de distancia entre [50cm $\sim$ 400cm] y velocidad $\pm$[0.25m/seg $\sim$ 0.75m/seg]
+                                \item Verificar que el robot recorre el vector dado a lo largo de la distancia determinada
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot recorre la distancia establecida \\
+    \hline
+        Resultado obtenido  & El robot a distancias menores a 20cm no logra una buena precisión. Con distancias de al menos 35cm se obtiene una buena precisión en la medición, de alrededor de +-3cm. \\
+    \hline
+        Observaciones       & Se probó hasta recorridos de 4 metros por limitaciones de espacio.  \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_08 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & Odometría - Modelo cinemático \\
+    \hline
+        Requerimiento       & RF2 - RF3 - RF4 - RF5 \\
+    \hline
+        Nombre              & Odometría en trayectorias curvas \\
+    \hline
+        Descripción         & Verificar que el robot recorre la distancia establecida \\
+    \hline
+        Precondición        & PRECOND\_B \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot un setpoint de trayectoria curva con distancia entre [50cm $\sim$ 400cm], velocidad lineal entre $\pm$[0.25m/seg $\sim$ 0.75m/seg] y velocidad rotacional entre $\pm$[0RPM $\sim$ 30RPM]
+                                \item Verificar que el robot recorre el vector dado a lo largo de la distancia determinada
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot recorre la distancia establecida \\
+    \hline
+        Resultado obtenido  & El robot a distancias menores a 32cm no logra una buena precisión. Con distancias de al menos 40cm se obtiene una buena precisión en la medición, de alrededor de +-6cm. \\
+    \hline
+        Observaciones       & Se probó hasta recorridos de 4 metros por limitaciones de espacio.  \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_01\_09 \\
+    \hline
+        Tipo de test        & Test de sistema \\
+    \hline
+        Objeto de prueba    & Comunicación inalámbrica - PID - Modelo cinemático - Odometría \\
+    \hline
+        Requerimiento       & RF1 - RF2 - RF3 - RF4 - RF5 - RF6 \\
+    \hline
+        Nombre              & Prueba de sistema integrado \\
+    \hline
+        Descripción         & Comprobar que el robot realiza trayectorias en una dirección y longitud determinadas, además de reportar información de estado \\
+    \hline
+        Precondición        & PRECOND\_B \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot un setpoint con distancia entre [50cm $\sim$ 400cm] y velocidad lineal entre $\pm$[0.25m/seg $\sim$ 0.75m/seg]
+                                \item Verificar que el robot recorre el vector dado a lo largo de la distancia determinada y que reporta periódicamente mediciones y estado actual
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot responde correctamente al vector y la distancia establecida, además reporta periódicamente el estado de mediciones de distancia y velocidad \\
+    \hline
+        Resultado obtenido  & El robot recibe comandos de trayectorias con vectores y distancias determinadas, se observa que realiza las trayectorias de manera acorde dentro de los límites observados en las pruebas unitarias y de integración. Al mismo tiempo se reciben los reportes de estado periódicos por parte del robot \\
+    \hline
+        Observaciones       & Se probó hasta recorridos de 4 metros por limitaciones de espacio. \\
+    \hline
+\end{testtableformat}

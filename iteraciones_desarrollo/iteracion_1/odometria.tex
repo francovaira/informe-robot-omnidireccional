@@ -1,0 +1,19 @@
+\subsubsection{Odometría}
+
+La odometría es el proceso mediante el cual un robot estima su posición y orientación en el espacio a lo largo del tiempo. Esta técnica se utiliza para obtener una aproximación de la trayectoria recorrida por el robot, a partir de los desplazamientos medidos en sus ruedas o actuadores, generalmente utilizando sensores como pueden ser encoders rotativos o lineales.
+
+Dado que necesitamos estimar la posición y orientación del robot en el espacio a lo largo del tiempo, nos podemos basar en las lecturas de los sensores de las ruedas. Para inferir la distancia recorrida podemos medir las velocidades angulares o la distancia recorrida de cada una de las cuatro ruedas en simultáneo. Estos datos se obtienen a partir de los encoders rotativos instalados en las ruedas.
+
+Se probaron distintas alternativas para el proceso de odometría. Primeramente se probó de modo que cada rueda recibe la distancia que debe recorrer el robot y de modo independiente mide cuanto recorre para determinar si debe detenerse o no. Concluimos que esta técnica tiene algunos problemas porque no considera a nivel global el movimiento del robot y como influyen las perturbaciones de las demás ruedas sobre una de ellas. Es por ello que optamos por hacer uso del modelo cinemático para realizar la odometría. Este método no excluye de errores al proceso, pero tiene en consideración todas las ruedas al momento de determinar la distancia recorrida por el robot dada la sumatoria de la acción de todas ellas. \cite{palacinodometry}
+
+La odometría se basa en el uso del modelo cinemático para convertir estas velocidades angulares en velocidades lineales y angulares del robot en el plano, es decir, obtener un vector de movimiento en base a las mediciones. Para ello, el primer paso en el proceso es utilizar las ecuaciones del modelo cinemático directo para calcular las velocidades lineales y angulares en el instante $t$ a partir de las velocidades de las ruedas: ($V_xt$, $V_yt$, $V_\theta t$). Posteriormente se pueden integrar estas velocidades a lo largo del tiempo para estimar la posición ($x, y$) y la orientación ($\theta$) del robot. La integración se realiza mediante métodos numéricos, típicamente utilizando un enfoque de integración discreta, como el método de Euler. Por lo que en cada instante de tiempo que se toma una medición, se actualiza la posición y orientación del robot utilizando las siguientes ecuaciones, donde ($\Delta$t) es el intervalo de tiempo entre dos mediciones consecutivas:
+
+$$ x_{t+1} = x_t + V_xt \cdot \Delta t $$
+
+$$ y_{t+1} = y_t + V_yt \cdot \Delta t $$
+
+$$ \theta_{t+1} = \theta_t + V_\theta t \cdot \Delta t $$
+
+Es importante considerar que la odometría realizada para ruedas puede acumular errores debido a factores como el deslizamiento de las ruedas, inexactitudes en las mediciones de los encoders o imprecisiones en los cálculos. Por lo tanto, es común combinar la odometría con otros métodos de localización, como el uso de sensores adicionales (LIDAR, cámaras, etc.) y técnicas de fusión de datos (como los filtros de Kalman), para mejorar la precisión y robustez de la estimación de la posición del robot.
+
+Para la realización de las pruebas colocamos marcas en el piso a 1 metro de distancia entre sí y realizamos iteraciones para verificar que la odometría opera dentro de los rangos de precisión establecidos.

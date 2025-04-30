@@ -1,0 +1,82 @@
+\newpage
+\section{Iteración 5: Compensación de posición y trayectoria}
+
+\subsection{Introducción}
+
+Hasta el momento se ha implementado exitosamente un prototipo que se ubica en un mapa gobernado por una red de Petri junto a un Monitor, lo que brinda una representación formal y estructurada del espacio operativo.
+
+En la presente etapa, el objetivo principal es implementar una técnica que permita estimar con precisión la posición del robot dentro de su entorno modelado. Entre las posibles soluciones, se considera la aplicación de un Filtro de Kalman, dada su capacidad para optimizar estimaciones en sistemas dinámicos y con incertidumbre. Este enfoque busca robustecer el desempeño del sistema, incrementando la precisión y confiabilidad en la localización del robot.
+
+\subsection{Requerimientos}
+
+En primer lugar, los requerimientos funcionales a tratar son:
+
+\begin{center} \begin{tabular}{|c|c|} 
+\hline
+    ID & Descripción \\
+\hline
+    RF6 & El robot debe recibir y enviar información mediante comunicaciones inalámbricas. \\ 
+\hline
+    RF8 & Debe poder ubicarse al robot en el plano de forma precisa. \\
+\hline
+\end{tabular} \end{center}
+
+Por otra parte, los requerimientos no funcionales que abordaremos son:
+
+\begin{center} \begin{tabular}{|p{0.15\linewidth}|p{0.55\linewidth}|} 
+\hline
+    ID & Descripción \\
+\hline
+    RNF1 & Debería tener tiempos de respuesta aceptables para el buen funcionamiento del sistema de control. \\
+\hline
+    RNF2 & El software debería contar con pruebas unitarias y de integración. \\
+\hline
+    RNF4 & El código debería contar con documentación. \\
+\hline
+\end{tabular} \end{center}
+
+
+\subsection{Desarrollo}
+
+\input{iteraciones_desarrollo/iteracion_5/filtro_de_kalman}
+
+\input{iteraciones_desarrollo/iteracion_5/compensacion_filtro_kalman}
+
+\input{iteraciones_desarrollo/iteracion_5/testing_y_pruebas}
+
+\subsection{Resultados}
+
+Como principal resultado de esta iteración, el uso del Filtro de Kalman, basado en las entradas proporcionadas por los sensores del sistema y complementado con el PID y el Modelo Cinemático del robot, permitió una mejora drástica en las trayectorias lineales del robot. Estas mejoras se tradujeron en una compensación efectiva que optimiza el desempeño del sistema.
+
+A través de este enfoque, se logró reducir significativamente el error en las trayectorias estimadas, garantizando un alto nivel de precisión en el movimiento del robot. Esto se evidencia en las representaciones gráficas obtenidas, donde la trayectoria deseada, indicada en fucsia, y la trayectoria real estimada, marcada en verde, muestran en la Figura \ref{fig:ejemplofiltrokalman} que se tiene un bajo error para todos los puntos de la misma. Esta trayectoria esta compuesta por la secuencia de coordenadas:
+
+$$ [(3,3), (2,3), (1,3), (1,2), (1,1), (2,1), (3,1)] $$
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{images/ejemplo_trayectoria_compensacion_kalman.png}
+    \caption{Ejemplo de una trayectoria realizada con el Filtro de Kalman}
+    \label{fig:ejemplofiltrokalman}
+\end{figure}
+
+Sin embargo, durante las pruebas se identificó que el Filtro de Kalman, al estar implementado en la interfaz de Python, necesita operar a través de la red con un intercambio constante de información con el robot mediante MQTT, generando un cuello de botella en el sistema. A futuro, se considera como una mejora significativa trasladar la ejecución del Filtro de Kalman directamente al robot, eliminando la dependencia de la comunicación por red para la compensación de vectores y distancia.
+
+\subsection{Riesgos superados}
+El desarrollo de la presente iteración se corresponde con unas de las mas importantes del proyecto dado que termina de superar riesgos importantes como ser RI-04 y RI-03.
+
+Al mismo tiempo, se logra una integración efectiva entre los nuevos y ya existentes componentes, por lo que se logran progresos sobre el riesgo RI-02.
+
+\begin{center} \begin{tabular}{|c|c|} 
+    \hline
+        ID & Riesgo \\
+    \hline
+        RI-02 & Intercomunicación de componentes ineficiente o ineficaz \\
+    \hline
+        RI-03 & Prestaciones insuficientes de componentes \\
+    \hline
+        RI-04 & Modificación de los requerimientos del proyecto \\
+    \hline
+\end{tabular} \end{center}
+
+\subsection{Conclusiones}
+En esta iteración del proyecto, se alcanzaron importantes avances que fortalecen tanto la precisión como la estabilidad del sistema de control del robot omnidireccional. La implementación del Filtro de Kalman y proceso de compensación en base a él ha demostrado ser fundamental para mejorar las trayectorias y reducir los errores en el desplazamiento del robot.

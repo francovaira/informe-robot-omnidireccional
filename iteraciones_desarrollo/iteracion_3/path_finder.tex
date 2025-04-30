@@ -1,0 +1,16 @@
+\subsubsection{Path Finder}
+
+Dentro de los algoritmos de planificación de trayectorias, elegimos utilizar A* por su gran eficiencia en encontrar el camino mas corto y ser ampliamente conocido y estudiada su efectividad. Su objetivo es encontrar el camino más corto entre dos puntos en un mapa combinando las ventajas de los algoritmos de búsqueda de coste uniforme y heurística. \cite{sariffpathplan} \cite{cuevaspathfinding}
+
+$A*$ funciona evaluando cada celda del mapa utilizando una función de costo:
+
+$$ f(n) = g(n) + h(n) $$
+
+Donde $g(n)$ es el costo acumulado desde el punto inicial hasta la celda actual, y $h(n)$ es una heurística que estima el costo restante desde la celda actual hasta el destino. La heurística debe ser admisible, lo que significa que nunca sobreestima el costo real para garantizar que el algoritmo encuentre el camino más corto.
+
+El proceso comienza con la celda inicial, que se agrega a una lista abierta (open list) de celdas por explorar. En cada paso, el algoritmo selecciona la celda con el valor $f(n)$ más bajo de la lista abierta y la mueve a una lista cerrada (closed list) de celdas ya exploradas. Luego, evalúa las celdas vecinas de la celda actual. Si una celda vecina no está en la lista cerrada y no hay una ruta mejor a esa celda en la lista abierta, se actualizan sus valores de $g$, $h$ y $f$, y se agrega a la lista abierta.
+
+Este proceso se repite, seleccionando y evaluando celdas hasta que se alcanza la celda destino. A medida que se avanza, $A*$ construye el camino más corto de regreso desde el destino hasta el origen siguiendo los valores de $g$. La clave del éxito del algoritmo $A*$ es su capacidad para equilibrar de manera eficiente el costo acumulado $g(n)$ y la heurística $h(n)$, permitiéndole encontrar rutas óptimas de manera efectiva.
+
+La eficiencia de $A*$ depende en gran medida de la heurística utilizada. La heurística más común es la distancia de Manhattan para movimientos en una cuadrícula ortogonal, o la distancia euclidiana para movimientos en cualquier dirección. En nuestro caso la técnica mas conveniente es utilizar la distancia de Manhattan.
+

@@ -1,0 +1,88 @@
+\newpage
+\section{Iteración 1: Prototipo del robot}
+
+\subsection{Introducción}
+En la iteración anterior obtuvimos como resultado los principios y bases fundamentales sobre las que desarrollaremos esta iteración para lograr un prototipo funcional.
+
+\subsection{Requerimientos}
+En esta iteración abordaremos los siguientes requerimientos funcionales:
+
+\begin{center} \begin{tabular}{|c|c|}
+\hline
+    ID & Descripción \\
+\hline
+    RF1 & El robot debe contar con un sistema de control para las 4 ruedas. \\ 
+\hline
+    RF2 & El robot debe tener un sistema de locomoción omnidireccional. \\ 
+\hline
+    RF3 & El robot debe poder medir la distancia recorrida. \\ 
+\hline
+    RF4 & El robot debe poder realizar trayectorias en línea recta y curvas. \\ 
+\hline
+    RF5 & El robot debe poder corregir su trayectoria mediante el uso de sensores. \\  
+\hline
+    RF6 & El robot debe recibir y enviar información mediante comunicaciones inalámbricas. \\ 
+\hline
+\end{tabular} \end{center}
+
+Por otra parte, los requerimientos no funcionales que trataremos son:
+
+\begin{center} \begin{tabular}{|p{0.10\linewidth}|p{0.65\linewidth}|}
+\hline
+    ID & Descripción \\
+\hline
+    RNF1 & Debería tener tiempos de respuesta aceptables para el buen funcionamiento del sistema de control. \\
+\hline
+    RNF2 & El software debería contar con pruebas unitarias y de integración. \\
+\hline
+    RNF4 & El código debería contar con documentación.\\
+\hline
+\end{tabular} \end{center}
+
+\subsection{Desarrollo}
+
+\input{iteraciones_desarrollo/iteracion_1/sistema_de_control}
+
+\input{iteraciones_desarrollo/iteracion_1/modelo_cinematico}
+
+\input{iteraciones_desarrollo/iteracion_1/odometria}
+
+\input{iteraciones_desarrollo/iteracion_1/envio_y_recepcion_de_comandos}
+
+\input{iteraciones_desarrollo/iteracion_1/campo_de_pruebas}
+
+\input{iteraciones_desarrollo/iteracion_1/testing_y_pruebas}
+
+\subsection{Resultados}
+
+En esta iteración se logró efectivamente el desarrollo de un prototipo funcional del robot. Es capaz de recibir comandos, realizar trayectorias rectas y curvas, teniendo también mediciones de odometría.
+
+Las cuatro ruedas son compensadas mediante un controlador PID cada una y se dispone del modelo cinemático para determinar el vector de movimiento.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[trim={0 1cm 0 1cm}, clip, width=0.55\linewidth]{images/robot_sin_imanes_prototipo.png}
+    \caption{Prototipo del robot}
+    \label{fig:primerprototiporobot}
+\end{figure}
+
+
+\subsection{Riesgos superados}
+
+En esta iteración se logro avanzar sobre el riesgo RI-03, pero para poder superarlo debemos explotar aun mas las capacidades del robot en las siguientes iteraciones.
+
+Por otro lado, el riesgo RI-05 se logra superar en parte porque en esta iteración se incorporaron la mayoría de componentes esenciales.
+
+\begin{center} \begin{tabular}{|p{0.10\linewidth}|p{0.65\linewidth}|}
+\hline
+    ID & Descripción \\
+\hline
+    RI-03 & Prestaciones insuficientes de componentes. \\
+\hline
+    RI-05 & Dificultad en conseguir determinados componentes. \\
+\hline
+\end{tabular} \end{center}
+
+\subsection{Conclusiones}
+
+En esta iteración se logró adquirir conocimientos partiendo del control individual de una rueda a modelar matemáticamente un robot teniendo en cuenta el efecto de todas las ruedas. Se obtuvo un prototipo que realiza mediciones de velocidad y distancia y las puede reportar inalámbricamente. Podemos decir que se alcanzó la meta de lograr un prototipo funcional superando varios desafíos para la cinemática y mecánica del robot.

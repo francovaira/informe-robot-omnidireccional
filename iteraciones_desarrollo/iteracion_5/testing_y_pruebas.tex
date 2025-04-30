@@ -1,0 +1,223 @@
+\subsection{Testing y pruebas}
+
+Todas las pruebas realizadas en esta iteración parten del desarrollo realizado hasta el momento del prototipo, la interfaz y el modelo del mapa.
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_05\_00 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & Filtro de Kalman \\
+    \hline
+        Requerimiento       & RF8 - RF6 \\
+    \hline
+        Nombre              & Estimación del Filtro de Kalman \\
+    \hline
+        Descripción         & Determinar la estimación del Filtro de Kalman luego de N iteraciones de mediciones, con trayectorias en linea recta sin cambio de dirección \\
+    \hline
+        Precondición        & PRECOND\_H \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot setpoints en linea recta y recolectar las mediciones
+                                \item Introducir las mediciones en el Filtro de Kalman y verificar que la estimación realizada se condice con la posición real final del robot
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & La estimación hecha por el Filtro de Kalman luego de N iteraciones debe aproximarse a la coordenada real del robot en el espacio \\
+    \hline
+        Resultado obtenido  & Se obtiene que la estimación de Kalman es correcta con un error de alrededor de $\pm3[cm]$ \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_05\_01 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & Filtro de Kalman \\
+    \hline
+        Requerimiento       & RF8 - RF6 \\
+    \hline
+        Nombre              & Estimación del Filtro de Kalman \\
+    \hline
+        Descripción         & Determinar la estimación del Filtro de Kalman luego de N iteraciones de mediciones, con trayectorias en linea recta con cambio de dirección respetando la restricción de movimiento \\
+    \hline
+        Precondición        & PRECOND\_H \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot setpoints en linea recta con cambios de dirección y recolectar las mediciones
+                                \item Introducir las mediciones en el Filtro de Kalman y verificar que la estimación realizada se condice con la posición real final del robot
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & La estimación hecha por el Filtro de Kalman luego de N iteraciones debe aproximarse a la coordenada real del robot en el espacio \\
+    \hline
+        Resultado obtenido  & Se obtiene que la estimación de Kalman se aproxima a la real con un radio de $\pm3[cm]$ en las coordenadas XY \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_05\_02 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & Compensador del Filtro de Kalman \\
+    \hline
+        Requerimiento       & RF8 - RF6 - RF5 - RF3 \\
+    \hline
+        Nombre              & Compensación del Filtro de Kalman apagada \\
+    \hline
+        Descripción         & Se debe tomar un punto de referencia sobre el cual comparar la acción de la compensación del filtro. Realizar compensaciones en base a las mediciones acumuladas sin ser procesadas por el filtro. Se realizan los experimentos con trayectorias en línea recta sin cambio de dirección \\
+    \hline
+        Precondición        & PRECOND\_G \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot setpoints en linea recta y recolectar las mediciones
+                                \item Calcular compensaciones sin utilizar el Filtro de Kalman y comprobar la posición final del robot
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot debe lograr llegar a destino con un comportamiento similar al obtenido con las pruebas del Modelo Cinemático en línea recta, con su error asociado \\
+    \hline
+        Resultado obtenido  & Al realizar la trayectoria se observan desviaciones considerables, comparables a las pruebas solo con Modelo Cinemático compensado \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_05\_03 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & Compensador del Filtro de Kalman \\
+    \hline
+        Requerimiento       & RF8 - RF6 - RF5 - RF3 \\
+    \hline
+        Nombre              & Compensación del Filtro de Kalman apagada \\
+    \hline
+        Descripción         & Se debe tomar un punto de referencia sobre el cual comparar la acción de la compensación del filtro. Realizar compensaciones en base a las mediciones acumuladas sin ser procesadas por el filtro. Se realizan los experimentos con trayectorias en línea recta con cambio de dirección \\
+    \hline
+        Precondición        & PRECOND\_G \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot setpoints en linea recta con cambios de dirección y recolectar las mediciones
+                                \item Calcular compensaciones sin utilizar el Filtro de Kalman y comprobar la posición final del robot
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot debe lograr llegar a destino con un comportamiento similar al obtenido con las pruebas del Modelo Cinemático compensado en línea recta, con su error asociado \\
+    \hline
+        Resultado obtenido  & Al realizar la trayectoria se observan desviaciones aún mas considerables, especialmente en los momentos de cambio de dirección \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_05\_04 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & Compensador del Filtro de Kalman \\
+    \hline
+        Requerimiento       & RF8 - RF6 - RF5 - RF3 \\
+    \hline
+        Nombre              & Compensación del Filtro de Kalman encendida \\
+    \hline
+        Descripción         & Realizar compensaciones en base a las estimaciones hechas por el filtro. Se realizan los experimentos con trayectorias en línea recta sin cambio de dirección \\
+    \hline
+        Precondición        & PRECOND\_I \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot setpoints en linea recta sin cambios de dirección y recolectar las mediciones
+                                \item Introducir cada nueva medición al Filtro de Kalman y obtener el vector de compensación
+                                \item Enviar el vector de compensación calculado al robot
+                                \item Comprobar que el robot corrige su posición en los momentos donde se envía el vector compensado
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot debe lograr llegar a la coordenada destino con una mejor aproximación y menor error, no solo al final, sino que durante todo el recorrido \\
+    \hline
+        Resultado obtenido  & Se observa una notoria mejoría en la aproximación al punto destino y también es notable que la trayectoria del robot continuamente se intenta aproximar a la ideal durante el recorrido \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_05\_05 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & Compensador del Filtro de Kalman \\
+    \hline
+        Requerimiento       & RF8 - RF6 - RF5 - RF3 \\
+    \hline
+        Nombre              & Compensación del Filtro de Kalman encendida \\
+    \hline
+        Descripción         & Realizar compensaciones en base a las estimaciones hechas por el filtro. Se realizan los experimentos con trayectorias en línea recta con cambio de dirección \\
+    \hline
+        Precondición        & PRECOND\_I \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot setpoints en linea recta con cambios de dirección y recolectar las mediciones
+                                \item Introducir cada nueva medición al Filtro de Kalman y obtener el vector de compensación
+                                \item Enviar el vector de compensación calculado al robot
+                                \item Comprobar que el robot corrige su posición en los momentos donde se envía el vector compensado
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot debe lograr llegar a la coordenada destino con una mejor aproximación y menor error, no solo al final, sino que durante todo el recorrido \\
+    \hline
+        Resultado obtenido  & Se observa que la estimación y la posición real resulta ser más acertada y con un menor error, incluso en los cambios de dirección \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_05\_06 \\
+    \hline
+        Tipo de test        & Test de sistema \\
+    \hline
+        Objeto de prueba    & Comunicación inalámbrica - PID - Modelo cinemático compensado - Odometría - Seguidor de línea magnética - Modelo del Mapa - Calculador de trayectorias - Red de Petri - Monitor - Filtro de Kalman \\
+    \hline
+        Requerimiento       & RF1 - RF2 - RF3 - RF4 - RF5 - RF6 - RF7 - RF8 \\
+    \hline
+        Nombre              & Prueba de sistema integrado \\
+    \hline
+        Descripción         & Verificar que la interfaz, el robot y todos los componentes involucrados funcionan de manera adecuada \\
+    \hline
+        Precondición        & PRECOND\_I \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item En la interfaz determinar la coordenada origen y destino, calcular la trayectoria y enviar los setpoints
+                                \item Comprobar que el robot se mueve a lo largo de la trayectoria definida y al desviarse se corrige su posición
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & La interfaz calcula las trayectorias del robot para un determinado par de puntos de origen y destino, las envía al robot y éste realiza las trayectorias. Durante el recorrido el robot reporta información de mediciones que son utilizadas para la estimación y compensación de Kalman. El robot consigue corregir su trayectoria en todo el recorrido y se conoce con precisión su posición. \\
+    \hline
+        Resultado obtenido  & El robot y la interfaz se comportan de manera esperada. El robot realiza las trayectorias dentro de los límites observados en las pruebas unitarias y de integración hechas anteriormente. \\
+    \hline
+        Observaciones       & Se probó hasta recorridos de 4 metros por limitaciones de espacio. \\
+    \hline
+\end{testtableformat}

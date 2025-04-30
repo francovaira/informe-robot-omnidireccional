@@ -1,0 +1,11 @@
+\subsubsection{Concurrencia en Python} \mbox{} \vspace{5pt}
+
+Python ofrece diversas formas de manejar la concurrencia, permitiendo que múltiples tareas se ejecuten de manera simultánea. Las principales herramientas para lograrlo incluyen hilos, procesos y asincronía. Sin embargo, la concurrencia en Python está influenciada y controlada por el Global Interpreter Lock (GIL), el cual impide que múltiples hilos ejecuten código Python puro en paralelo dentro de un mismo proceso. Esto influye en su performance ya que todos los hilos, excepto en algunas ocasiones como en las operaciones de entrada/salida, se van a ejecutar en un solo procesador y por lo tanto no se aprovecha todo el potencial de un computador.
+
+El módulo threading permite la ejecución concurrente de tareas dentro del mismo proceso, pero debido al GIL, los hilos no pueden aprovechar múltiples núcleos para realizar cómputo intensivo. Aun así, el threading sigue siendo útil, y sobre todo en el enfoque que estamos tomando para su utilización. Aclarando, los hilos pueden aprovechar el tiempo en el que un proceso está inactivo esperando información, permitiendo la ejecución de otras tareas en paralelo.
+
+Por otro lado, cuando se requiere ejecutar tareas que demandan un alto uso de CPU, la mejor alternativa es multiprocessing, que crea procesos independientes con su propio intérprete de Python, evitando la restricción del GIL y permitiendo una ejecución realmente paralela.
+
+Teniendo en cuenta que este proyecto está pensado para que escale en cantidad de robots, y se pueda controlar una flota de ellos, se ha optado por utilizar threading debido a que cada hilo va a representar un robot, cuya gestión va a estar coordinada a través del monitor basado en una Red de Petri. Dado que los robots no requieren cómputo intensivo, sino que dependen principalmente de operaciones de I/O y sincronización de eventos, threading resulta adecuado a pesar de las limitaciones del GIL.
+
+Para garantizar un control ordenado de los hilos, se ha implementado un mecanismo de sincronización mediante Lock, permitiendo bloquear el hilo de un robot cuando este no puede avanzar y continuar con los demás. Este enfoque asegura una ejecución eficiente dentro del marco definido por la red de Petri, optimizando el flujo de trabajo sin afectar la estabilidad del sistema.

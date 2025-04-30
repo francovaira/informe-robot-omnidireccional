@@ -1,0 +1,77 @@
+\newpage
+\section{Iteración 2: Prototipo mejorado}
+
+\subsection{Introducción}
+En el marco de la iteración anterior, se desarrolló un prototipo funcional que permitió validar la viabilidad técnica del sistema propuesto y sentar las bases para su evolución. Este trabajo destacó por identificar áreas clave de mejora que podrían optimizar su desempeño. Con base en estos hallazgos, la presente iteración se enfoca en mejorar el prototipo inicial, explorando la implementación de compensaciones en el sistema de control. Este enfoque tiene como objetivo principal incrementar la precisión, robustez y eficiencia del sistema, marcando un hito significativo en su desarrollo.
+
+\subsection{Requerimientos}
+En esta iteración abordaremos los siguientes requerimientos funcionales:
+
+\begin{center} \begin{tabular}{|c|c|}
+\hline
+    ID & Descripción \\
+\hline
+    RF4 & El robot debe poder realizar trayectorias en línea recta y curvas. \\ 
+\hline
+    RF5 & El robot debe poder corregir su trayectoria mediante el uso de sensores. \\ 
+\hline
+\end{tabular} \end{center}
+
+Por otra parte, los requerimientos no funcionales que trataremos son:
+
+\begin{center} \begin{tabular}{|p{0.10\linewidth}|p{0.65\linewidth}|}
+\hline
+    ID & Descripción \\
+\hline
+    RNF1 & Debería tener tiempos de respuesta aceptables para el buen funcionamiento del sistema de control. \\
+\hline
+    RNF2 & El software debería contar con pruebas unitarias y de integración. \\
+\hline
+    RNF4 & El código debería contar con documentación.\\
+\hline
+\end{tabular} \end{center}
+
+\subsection{Desarrollo}
+
+\input{iteraciones_desarrollo/iteracion_2/compensacion_modelo_cinematico}
+
+\input{iteraciones_desarrollo/iteracion_2/compensacion_linea_magnetica}
+
+\input{iteraciones_desarrollo/iteracion_2/testing_y_pruebas}
+
+\subsection{Resultados}
+
+En el presente proyecto, se lograron avances significativos respecto al prototipo funcional desarrollado en la etapa anterior. Uno de los principales logros fue la implementación exitosa de compensaciones en varios niveles del sistema de control, lo cual permitió optimizar el rendimiento global del sistema. Estas compensaciones del modelo cinemático y de un seguidor de línea contribuyeron a mejorar la precisión y la estabilidad en condiciones de operación variables, reduciendo de manera notable los márgenes de error detectados previamente.
+
+Asimismo, se llevaron a cabo pruebas exhaustivas que validaron la robustez del sistema mejorado, evidenciando un incremento en su capacidad para adaptarse a distintos escenarios operativos.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[trim={0 2cm 0 7.5cm}, clip, width=1.1\linewidth]{images/prototipo_robot_con_sens_mag.png}
+    \caption{Prototipo del robot con seguidor de linea}
+    \label{fig:prototiporobotlinef}
+\end{figure}
+
+\subsection{Riesgos superados}
+
+Dado el desarrollo de esta iteración, se logro avanzar sobre el riesgo RI-03 y RI-01 por demostrar que los componentes elegidos aun son viables para escalar el proyecto pero existe lugar para mayor aprovechamiento de los mismos.
+
+Por otra parte, se trabajó en superar el riesgo RI-02 por lograr una comunicación efectiva entre los componentes del sistema y se supera en parte el riesgo RI-05 al ser los nuevos componentes agregados de alta disponibilidad.
+
+\begin{center} \begin{tabular}{|c|c|}
+    \hline
+        ID & Riesgo \\
+    \hline
+        RI-01 & Incompatibilidad o avería de componentes \\
+    \hline
+        RI-02 & Intercomunicación de componentes ineficiente o ineficaz \\
+    \hline
+        RI-03 & Prestaciones insuficientes de componentes \\
+    \hline
+        RI-05 & Dificultad en conseguir determinados componentes. \\
+    \hline
+\end{tabular} \end{center}
+
+\subsection{Conclusiones}
+
+Con la realización de esta iteración, obtuvimos que la implementación de compensaciones en el sistema de control marcó un hito al optimizar aspectos clave como la precisión, la estabilidad y la adaptabilidad del sistema frente a distintas condiciones de operación. Estos logros no solo demuestran la efectividad de las estrategias propuestas, sino que también refuerzan la importancia de un enfoque continuo hacia la mejora y la innovación del proyecto.

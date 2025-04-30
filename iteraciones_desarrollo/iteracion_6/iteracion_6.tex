@@ -1,0 +1,40 @@
+\newpage
+\section{Iteración 6: Lectura de códigos QR}
+
+\subsection{Introducción}
+
+El procesamiento de imágenes es una disciplina ampliamente utilizada en la actualidad en diversas aplicaciones, que van desde la visión artificial en vehículos autónomos hasta el reconocimiento facial en dispositivos móviles. Su aplicación permite extraer información valiosa de imágenes para la toma de decisiones automatizadas.
+
+En el contexto de esta iteración, nos enfocamos en la captura y análisis de imágenes para la detección de códigos QR. Este proceso es fundamental para la intervención en la navegación del robot, ya que le permite recibir y procesar información del entorno de manera eficiente. La integración de este sistema representa un avance significativo en la capacidad del robot para interactuar con su entorno y mejorar su movilidad.
+
+\input{iteraciones_desarrollo/iteracion_6/requerimientos}
+
+\subsection{Desarrollo}
+
+\input{iteraciones_desarrollo/iteracion_6/medición_imagenes}
+
+\input{iteraciones_desarrollo/iteracion_6/códigos_qr}
+
+\input{iteraciones_desarrollo/iteracion_6/testing_pruebas}
+
+\subsection{Resultados}
+Los resultados son satisfactorios ya que se pudo cumplir con creces el objetivo de poder enviar y realizar el procesamiento de las imágenes tomadas por la cámara del microcontrolador ESP-32. Como este microcontrolador sólo se encarga de tomar fotos, pudimos generar imágenes de gran calidad llegando a una resolución HD y a una frecuencia de envío de 2 FPS (Frame per second), es decir, 2 imágenes por segundos. Por supuesto esto no llega a ser un procesamiento de video ya que no se arma un objeto con esas imágenes, solamente se realiza el procesamiento de las mismas de forma particular.
+Además no implicó realizar cambios grandes en el sistema principal de movilización del robot, esto porque al estar todo conectado vía las comunicaciones inalámbricas, el sistema explicado puede considerarse como un módulo externo, que, por supuesto ayuda al robot a tomar conocimiento de su entorno.
+
+\subsection{Riesgos superados}
+\begin{center}
+    \begin{tabular} {
+        | c| c |}
+        \hline
+            ID & Riesgo \\
+        \hline
+            RI-02 & Intercomunicación de componentes ineficiente o ineficaz \\
+        \hline
+            RI-03 & Prestaciones insuficientes de componentes \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Conclusiones}
+En este capítulo se explicaron los motivos que nos llevaron a implementar este tipo de procesamiento y porque consideramos que el conocimiento del entorno y sus parámetros son importantes para mejorar la movilización del robot en un entorno real. Lamentablemente, los tiempos del proyecto no fueron suficientes para realizar todas las pruebas necesarias y verificar fehacientemente que el comportamiento del robot cambian para mejor con la ayuda de los valores tomados de las imágenes, esto teniendo en cuenta que no se añaden de forma directa sino que suman como entrada al filtro de Kalman.
+Esperamos que una próxima iteración de la serie Hermes esto se pueda continuar, y plasmar en el mundo real lo que planteamos en la teoría de la implementación.

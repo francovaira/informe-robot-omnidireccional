@@ -1,0 +1,128 @@
+\subsection{Testing y pruebas}
+
+Las pruebas realizadas en esta iteración parten del prototipo logrado en la iteración anterior.
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_02\_00 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & Modelo Cinemático \\
+    \hline
+        Requerimiento       & RF4 - RF5 \\
+    \hline
+        Nombre              & Modelo Cinemático con compensación en línea recta \\
+    \hline
+        Descripción         & Comprobar que el Modelo Cinemático compensa adecuadamente las velocidades de las ruedas según un setpoint en línea recta \\
+    \hline
+        Precondición        & PRECOND\_B \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot un setpoint con distancia entre [50cm $\sim$ 400cm] y velocidad lineal entre $\pm$[0.25m/seg $\sim$ 0.75m/seg]
+                                \item Verificar que el robot recorre el vector dado a lo largo de la distancia determinada y que su movimiento es compensado
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot se mueve en línea recta en la dirección del vector dado por $V_x$ y $V_y$. Debe ser notable la mejora en la estabilidad del vector a realizar. \\
+    \hline
+        Resultado obtenido  & Se observa que el robot mejora sustancialmente el desempeño al realizar la trayectoria. \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_02\_01 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & Seguidor de línea magnética - Modelo Cinemático \\
+    \hline
+        Requerimiento       & RF5 \\
+    \hline
+        Nombre              & Compensación de linea magnética \\
+    \hline
+        Descripción         & Verificar que el robot compensa su trayectoria al comenzar centrado en la línea de imanes \\
+    \hline
+        Precondición        & PRECOND\_C \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Colocar al robot centrado respecto a la línea de imanes
+                                \item Enviar al robot un setpoint con distancia entre [50cm $\sim$ 400cm] y velocidad lineal entre $\pm$[0.25m/seg $\sim$ 0.75m/seg]
+                                \item Verificar que el robot recorre el vector dado a lo largo de la distancia determinada, que el Modelo Cinemático compensa el movimiento y que al detectar un imán en un lateral se corrige la orientación del robot
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot se mantiene dentro de los límites de la línea magnética \\
+    \hline
+        Resultado obtenido  & El robot logra mantenerse centrado con la línea de imanes. Se observa en varias ocasiones que el robot toca un imán, a lo que el robot aplica una velocidad rotacional contraria para centrarlo \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_02\_02 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & Seguidor de línea magnética  - Modelo Cinemático \\
+    \hline
+        Requerimiento       & RF5 \\
+    \hline
+        Nombre              & Compensación de linea magnética \\
+    \hline
+        Descripción         & Verificar que el robot compensa su trayectoria al comenzar tocando un imán \\
+    \hline
+        Precondición        & PRECOND\_C \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Colocar al robot descentrado respecto a la línea de imanes y de modo que se detecte un imán al inicio
+                                \item Enviar al robot un setpoint con distancia entre [50cm $\sim$ 400cm] y velocidad lineal entre $\pm$[0.25m/seg $\sim$ 0.75m/seg]
+                                \item Comprobar que al iniciar corrige su trayectoria de inmediato y que luego el robot se mantiene centrado a lo largo de la línea magnética, compensando con el Modelo Cinemático y al detectar imanes
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot corrige el desfase y vuelve a posicionarse dentro de los límites de la línea \\
+    \hline
+        Resultado obtenido  & El robot logra mantenerse centrado con la línea. Se observa que al tocar un imán se aplica una velocidad rotacional contraria para centrarlo \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_02\_03 \\
+    \hline
+        Tipo de test        & Test de sistema \\
+    \hline
+        Objeto de prueba    & Comunicación inalámbrica - PID - Modelo cinemático compensado - Odometría - Seguidor de línea magnética \\
+    \hline
+        Requerimiento       & RF1 - RF2 - RF3 - RF4 - RF5 - RF6 \\
+    \hline
+        Nombre              & Prueba de sistema integrado \\
+    \hline
+        Descripción         & Comprobar que el robot realiza trayectorias en una dirección y longitud determinadas \\
+    \hline
+        Precondición        & PRECOND\_C \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Enviar al robot un setpoint con distancia entre [50cm $\sim$ 400cm] y velocidad lineal entre $\pm$[0.25m/seg $\sim$ 0.75m/seg]
+                                \item Comprobar que el robot se mantiene centrado a lo largo de la línea magnética y que es compensado por el Modelo Cinemático. Además debe reportar mediciones de velocidad y distancia
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & El robot responde correctamente al vector y la distancia establecida, reporta información de mediciones de velocidad y distancia \\
+    \hline
+        Resultado obtenido  & El robot realiza las trayectorias de manera acorde dentro de los límites observados en las pruebas unitarias y de integración. Se logra recolectar la información enviada por el robot \\
+    \hline
+        Observaciones       & Se probó hasta recorridos de 4 metros por limitaciones de espacio. \\
+    \hline
+\end{testtableformat}
