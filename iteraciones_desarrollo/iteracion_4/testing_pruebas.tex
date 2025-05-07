@@ -1,6 +1,6 @@
-\subsection{Testing y pruebas} \mbox{} \vspace{5pt}
+\subsection{Testing y pruebas}
 
-Las pruebas que se realizaron para que efectivamente podamos determinar el correcto funcionamiento del Monitor, la gestión de la cola de cortesía y la resolución de conflictos mediante la aplicación de una Política fue con la ayuda de la Red de Petri sumamente conocida como Productor-Consumidor. Esta se tomó cómo referencia ya que permite evaluar los problemas de sincronización, concurrencia y gestión de los recursos, entonces, nos pareció un buen puntapié para validar el funcionamiento con un modelo conocido y sumamente usado.
+Las pruebas que se realizaron para que efectivamente podamos determinar el correcto funcionamiento del Monitor, la gestión de la cola de cortesía y la resolución de conflictos mediante la aplicación de una Política fue con la ayuda de la Red de Petri sumamente conocida como Productor-Consumidor. Esta se tomó cómo referencia ya que permite evaluar los problemas de sincronización, concurrencia y gestión de los recursos, entonces, nos pareció un buen puntapié para validar el funcionamiento con un modelo conocido y sumamente usado. Cabe destacar que realizamos la simulación sobre esta red alrededor de $1M$ de disparos y por supuesto siempre validando el resultado de los $P\ invariantes$ y $T\ invariantes$.
 
 \begin{figure}[H]
    \centering
@@ -137,7 +137,9 @@ Se plantearon los siguientes casos:
     \hline
         Tipo de test        & Test de sistema \\
     \hline
-        Objeto de prueba    & Comunicación inalámbrica - PID - Modelo cinemático - Odometría - Seguidor de línea magnética - Modelo del mapa - Calculador de trayectorias - Red de Petri - Monitor\\
+        Objeto de prueba    & Comunicación inalámbrica - PID - Modelo cinemático - Odometría - Seguidor de línea magnética - Modelo del mapa - Calculador de trayectorias - Interfaz de usuario - Red de Petri - Monitor \\
+    \hline
+        Requerimiento       & RF1 - RF2 - RF3 - RF4 - RF5 - RF6 - RF7 - RF10 \\
     \hline
         Nombre              & Prueba de sistema integrado\\
     \hline

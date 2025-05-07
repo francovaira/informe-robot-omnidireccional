@@ -11,20 +11,29 @@ En la presente etapa, el objetivo principal es implementar una técnica que perm
 
 En primer lugar, los requerimientos funcionales a tratar son:
 
-\begin{center} \begin{tabular}{|c|c|} 
-\hline
+\begin{center}
+\begin{tabular}{
+    | >{\centering\arraybackslash}m{1cm}
+    | >{\centering\arraybackslash}m{13cm} |
+} 
+\hline \rowcolor{test_header_color}
     ID & Descripción \\
 \hline
     RF6 & El robot debe recibir y enviar información mediante comunicaciones inalámbricas. \\ 
 \hline
     RF8 & Debe poder ubicarse al robot en el plano de forma precisa. \\
 \hline
-\end{tabular} \end{center}
+\end{tabular}
+\end{center}
 
 Por otra parte, los requerimientos no funcionales que abordaremos son:
 
-\begin{center} \begin{tabular}{|p{0.15\linewidth}|p{0.55\linewidth}|} 
-\hline
+\begin{center}
+\begin{tabular}{
+    | >{\centering\arraybackslash}m{1cm}
+    | >{\centering\arraybackslash}m{13cm} |
+}
+\hline \rowcolor{test_header_color}
     ID & Descripción \\
 \hline
     RNF1 & Debería tener tiempos de respuesta aceptables para el buen funcionamiento del sistema de control. \\
@@ -33,8 +42,8 @@ Por otra parte, los requerimientos no funcionales que abordaremos son:
 \hline
     RNF4 & El código debería contar con documentación. \\
 \hline
-\end{tabular} \end{center}
-
+\end{tabular}
+\end{center}
 
 \subsection{Desarrollo}
 
@@ -48,7 +57,7 @@ Por otra parte, los requerimientos no funcionales que abordaremos son:
 
 Como principal resultado de esta iteración, el uso del Filtro de Kalman, basado en las entradas proporcionadas por los sensores del sistema y complementado con el PID y el Modelo Cinemático del robot, permitió una mejora drástica en las trayectorias lineales del robot. Estas mejoras se tradujeron en una compensación efectiva que optimiza el desempeño del sistema.
 
-A través de este enfoque, se logró reducir significativamente el error en las trayectorias estimadas, garantizando un alto nivel de precisión en el movimiento del robot. Esto se evidencia en las representaciones gráficas obtenidas, donde la trayectoria deseada, indicada en fucsia, y la trayectoria real estimada, marcada en verde, muestran en la Figura \ref{fig:ejemplofiltrokalman} que se tiene un bajo error para todos los puntos de la misma. Esta trayectoria esta compuesta por la secuencia de coordenadas:
+A través de este enfoque, se logró reducir significativamente el error en las trayectorias estimadas, garantizando un alto nivel de precisión en el movimiento del robot. Esto se evidencia en las representaciones gráficas obtenidas, donde la trayectoria deseada, indicada en fucsia, y la trayectoria real estimada, marcada en verde, muestran en la Figura \ref{fig:ejemplofiltrokalman} que se tiene un bajo error para todos los puntos de la misma. Cabe aclarar que los ejes cartesianos del gráfico están expresados en $[metros]$. Esta trayectoria esta compuesta por la secuencia de coordenadas:
 
 $$ [(3,3), (2,3), (1,3), (1,2), (1,1), (2,1), (3,1)] $$
 
@@ -67,7 +76,7 @@ El desarrollo de la presente iteración se corresponde con unas de las mas impor
 Al mismo tiempo, se logra una integración efectiva entre los nuevos y ya existentes componentes, por lo que se logran progresos sobre el riesgo RI-02.
 
 \begin{center} \begin{tabular}{|c|c|} 
-    \hline
+    \hline \rowcolor{test_header_color}
         ID & Riesgo \\
     \hline
         RI-02 & Intercomunicación de componentes ineficiente o ineficaz \\

@@ -1,6 +1,14 @@
-\subsubsection{Comunicación inalámbrica} \mbox{} \vspace{10pt} \\
+\subsubsection{Comunicación inalámbrica}
+
 Nuestro proyecto al estar pensado para cumplir con los estándares de la Industria 4.0, nos vimos en la necesidad de incorporar la comunicación inalámbrica como medio principal para poder conectar y establecer comunicación entre los distintos componentes que forman parte del proyecto. Así como muestra el diagrama de alto nivel, los componentes se comunican utilizando un router como medio para poder llegar uno hacia otro.
 
 Los microcontroladores elegidos vienen incorporados con los integrados necesarios para hacer uso de esta tecnología y ademas cuentan con la posibilidad de incorporarles una antena, lo que mejora la calidad de la señal y amplia su rango de alcance por lo que los vuelve mas efectivos aun si es que se necesita enviar gran cantidad de información y asegurar que los paquetes van a llegar a destino.
 
 Existe la posibilidad de usar protocolos propios de estos microcontroladores, como ser ESP-NOW, para establecer una comunicación mas segura entre los microcontroladores, pero, optamos por hacer uso del protocolo MQTT que es usado ampliamente en la industria para enviar información de sensores y mensajes cortos. Esto debido a la liviandad y eficiencia de sus mensajes, además, de no atarnos por completo a un protocolo privativo de la marca ESP y poder usar lo que hasta ahora viene siendo un estándar para los dispositivos IoT.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.7\linewidth]{images/com_inalambrica.jpg}
+   \caption{Protocolos usados comúnmente en entornos IoT}
+   \label{fig:mqtt}
+\end{figure}

@@ -3,7 +3,8 @@ Un controlador PID (Proporcional-Integral-Derivativo) es un tipo de controlador 
 
 El objetivo principal de un controlador PID es proporcionar una respuesta rápida y estable en diferentes aplicaciones. Además de ser utilizado en procesos industriales como plantas químicas y refinerías, también se lo utiliza en el control de velocidad de motores eléctricos, asegurando que el motor funcione a la velocidad deseada sin fluctuaciones por mas que se perciban alteraciones, por lo que en robótica resultan útiles para el control de posición y movimiento, permitiendo acciones precisas y controladas.
 
-\paragraph{Función de transferencia del motor} \mbox{} \vspace{8pt} \\
+\paragraph{Función de transferencia del motor} \mbox{} \vspace{8pt}
+
 La función de transferencia en un sistema de control se representa como $G(s)$ y modela matemáticamente el comportamiento de un actuador, al cual se le aplica un estimulo o señal $R(s)$ y se obtiene una respuesta $C(s)$ por parte de él.
 
 Para controlar la variable en cuestión debemos tener una noción sobre la salida producida. Por un lado tenemos la función $H(s)$, que es una función que toma como entrada una medición sobre la salida del actuador o sistema para producir un valor $B(s)$. Éste se suma negativamente al setpoint $R(s)$ para obtener el error entre ellas $E(s)$, que es la señal efectivamente que se introduce a $G(s)$ para logar aproximarse al setpoint y compensar el sistema.
@@ -88,7 +89,7 @@ En nuestro caso, optamos por utilizar un PID aditivo por ser de sencilla impleme
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/pid_aditivo}
+    \includegraphics[width=1.0\linewidth]{images/pid_aditivo}
     \caption{PID aditivo}
     \label{fig:pidaditivo}
 \end{figure}
@@ -109,22 +110,20 @@ Por cada motor se tiene una estructura como la siguiente:
     \label{fig:diagcomponentesp32}
 \end{figure}
 
-En primer lugar, se tiene una interrupción periódica de $T=100[ms]$ donde se toman los valores de cada uno de los módulos contadores de pulso (PCNT) del microcontrolador, vinculados a los encoders rotativos de cada rueda. Existe una cola por cada MotorTask para recibir esta información desde la interrupción.
-
-Por otro lado, la tarea MasterTask cuenta con una cola (queue) única que comparte con todas las MotorTask para recibir el feedback de las mismas. Además, cada tarea MotorTask tiene una cola que comparte con la tarea MasterTask, donde se envía un setpoint independiente a cada rueda.
+En primer lugar, se tiene una interrupción periódica de $T=100[ms]$ donde se toman los valores de cada uno de los módulos contadores de pulso (PCNT) del microcontrolador, vinculados a los encoders rotativos de cada rueda. Existe una cola por cada MotorTask para recibir esta información desde la interrupción. Por otro lado, la tarea MasterTask cuenta con una cola (queue) única que comparte con todas las MotorTask para recibir el feedback de las mismas. Asimismo, cada tarea MotorTask tiene una cola que comparte con la tarea MasterTask, donde se envía un setpoint independiente a cada rueda.
 
 Al ser el robot omnidireccional, si se establecen todas las ruedas a la misma velocidad y en sentidos determinados, es posible lograr que el robot de mueva a lo largo de un vector en linea recta sobre el plano. De este modo podemos llevar a cabo pruebas con las que encontramos los coeficientes del controlador.
 
 A continuación, incurrimos en la utilización de la técnica de Ziegler-Nichols a lazo abierto y logramos obtener valores aproximados de $K_p$, $K_i$ y $K_d$. Introdujimos estos valores en el controlador y colocamos el robot en el suelo para realizar una serie de pruebas en línea recta. Con estos coeficientes no notamos un comportamiento óptimo, por lo que nos enfocamos en iterar sobre los valores y ajustar las constantes.
 
-De este modo se realizaron iteraciones aumentando o disminuyendo cada uno de los coeficientes para buscar el punto óptimo de funcionamiento. Comenzamos con un valor de $K_p=10$ y un setpoint de $65[RPM]$, los demás coeficientes en cero. De este modo se fue aproximando el valor hasta lograr un arranque rápido pero sin demasiado sobrepaso. Una vez obtenido lo anterior, se procedió a ajustar $K_i$ observando cómo variaba el error acumulado al alcanzar las RPM deseadas. Finalmente se determinó el factor $K_d$ mediante observación de la respuesta del robot ante picos de perturbaciones.
+De este modo se realizaron iteraciones aumentando o disminuyendo cada uno de los coeficientes para buscar el punto óptimo de funcionamiento. Comenzamos con un valor de $K_p=10$ y un setpoint de $65[RPM]$, los demás coeficientes en cero. De este modo se fue aproximando el valor hasta lograr un arranque rápido pero sin demasiado sobrepaso. Una vez obtenido lo anterior, se procedió a ajustar $K_i$ observando cómo variaba el error acumulado al alcanzar las RPM deseadas. Para finalizar, se determinó el factor $K_d$ mediante observación de la respuesta del robot ante picos de perturbaciones.
 
 Finalmente, obtenemos la siguiente estructura para el control de las 4 ruedas independientes del robot:
 
 \begin{figure}[H]
     \centering
     \hspace*{-0.75cm}
-    \includegraphics[width=1.1\linewidth]{images/diag_comp_esp32_pid_solo_todos_los_motores.png}
+    \includegraphics[width=1.05\linewidth]{images/diag_comp_esp32_pid_solo_todos_los_motores.png}
     \caption{Estructura de control de los motores}
     \label{fig:diagcommpesp32pidmotores}
 \end{figure}
@@ -133,8 +132,7 @@ A continuación se detalla el funcionamiento de una de las tareas de los motores
 
 \begin{figure}[H]
     \centering
-    \hspace*{-1.1cm}
-    \includegraphics[width=1.15\linewidth]{images/diag_secuencia_pid_solo.png}
+    \includegraphics[width=1.1\linewidth]{images/diag_secuencia_pid_solo.png}
     \caption{Diagrama de secuencia de las tareas de control para los motores}
     \label{fig:diagsecuenciapidsolo}
 \end{figure}

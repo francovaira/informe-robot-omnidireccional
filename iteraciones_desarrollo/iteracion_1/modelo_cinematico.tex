@@ -35,12 +35,13 @@ Teniendo en cuenta lo anterior, para la construcción del modelo cinemático se 
     \item No se consideran ningún tipo de fricciones contra el suelo.
 \end{itemize}
 
-\paragraph{Desarrollo} \mbox{} \vspace{8pt} \\
+\paragraph{Desarrollo} \mbox{} \vspace{8pt}
+
 Al suponerse la rueda como un elemento rígido, se establece el principio de que las ruedas en contacto con el suelo se comportan como una articulación planar de tres grados de libertad, con lo que se propone el sistema de referencia descrito en la siguiente figura:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.35\linewidth]{rueda_modelo_cinematico}
+    \includegraphics[width=0.4\linewidth]{rueda_modelo_cinematico}
     \caption{Vectores actuantes en una rueda}
     \label{fig:vectoresrueda}
 \end{figure}
@@ -51,7 +52,7 @@ Definimos al robot sobre el plano cartesiano, donde se establece el marco de ref
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{robot_en_el_plano_mod_cinem}
+    \includegraphics[width=0.6\linewidth]{robot_en_el_plano_mod_cinem}
     \caption{Marco de referencia del robot y del espacio}
     \label{fig:marcorefrobotenelplano}
 \end{figure}
@@ -60,7 +61,7 @@ Además podemos representar el robot y la distribución de ruedas del siguiente 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/modelo_cinematico_robot_ruedas.png}
+    \includegraphics[width=0.6\linewidth]{images/modelo_cinematico_robot_ruedas.png}
     \caption{Descomposición de vectores del robot}
     \label{fig:vectoresrobotmodelocinem}
 \end{figure}
@@ -72,6 +73,7 @@ $$ \alpha_2 = \frac{3\pi}{4} = 135^{\circ} $$
 $$ \alpha_3 = \frac{5\pi}{4} = 225^{\circ} $$
 $$ \alpha_4 = \frac{7\pi}{4} = 315^{\circ} $$
 
+\newpage
 \textbf{Cinemática Inversa} \mbox{} \vspace{8pt}
 
 Para obtener el modelo cinemático, partimos del desarrollo de cómo afecta cada una de las ruedas al movimiento total del robot. Para ello comenzamos con la descripción del movimiento de un cuerpo rígido descrito en la Figura \ref{fig:movimientocuerporigido} \cite{islassistcontrolomni}.

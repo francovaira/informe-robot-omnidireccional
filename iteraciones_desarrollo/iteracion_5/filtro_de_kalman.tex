@@ -7,7 +7,7 @@ El funcionamiento del filtro de Kalman se basa en dos etapas: la predicción, do
 En cuanto a su implementación, se desarrollará una integración entre el modelo cinemático existente y el filtro de Kalman en Python. Los resultados esperados incluyen un aumento significativo en la precisión de la navegación del robot y una mejora en su capacidad de adaptarse a entornos ruidosos.
 
 
-\paragraph{Estimación del estado} \mbox{} \vspace{10pt}
+\paragraph{Estimación del estado} \mbox{} \vspace{8pt}
 
 A través de un modelo probabilístico, el filtro combina las predicciones del sistema basadas en el modelo cinemático con mediciones reales provenientes de sensores. Esto permite minimizar el impacto del ruido y las imprecisiones inherentes a las lecturas de los sensores. El proceso de estimación sigue dos etapas principales:
 
@@ -21,7 +21,7 @@ La información estimada por el filtro de Kalman se utiliza para compensar traye
 En términos prácticos, la implementación del filtro de Kalman no solo refuerza la fiabilidad del sistema de navegación, sino que también sienta una base sólida para futuros desarrollos, como la integración con sensores más avanzados o la aplicación en sistemas autónomos.
 
 
-\paragraph{Matrices de covarianza} \mbox{} \vspace{10pt}
+\paragraph{Matrices de covarianza} \mbox{} \vspace{8pt}
 
 Las matrices de covarianza expresan la relación estadística entre las distintas variables del sistema, cuantificando tanto la magnitud del ruido como la correlación entre las mediciones obtenidas de diferentes sensores. Cada elemento de la matriz de covarianza representa cómo dos variables están relacionadas en términos de su varianza compartida; por lo tanto, si las variables son independientes, sus valores excepto los de la diagonal principal de la matriz son nulos.
 
@@ -29,13 +29,13 @@ El propósito de estas matrices en el filtro de Kalman y en sistemas similares r
 
 La calibración de las matrices de covarianza es crucial para garantizar su correcta representación del ruido real del sistema. Esto puede lograrse mediante técnicas experimentales, analizando mediciones históricas para calcular las varianzas y covarianzas directamente. También se pueden implementar métodos estadísticos que ajusten las matrices iterativamente según los resultados obtenidos durante el funcionamiento del robot. Otra técnica consiste en realizar simulaciones repetitivas, diseñadas para identificar los patrones de error y ajustar las matrices en consecuencia. \cite{Bang18}
 
-\paragraph{Cambio de coordenadas medición/estimación} \mbox{} \vspace{10pt}
+\paragraph{Cambio de coordenadas medición/estimación} \mbox{} \vspace{8pt}
 
 Dado que en la próxima iteración se va a colocar una cámara fija en el robot que queremos que esté siempre apuntando hacia el frente, cuando el robot realiza trayectorias y necesita hacer un cambio de dirección, primero realiza un giro sobre su propio eje hasta orientar al robot correctamente.
 
 Por otro lado, el robot al moverse siempre a lo largo sobre su propio eje $y$, va a reportar siempre mediciones donde la velocidad $v_y$ es distinta de cero y $v_x$ es cercana a cero. Es por ello que se agrega una variable que lleva la cuenta de la orientación del robot en grados $[0^{\circ}, 90^{\circ}, 180^{\circ}, 270^{\circ}]$ respecto al sistema de coordenadas global. Con esta información realizamos un cambio de coordenadas para adaptar el sistema de coordenadas locales del robot y sus mediciones, a las globales del mapa.
 
-\paragraph{Implementación} \mbox{} \vspace{10pt}
+\paragraph{Implementación} \mbox{} \vspace{8pt}
 
 El filtro de Kalman se implementa de modo que registra velocidad y posición en un eje determinado, por lo que replicando el filtro 2 veces podemos tener una representación de un plano $XY$. Esta implementación se realiza en Python y se integra al funcionamiento del sistema.
 
@@ -58,7 +58,7 @@ La secuencia de procesos a realizar cada vez que se recibe una medición es el s
 Por otra parte, esperamos que el funcionamiento del Filtro de Kalman sea tal que podamos actualizar el estado por cada medición recibida del robot y calcular el vector de compensación según el estado estimado por el filtro. Este proceso se describe en el diagrama de secuencia de la Figura \ref{fig:diagsecuenciafiltrokalman}. \\
 
 
-\textbf{Adaptación de datos de entrada} \mbox{} \vspace{10pt}
+\textbf{Adaptación de datos de entrada} \mbox{} \vspace{8pt}
 
 Para comenzar trataremos el proceso para adaptar los datos de las mediciones. En primer lugar, tenemos que el estado observado $Y_k$ puede ser expresado como:
 
@@ -88,21 +88,20 @@ Siendo $x_{km}$ y $v_{km}$ los valores de posición y velocidad medidos. La posi
 
 \begin{figure}[H]
     \centering
-    \hspace*{-1.1cm}
-    \includegraphics[width=1.15\linewidth]{images/diag_secuencia_filtro_de_kalman_con_esp32.png}
+    \includegraphics[width=1.1\linewidth]{images/diag_secuencia_filtro_de_kalman_con_esp32.png}
     \caption{Diagrama de secuencia con el Filtro de Kalman}
     \label{fig:diagsecuenciafiltrokalman}
 \end{figure}
 
 
-\textbf{Modelo del filtro} \mbox{} \vspace{10pt}
+\textbf{Modelo del filtro} \mbox{} \vspace{8pt}
 
 El filtro de Kalman requiere que modelemos matemáticamente nuestro sistema. En nuestro caso registraremos la posición y velocidad en un eje determinado. El modelo matemático es en base a la ecuación de movimiento rectilíneo acelerado, por lo que para la posición y velocidad instantáneas se tiene:
 
 $$ x = x_0 + x_0 \Delta t + \frac{1}{2} a \Delta t^2 $$
 $$ v_x = v_0 + a\Delta t $$
 
-\textbf{Cálculo del Estado Predicho $X_{kp}$} \mbox{} \vspace{10pt}
+\textbf{Cálculo del Estado Predicho $X_{kp}$} \mbox{} \vspace{8pt}
 
 Este término significa en donde debería estar el robot según el modelo ideal y la distancia entre muestras $\Delta t$. En base a lo anterior en forma matricial, tenemos que el estado predicho está dado por:
 
@@ -154,7 +153,7 @@ X_{kp} =
     \begin{bmatrix} 0 \\ 0 \\ \end{bmatrix}
 $$ \\
 
-\textbf{Cálculo de Matriz de Covarianza de Proceso Predicha $P_{kp}$} \mbox{} \vspace{10pt}
+\textbf{Cálculo de Matriz de Covarianza de Proceso Predicha $P_{kp}$} \mbox{} \vspace{8pt}
 
 Esta matriz se modela teniendo por un lado el término $\Delta_{px}$ y por otro lado el término $\Delta_{pv_x}$ que representan errores en el proceso de calcular la posición y velocidad predichos.
 
@@ -201,7 +200,7 @@ $$ P_{kp} =
     \end{bmatrix}  \\
 $$
 
-\textbf{Cálculo de la ganancia de Kalman $K$} \mbox{} \vspace{10pt}
+\textbf{Cálculo de la ganancia de Kalman $K$} \mbox{} \vspace{8pt}
 
 La ganancia de Kalman en pocas palabras es una media ponderada que le da mas o menos importancia a la medición versus la estimación según el error detectado. Si la ganancia $K$ tiende a 0, indica que el sistema no converge y que tiene un error considerable. Por otro lado si la ganancia $K$ tiende a 1 indica que tiene poco error.
 
@@ -262,7 +261,7 @@ $$ K =
     }
 $$ \\
 
-\textbf{Cálculo del Estado Estimado $X_k$} \mbox{} \vspace{10pt}
+\textbf{Cálculo del Estado Estimado $X_k$} \mbox{} \vspace{8pt}
 
 Para obtener la nueva estimación del estado en base a la última medición recibida, podemos expresar:
 
@@ -286,7 +285,7 @@ $$ X_k =
     )
 $$ \\
 
-\textbf{Actualización de la Matriz de Covarianza de Proceso $P_k$} \mbox{} \vspace{10pt}
+\textbf{Actualización de la Matriz de Covarianza de Proceso $P_k$} \mbox{} \vspace{8pt}
 
 Eventualmente, cuando el error se reduce lo suficiente, podemos actualizar la matriz de covarianza de proceso mediante la siguiente expresión:
 
@@ -312,7 +311,7 @@ $$ P_k =
     P_{kp}
 $$
 
-\textbf{Actualización de valores} \mbox{} \vspace{10pt}
+\textbf{Actualización de valores} \mbox{} \vspace{8pt}
 
 Antes de comenzar una nueva iteración debemos actualizar los valores de la matriz de covarianza y la de estado predecido:
 

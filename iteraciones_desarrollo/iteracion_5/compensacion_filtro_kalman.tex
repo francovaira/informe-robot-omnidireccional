@@ -8,7 +8,7 @@ $$ [distancia, v_x, v_y, v_\theta] $$
 Por otra parte el robot reporta el feedback de modo que es apto para el filtro de Kalman:
 $$ [x, v_x, y, v_y] $$
 
-\paragraph{Compensación espacial y vectorial} \mbox{} \vspace{10pt}
+\paragraph{Compensación espacial y vectorial} \mbox{} \vspace{8pt}
 
 La compensación espacial y vectorial del robot omnidireccional se logra aprovechando las capacidades del filtro de Kalman para estimar el estado actual del sistema en tiempo real. Con esta información, el sistema puede ajustar los vectores de movimiento en las ruedas, compensando automáticamente irregularidades en el desplazamiento.
 
@@ -16,9 +16,9 @@ La corrección de la \textit{posición} del robot se realiza principalmente a tr
 
 Por otro lado, la \textit{trayectoria} planeada se corrige utilizando el modelo cinemático del robot. Este modelo define las relaciones entre los vectores de movimiento de las ruedas y los desplazamientos deseados en el espacio. Cuando el filtro de Kalman detecta desviaciones en la posición real, el sistema utiliza esta información para recalcular y corregir la trayectoria, asegurando que el robot siga el camino previamente definido.
 
-\paragraph{Implementación} \mbox{} \vspace{10pt}
+\paragraph{Implementación} \mbox{} \vspace{8pt}
 
-\textbf{Compensación espacial} \mbox{} \vspace{10pt}
+\textbf{Compensación espacial} \mbox{} \vspace{8pt}
 
 Para la compensación espacial necesitamos determinar $d_c$, que es la distancia a recorrer para corregir la posición y llegar a $B$.
 
@@ -53,7 +53,7 @@ Es posible comprobar que para un desplazamiento sobre el eje $x$, la diferencia 
 
 $$ \alpha = arctan(\frac{d_{yc}}{d_{xc}}) $$
 
-\textbf{Compensación vectorial} \mbox{} \vspace{10pt}
+\textbf{Compensación vectorial} \mbox{} \vspace{8pt}
 
 Para la compensación vectorial, en primera instancia definimos:
 

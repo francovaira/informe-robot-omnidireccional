@@ -60,3 +60,65 @@
         Observaciones       & - \\
     \hline
 \end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_03\_02 \\
+    \hline
+        Tipo de test        & Test de integración \\
+    \hline
+        Objeto de prueba    & Interfaz de usuario y calculador de trayectorias \\
+    \hline
+        Requerimiento       & RF7 - RF10 \\
+    \hline
+        Nombre              & Interacción con la interfaz y cálculo de trayectorias con obstáculos \\
+    \hline
+        Descripción         & Verificar que al interactuar con la interfaz es posible establecer puntos de origen y de destino, para luego calcular la secuencia de coordenadas a seguir en base a esos puntos \\
+    \hline
+        Precondición        & PRECOND\_E \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Establecer un punto de origen y un punto de destino en el mapa de la interfaz
+                                \item Dar la orden de calcular la secuencia de coordenadas y verificar que son validas
+                                \item Repetir desde el paso 1) para otra combinación de coordenadas origen y destino
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  & En todos los casos se obtiene una lista con las coordenadas a recorrer desde el punto de origen hasta el final \\
+    \hline
+        Resultado obtenido  & La lista de coordenadas obtenidas representa las coordenadas del mapa por las cuales se debe pasar para llegar a destino \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}
+
+
+\begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_03\_03 \\
+    \hline
+        Tipo de test        & Test de sistema \\
+    \hline
+        Objeto de prueba    & Comunicación inalámbrica - PID - Modelo cinemático compensado - Odometría - Seguidor de línea magnética - Modelo del Mapa - Calculador de trayectorias - Interfaz de usuario \\
+    \hline
+        Requerimiento       & RF1 - RF2 - RF3 - RF4 - RF5 - RF6 - RF7 - RF10 \\
+    \hline
+        Nombre              & Prueba de sistema integrado \\
+    \hline
+        Descripción         & Comprobar que el robot realiza trayectorias en una dirección y longitud determinadas \\
+    \hline
+        Precondición        & PRECOND\_C - PRECOND\_E \\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                                \item Establecer en la interfaz un par de puntos origen y destino y calcular la trayectoria
+                                \item Enviar al robot un setpoint por cada coordenada a recorrer
+                                \item Repetir desde el paso 1) con diferentes valores
+                            \end{enumerate} \\
+    \hline
+        Resultado esperado  &  El robot se mantiene centrado a lo largo de la línea magnética y que es compensado por el Modelo Cinemático. Además, la interfaz debe mostrar en tiempo real la celda que ocupa el robot y debe reportar mediciones de velocidad y distancia \\
+    \hline
+        Resultado obtenido  & El robot realiza las trayectorias de manera acorde dentro de los límites observados en las pruebas unitarias y de integración. Se logra recolectar la información enviada por el robot y se visualiza la posición del robot en la interfaz \\
+    \hline
+        Observaciones       & - \\
+    \hline
+\end{testtableformat}

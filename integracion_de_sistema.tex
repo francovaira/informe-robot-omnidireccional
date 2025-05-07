@@ -3,7 +3,7 @@
 
 \section{Introducción}
 
-La integración del sistema representa el punto culminante del desarrollo del proyecto, reuniendo todos los componentes implementados a lo largo de las iteraciones previas en una solución cohesiva y funcional, además busca garantizar que cada componente contribuya de forma efectiva al cumplimiento de los objetivos del proyecto. Hasta el momento, se ha logrado consolidar un prototipo de robot omnidireccional con un sistema de control compensado, un mapa estructurado gobernado por un conjunto red de Petri/Monitor, una interfaz de usuario que permite el monitoreo y supervisión de las operaciones del robot, además de introducir el Filtro de Kalman para mejorar la precisión en la estimación de la posición del mismo.
+La integración del sistema representa el punto culminante del desarrollo del proyecto, reuniendo todos los componentes implementados a lo largo de las iteraciones previas en una solución cohesiva y funcional, además busca garantizar que cada componente contribuya de forma efectiva al cumplimiento de los objetivos del proyecto. Hasta el momento, se ha logrado consolidar un prototipo de robot omnidireccional con un sistema de control compensado, un mapa estructurado gobernado por un conjunto red de Petri/Monitor, una interfaz de usuario que permite el monitoreo y supervisión de las operaciones del robot, además de introducir el Filtro de Kalman para mejorar la precisión en la estimación de la posición del mismo y un mecanismo para medir distancia por medio de códigos QR.
 
 En esta etapa, el objetivo central es integrar estos elementos en un sistema completo que opere de manera armónica y eficiente, optimizando su desempeño y consolidando su capacidad para interactuar en el entorno modelado.
 
@@ -54,6 +54,10 @@ Durante el desarrollo se realizaron un número de iteraciones que condujeron al 
     \end{itemize}
 
     \item Iteración 6: Mediciones con códigos QR
+        \begin{itemize}
+        \item Captura y envío de fotografías por WiFi
+        \item Procesamiento de las imágenes captadas
+    \end{itemize}
 \end{itemize}
 
 
@@ -63,8 +67,8 @@ Una vez integrados todos los componentes, podemos plasmar cómo se relacionan en
 
 \begin{figure}[H]
     \centering
-    \hspace*{-2.0cm}
-    \includegraphics[width=1.25\linewidth]{images/integ_sistema_general.png}
+    \hspace*{-1.0cm}
+    \includegraphics[width=1.15\linewidth]{images/integ_sistema_general.png}
     \caption{Diagrama de componentes del sistema}
     \label{fig:integsistemadiagcomp}
 \end{figure}
@@ -99,7 +103,7 @@ Es por ello que procedemos a ilustrar cómo el robot interactúa con el resto de
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{images/integ_sistema_robot_en_plano.png}
+    \includegraphics[width=0.8\linewidth]{images/integ_sistema_robot_en_plano.png}
     \caption{Robot en la pista con imanes y entorno con códigos QR}
     \label{fig:integsistemarobotpistaqr}
 \end{figure}
@@ -139,7 +143,9 @@ Una vez realizadas todas las iteraciones del desarrollo, al momento de realizar 
 
     \item \underline{Dependencia de comunicación inalámbrica para compensación del Filtro de Kalman:} dado que el robot reporta feedback por medio de MQTT y el Filtro de Kalman envía compensaciones por el mismo medio, existen casos donde hay algunos retardos en el envío de datos y ocasiona correcciones tardías, generando desviaciones en la trayectoria.
 
-    \item \underline{Limitaciones de Python para granularidad fina de hilos:} en Python todos los hilos que se crean son de cierto modo "virtuales". Esto es porque existe un semáforo global llamado GIL que en round-robin le da recursos a cada hilo periódicamente. En nuestro caso esto es un limitante porque tuvimos que recurrir a elaborar mecanismos para poder despertar o poner en espera un hilo determinado.    
+    \item \underline{Limitaciones de Python para granularidad fina de hilos:} en Python todos los hilos que se crean son de cierto modo "virtuales". Esto es porque existe un semáforo global llamado GIL que en round-robin le da recursos a cada hilo periódicamente. En nuestro caso esto es un limitante porque tuvimos que recurrir a elaborar mecanismos para poder despertar o poner en espera un hilo determinado.
+
+    \item \underline{Precisión del robot al llegar a una celda:} durante las pruebas hemos notado que, al aproximarse a una celda, el robot no siempre se detenía con exactitud. Es por ello que implementamos un mecanismo para detectar la proximidad de la celda y en base a eso disminuir la velocidad del robot mientras recorre el tramo restante para mejorar la precisión.
 \end{itemize}
 
 
@@ -150,8 +156,10 @@ Las pruebas de integración y de sistema fueron realizadas a lo largo de cada un
 \begin{itemize}
     \item TC\_01\_09
     \item TC\_02\_03
+    \item TC\_03\_03
+    \item TC\_04\_04
     \item TC\_05\_06
-    \item \textbf{FIXME faltan los de la iteracion 4 y 6}
+    \item TC\_06\_04
 \end{itemize}
 
 

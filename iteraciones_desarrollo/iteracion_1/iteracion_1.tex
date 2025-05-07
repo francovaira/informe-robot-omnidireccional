@@ -7,8 +7,12 @@ En la iteración anterior obtuvimos como resultado los principios y bases fundam
 \subsection{Requerimientos}
 En esta iteración abordaremos los siguientes requerimientos funcionales:
 
-\begin{center} \begin{tabular}{|c|c|}
-\hline
+\begin{center}
+\begin{tabular}{
+    | >{\centering\arraybackslash}m{1cm}
+    | >{\centering\arraybackslash}m{13cm} |
+}
+\hline \rowcolor{test_header_color}
     ID & Descripción \\
 \hline
     RF1 & El robot debe contar con un sistema de control para las 4 ruedas. \\ 
@@ -23,12 +27,17 @@ En esta iteración abordaremos los siguientes requerimientos funcionales:
 \hline
     RF6 & El robot debe recibir y enviar información mediante comunicaciones inalámbricas. \\ 
 \hline
-\end{tabular} \end{center}
+\end{tabular}
+\end{center}
 
 Por otra parte, los requerimientos no funcionales que trataremos son:
 
-\begin{center} \begin{tabular}{|p{0.10\linewidth}|p{0.65\linewidth}|}
-\hline
+\begin{center}
+\begin{tabular}{
+    | >{\centering\arraybackslash}m{1cm}
+    | >{\centering\arraybackslash}m{13cm} |
+}
+\hline \rowcolor{test_header_color}
     ID & Descripción \\
 \hline
     RNF1 & Debería tener tiempos de respuesta aceptables para el buen funcionamiento del sistema de control. \\
@@ -37,7 +46,8 @@ Por otra parte, los requerimientos no funcionales que trataremos son:
 \hline
     RNF4 & El código debería contar con documentación.\\
 \hline
-\end{tabular} \end{center}
+\end{tabular}
+\end{center}
 
 \subsection{Desarrollo}
 
@@ -66,7 +76,6 @@ Las cuatro ruedas son compensadas mediante un controlador PID cada una y se disp
     \label{fig:primerprototiporobot}
 \end{figure}
 
-
 \subsection{Riesgos superados}
 
 En esta iteración se logro avanzar sobre el riesgo RI-03, pero para poder superarlo debemos explotar aun mas las capacidades del robot en las siguientes iteraciones.
@@ -74,8 +83,8 @@ En esta iteración se logro avanzar sobre el riesgo RI-03, pero para poder super
 Por otro lado, el riesgo RI-05 se logra superar en parte porque en esta iteración se incorporaron la mayoría de componentes esenciales.
 
 \begin{center} \begin{tabular}{|p{0.10\linewidth}|p{0.65\linewidth}|}
-\hline
-    ID & Descripción \\
+\hline \rowcolor{test_header_color}
+    ID & Descripción \\ 
 \hline
     RI-03 & Prestaciones insuficientes de componentes. \\
 \hline

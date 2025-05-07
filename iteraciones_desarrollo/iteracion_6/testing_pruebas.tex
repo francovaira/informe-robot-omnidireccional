@@ -49,7 +49,7 @@
    \hline
        Pasos del test      & \begin{enumerate}
                              \item Capturar una fotografía con la ESP32-CAM.
-                             \item Envíar la imagen por comunicación inalámbrica hacia el servidor que aloja la imagen.
+                             \item Enviar la imagen por comunicación inalámbrica hacia el servidor que aloja la imagen.
                              \item Verificar que la imagen llegó completa.
                              \item Procesar la imagen para obtener los parámetros de la imagen.
                              \end{enumerate} \\
@@ -63,8 +63,41 @@
 \end{testtableformat}
 
 \begin{testtableformat}
+    \hline \rowcolor{test_header_color}
+        Test ID             & TC\_06\_02 \\
+    \hline
+        Tipo de test        & Test unitario \\
+    \hline
+        Objeto de prueba    & Determinar la distancia máxima de reconocimiento del código QR \\
+    \hline
+        Requerimiento       & RF4 \\
+    \hline
+        Nombre              & Máxima distancia \\
+    \hline
+        Descripción         & Capturar fotografías a diferentes distancias, detectar si existe un código QR en la imagen y enviar el contenido del payload\\
+    \hline
+        Precondición        & PRECOND\_H\\
+    \hline
+        Pasos del test      & \begin{enumerate}
+                              \item Colocar el robot con la cámara a una distancia conocida del código QR
+                              \item Capturar una fotografía con la ESP32-CAM
+                              \item Enviar la imagen por comunicación inalámbrica hacia el servidor que aloja la imagen
+                              \item Verificar que la imagen llegó completa
+                              \item Procesar la imagen para obtener los parámetros de la imagen
+                              \item Repetir los pasos desde el 1) hasta encontrar la distancia máxima de reconocimiento
+                              \end{enumerate} \\
+    \hline
+        Resultado esperado  & Se debe poder llegar a leer el payload de forma completa, si es que no se lee el contenido del payload encontrar la distancia máxima de reconocimiento \\
+    \hline
+        Resultado obtenido  & El contenido del payload se lee correctamente a una distancia máxima de 600 milímetros\\
+    \hline
+        Observaciones       & - \\
+    \hline
+ \end{testtableformat}
+
+\begin{testtableformat}
    \hline \rowcolor{test_header_color}
-       Test ID             & TC\_06\_02 \\
+       Test ID             & TC\_06\_03 \\
    \hline
        Tipo de test        & Test integración \\
    \hline
@@ -87,17 +120,17 @@
    \hline
        Resultado obtenido  & Todas las fotos se reciben de forma completa, es decir, no contienen errores y por lo tanto el procesamiento de los códigos QR es efectiva y la información contenida en su payload es procesable\\
    \hline
-       Observaciones       & \\
+       Observaciones       & - \\
    \hline
 \end{testtableformat}
 
 \begin{testtableformat}
     \hline \rowcolor{test_header_color}
-        Test ID             & TC\_06\_03 \\
+        Test ID             & TC\_06\_04 \\
     \hline
         Tipo de test        & Test de sistema \\
     \hline
-        Objeto de prueba    & comunicación inalámbrica - PID - Modelo cinemático compensado - Odometría - Seguidor de línea magnética - Modelo del Mapa - Calculador de trayectorias - Red de Petri - Monitor - Filtro de Kalman - Lectura de códigos QR\\
+        Objeto de prueba    & Comunicación inalámbrica - PID - Modelo cinemático compensado - Odometría - Seguidor de línea magnética - Modelo del Mapa - Calculador de trayectorias - Interfaz de usuario - Red de Petri - Monitor - Filtro de Kalman - Lectura de códigos QR\\
     \hline
         Nombre              & Prueba de sistema integrado\\
     \hline
@@ -117,6 +150,6 @@
     \hline
         Resultado obtenido  & El robot y la interfaz se comportan de manera esperada. El robot realiza las trayectorias dentro de los límites observados en las pruebas unitarias y de integración hechas anteriormente\\
     \hline
-        Observaciones & Se probó recorridos de hasta 4 metros por limitaciones de espacio\\
+        Observaciones       & - \\
     \hline
- \end{testtableformat}
+\end{testtableformat}

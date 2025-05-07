@@ -15,6 +15,8 @@ En el contexto de esta iteración, nos enfocamos en la captura y análisis de im
 
 \input{iteraciones_desarrollo/iteracion_6/códigos_qr}
 
+\input{iteraciones_desarrollo/iteracion_6/intervencion_movimiento}
+
 \input{iteraciones_desarrollo/iteracion_6/testing_pruebas}
 
 \subsection{Resultados}
@@ -25,7 +27,7 @@ Además no implicó realizar cambios grandes en el sistema principal de moviliza
 \begin{center}
     \begin{tabular} {
         | c| c |}
-        \hline
+        \hline \rowcolor{test_header_color}
             ID & Riesgo \\
         \hline
             RI-02 & Intercomunicación de componentes ineficiente o ineficaz \\
@@ -36,5 +38,5 @@ Además no implicó realizar cambios grandes en el sistema principal de moviliza
 \end{center}
 
 \subsection{Conclusiones}
-En este capítulo se explicaron los motivos que nos llevaron a implementar este tipo de procesamiento y porque consideramos que el conocimiento del entorno y sus parámetros son importantes para mejorar la movilización del robot en un entorno real. Lamentablemente, los tiempos del proyecto no fueron suficientes para realizar todas las pruebas necesarias y verificar fehacientemente que el comportamiento del robot cambian para mejor con la ayuda de los valores tomados de las imágenes, esto teniendo en cuenta que no se añaden de forma directa sino que suman como entrada al filtro de Kalman.
+En este capítulo se explicaron los motivos que nos llevaron a implementar este tipo de procesamiento y porque consideramos que el conocimiento del entorno y sus parámetros son importantes para mejorar la movilización del robot en un entorno real. Lamentablemente, los tiempos del proyecto no fueron suficientes para realizar todas las pruebas necesarias y verificar fehacientemente que el comportamiento del robot cambian para mejor con la ayuda de las mediciones tomadas de las imágenes, esto teniendo en cuenta que no se añaden de forma directa ni se suman como entrada al filtro de Kalman.
 Esperamos que una próxima iteración de la serie Hermes esto se pueda continuar, y plasmar en el mundo real lo que planteamos en la teoría de la implementación.

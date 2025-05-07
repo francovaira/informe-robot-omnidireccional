@@ -9,9 +9,7 @@ Se probaron distintas alternativas para el proceso de odometría. Primeramente s
 La odometría se basa en el uso del modelo cinemático para convertir estas velocidades angulares en velocidades lineales y angulares del robot en el plano, es decir, obtener un vector de movimiento en base a las mediciones. Para ello, el primer paso en el proceso es utilizar las ecuaciones del modelo cinemático directo para calcular las velocidades lineales y angulares en el instante $t$ a partir de las velocidades de las ruedas: ($V_xt$, $V_yt$, $V_\theta t$). Posteriormente se pueden integrar estas velocidades a lo largo del tiempo para estimar la posición ($x, y$) y la orientación ($\theta$) del robot. La integración se realiza mediante métodos numéricos, típicamente utilizando un enfoque de integración discreta, como el método de Euler. Por lo que en cada instante de tiempo que se toma una medición, se actualiza la posición y orientación del robot utilizando las siguientes ecuaciones, donde ($\Delta$t) es el intervalo de tiempo entre dos mediciones consecutivas:
 
 $$ x_{t+1} = x_t + V_xt \cdot \Delta t $$
-
 $$ y_{t+1} = y_t + V_yt \cdot \Delta t $$
-
 $$ \theta_{t+1} = \theta_t + V_\theta t \cdot \Delta t $$
 
 Es importante considerar que la odometría realizada para ruedas puede acumular errores debido a factores como el deslizamiento de las ruedas, inexactitudes en las mediciones de los encoders o imprecisiones en los cálculos. Por lo tanto, es común combinar la odometría con otros métodos de localización, como el uso de sensores adicionales (LIDAR, cámaras, etc.) y técnicas de fusión de datos (como los filtros de Kalman), para mejorar la precisión y robustez de la estimación de la posición del robot.

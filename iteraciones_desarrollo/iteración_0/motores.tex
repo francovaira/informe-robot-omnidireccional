@@ -1,34 +1,47 @@
-\subsubsection{Elección de motores} \mbox{} \vspace{10pt} \\
+\subsubsection{Elección de motores}
+
 El sistema de locomoción es el responsable de la traslación del robot. Las configuraciones más comunes son las siguientes: diferencial, sincrónico, triciclo, ackerman y omnidireccional.
 
 Como nosotros tomamos como base la estructura ya definida para el robot Hermes III, adoptamos el sistema mecánico de locomoción omnidireccional, el cual permite mayor libertad de movimiento que los sistemas de ruedas clásicos, Los robots que implementan este sistema pueden moverse en cualquier dirección sobre el plano y en cualquier momento sin la necesidad de hacer movimientos previos para modificar su trayectoria. Requiere ruedas que permitan movimientos en más de una dirección. Este sistema puede ser implementado con tres o cuatro ruedas.
 
 Las ruedas omnidireccionales ruedan en el sentido de avance, pero, también se pueden desplazar lateralmente con gran facilidad como se observa en la siguiente figura:
 
-Los actuadores tienen por misión generar el movimiento de los elementos del robot según las órdenes dadas por la unidad de control. De manera general, los actuadores utilizados en robótica pueden emplear energía neumática, hidráulica o eléctrica.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\linewidth]{images/omni-wheel-wikipedia.png}
+    \caption{Rueda omnidireccional}
+    \label{fig:rueda_omnidireccional}
+\end{figure}
 
-Las características de control, sencillez y precisión de los accionamientos han hecho que los actuadores eléctricos sean los más usados. Dentro de los actuadores eléctricos pueden distinguirse tres tipos diferentes:
+Los actuadores tienen por misión generar el movimiento de los elementos del robot según las órdenes dadas por la unidad de control. De manera general, los actuadores utilizados en robótica pueden emplear energía neumática, hidráulica o eléctrica. Las características de control, sencillez y precisión de los accionamientos han hecho que los actuadores eléctricos sean los más usados. Dentro de los actuadores eléctricos pueden distinguirse tres tipos diferentes: \\
 
-Motores de corriente continua (DC):
+\textbf{Motores de corriente continua (DC):}
 \begin{itemize}
    \item Controlados por inducción
    \item Controlados por excitación
 \end{itemize}
 
-Motores de corriente alterna (AC):
+\textbf{Motores de corriente alterna (AC):}
 \begin{itemize}
    \item Síncronos
    \item Asíncronos
 \end{itemize}
 
-Se opta por motores de corriente continua, como el que se muestra en la figura siguiente, pues el torque generado es proporcional a la diferencia de potencial aplicado a los terminales de alimentación y el sentido de giro depende de la polaridad, facilitando de este manera el control.
+Se opta por motores de corriente continua, como el que se muestra en la figura siguiente, pues el torque generado es proporcional a la diferencia de potencial aplicado a los terminales de alimentación y el sentido de giro depende de la polaridad, facilitando de este manera el control. El modelo de motor elegido se muestra en la imagen debajo, es un motorreductor de $12V\ @\ 100\ RPM$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\linewidth]{images/motorreductor.png}
+    \caption{Motorreductor}
+\end{figure}
+
 
 Este tipo de motores pequeños y de bajo costo generalmente presentan como inconveniente que no publican sus curvas. Para resolver este inconveniente se realizaron distintos experimentos. Esencialmente se construyó un montaje que consta de una polea con un peso conocido, que no es más que un recipiente con agua como muestra la siguiente figura, la polea se fija al eje del motor para realizar los experimentos.
 
 Se realizaron distintas corridas variando la tensión y corriente, se tomaron mediciones de velocidad y torque. Con estos datos se construyeron las curvas de rpm-torque y corriente-torque, como se muestra la siguiente tabla:
 
 \begin{center} \begin{tabular}{|c|c|c|}
-   \hline
+   \hline \rowcolor{test_header_color}
        Tensión & Velocidad & Torque \\
    \hline
        3V & 25 RPM & 0,3 Kg*cm\\
@@ -39,7 +52,7 @@ Se realizaron distintas corridas variando la tensión y corriente, se tomaron me
    \hline
 \end{tabular} \end{center}
 
-Con estos experimentos, también, se midió la respuesta del sistema a un escalón.
+Con estos experimentos, también, se midió la respuesta del sistema a un escalón, detallado en la siguiente iteración.
 
 \begin{figure}[H]
     \centering

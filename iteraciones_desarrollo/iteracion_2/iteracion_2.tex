@@ -7,20 +7,29 @@ En el marco de la iteración anterior, se desarrolló un prototipo funcional que
 \subsection{Requerimientos}
 En esta iteración abordaremos los siguientes requerimientos funcionales:
 
-\begin{center} \begin{tabular}{|c|c|}
-\hline
+\begin{center}
+\begin{tabular}{
+    | >{\centering\arraybackslash}m{1cm}
+    | >{\centering\arraybackslash}m{13cm} |
+}
+\hline \rowcolor{test_header_color}
     ID & Descripción \\
 \hline
     RF4 & El robot debe poder realizar trayectorias en línea recta y curvas. \\ 
 \hline
     RF5 & El robot debe poder corregir su trayectoria mediante el uso de sensores. \\ 
 \hline
-\end{tabular} \end{center}
+\end{tabular}
+\end{center}
 
 Por otra parte, los requerimientos no funcionales que trataremos son:
 
-\begin{center} \begin{tabular}{|p{0.10\linewidth}|p{0.65\linewidth}|}
-\hline
+\begin{center}
+\begin{tabular}{
+    | >{\centering\arraybackslash}m{1cm}
+    | >{\centering\arraybackslash}m{13cm} |
+}
+\hline \rowcolor{test_header_color}
     ID & Descripción \\
 \hline
     RNF1 & Debería tener tiempos de respuesta aceptables para el buen funcionamiento del sistema de control. \\
@@ -29,7 +38,8 @@ Por otra parte, los requerimientos no funcionales que trataremos son:
 \hline
     RNF4 & El código debería contar con documentación.\\
 \hline
-\end{tabular} \end{center}
+\end{tabular}
+\end{center}
 
 \subsection{Desarrollo}
 
@@ -47,7 +57,7 @@ Asimismo, se llevaron a cabo pruebas exhaustivas que validaron la robustez del s
 
 \begin{figure}[H]
     \centering
-    \includegraphics[trim={0 2cm 0 7.5cm}, clip, width=1.1\linewidth]{images/prototipo_robot_con_sens_mag.png}
+    \includegraphics[trim={0 2cm 0 7.5cm}, clip, width=1\linewidth]{images/prototipo_robot_con_sens_mag.png}
     \caption{Prototipo del robot con seguidor de linea}
     \label{fig:prototiporobotlinef}
 \end{figure}
@@ -59,7 +69,7 @@ Dado el desarrollo de esta iteración, se logro avanzar sobre el riesgo RI-03 y 
 Por otra parte, se trabajó en superar el riesgo RI-02 por lograr una comunicación efectiva entre los componentes del sistema y se supera en parte el riesgo RI-05 al ser los nuevos componentes agregados de alta disponibilidad.
 
 \begin{center} \begin{tabular}{|c|c|}
-    \hline
+    \hline \rowcolor{test_header_color}
         ID & Riesgo \\
     \hline
         RI-01 & Incompatibilidad o avería de componentes \\
