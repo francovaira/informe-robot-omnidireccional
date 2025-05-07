@@ -31,7 +31,7 @@ Esta misma situación se la plantea en la figura \ref{fig:rdp_no_grid_conflicto}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/rdp_no_grid_conflicto.png}
+    \includegraphics[width=0.8\linewidth]{images/rdp_no_grid_conflicto.png}
     \caption{Representación del conflicto de la figura \ref{fig:conflicto_map} en una red de Petri}
     \label{fig:rdp_no_grid_conflicto}
 \end{figure}
@@ -45,16 +45,15 @@ El conflicto es resuelto mediante la política que se definió mas arriba en est
     \label{fig:conflicto_map_solucionado}
 \end{figure}
 
-La solución del conflicto también se ve representada en la red de Petri que muestra un marcado diferente en la figura \ref{fig:rdp_no_grid_conflicto_solucionado}, colocando al robot A en la plaza $PE$ y también revelando que las transiciones sensibilizas ahora son $\{T_4, T_8, T_{12}, T_{13}, T_{15}, T_{17}\}$ que por supuesto se diferencian al estar en color rojo. Ya resuelto el conflicto se puede observar que ahora el robot A tiene como posibilidad el disparo de la transición $T_{17}$ para llegar a su destino mientras que el robot B no puede avanzar hacia la plaza $PE$ porque se encuentra ocupada.
+La solución del conflicto también se ve representada en la red de Petri que muestra un marcado diferente en la figura \ref{fig:rdp_no_grid_conflicto_solucionado}, colocando al robot A en la plaza $PE$ y también revelando que las transiciones sensibilizas ahora son $\{T_4, T_8, T_{13}, T_{15}, T_{17}\}$ que por supuesto se diferencian al estar en color rojo. Ya resuelto el conflicto se puede observar que ahora el robot A tiene como posibilidad el disparo de la transición $T_{17}$ para llegar a su destino mientras que el robot B no puede avanzar hacia la plaza $PE$ porque se encuentra ocupada.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/rdp_no_grid_conflicto_solucionado.png}
+    \includegraphics[width=0.8\linewidth]{images/rdp_no_grid_conflicto_solucionado.png}
     \caption{Resolución del conflicto entre los robots representado en una red de Petri y con el nuevo marcado de la red}
     \label{fig:rdp_no_grid_conflicto_solucionado}
 \end{figure}
 
-\newpage
 \paragraph{Funcionamiento del monitor} \mbox{} \vspace{8pt}
 
 El funcionamiento del módulo del Monitor implementado en Python queda representado en el diagrama de secuencia de la figura \ref{fig:diagrama_monitor}.
