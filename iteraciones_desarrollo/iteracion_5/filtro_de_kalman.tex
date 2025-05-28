@@ -4,7 +4,7 @@ El filtro de Kalman es un algoritmo de estimación utilizado para predecir el es
 
 El funcionamiento del filtro de Kalman se basa en dos etapas: la predicción, donde se estima el próximo estado del sistema utilizando el modelo matemático exacto o teórico; y la actualización, en la que se corrige esa estimación en función de las mediciones actuales, aplicando un modelo probabilístico para minimizar el error. Mediante su modelo probabilístico, es capaz de filtrar el ruido y las imprecisiones de las mediciones, lo que permite obtener una representación confiable del estado.
 
-En cuanto a su implementación, se desarrollará una integración entre el modelo cinemático existente y el filtro de Kalman en Python. Los resultados esperados incluyen un aumento significativo en la precisión de la navegación del robot y una mejora en su capacidad de adaptarse a entornos ruidosos.
+En cuanto a su implementación, se desarrollará una integración entre el modelo cinemático existente y el filtro de Kalman en Python. Los resultados esperados incluyen un aumento significativo en la precisión de la navegación del robot y una mejora en su capacidad de adaptarse a entornos ruidosos. \cite{negenborn2003robot}
 
 
 \paragraph{Estimación del estado} \mbox{} \vspace{8pt}
@@ -45,7 +45,7 @@ $$ [x, v_x, y, v_y] $$
 Siendo $x$ la posición absoluta en el eje $x$, $v_x$ la velocidad en el eje $x$, $y$ la posición absoluta en el eje $y$ y $v_y$ la velocidad en el eje $y$. Cada Filtro de Kalman se encarga de cada eje $X$ e $Y$ en particular.
 Es importante que la entrada y salida del filtro sean del mismo formato, es decir, tenga como entrada y salida la tupla $[x, v_x, y, v_y]$. En este caso introducimos las mediciones acumuladas en distancia y las velocidades en cada eje cartesiano.
 
-La secuencia de procesos a realizar cada vez que se recibe una medición es el siguiente:
+La secuencia de procesos a realizar cada vez que se recibe una medición es la siguiente:
 \begin{enumerate}
     \item Cálculo del Estado Predicho $X_{kp}$.
     \item Cálculo de la Matriz de Covarianza de Proceso Predicha $P_{kp}$.

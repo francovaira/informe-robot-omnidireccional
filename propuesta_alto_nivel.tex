@@ -4,9 +4,9 @@ En este proyecto se tiene como objetivo el diseño y la implementación de un si
 
 La propuesta, por un lado, incluye el desarrollo de un sistema de locomoción omnidireccional compuesto por cuatro ruedas, lo que permitirá al robot moverse en cualquier dirección. Por el otro, se integra una interfaz de usuario para  control y supervisión del comportamiento de los robots.
 
-Para el control global basamos el diseño del sistema en el uso de un conjunto Red de Petri/Monitor. De este modo, el espacio se divide en regiones (discretización) y cada región podrá ser ocupada por un solo robot a la vez.
+Para abordar los desafíos del control y la coordinación en entornos compartidos, implica que se tenga un enfoque que permita representar de manera estructurada las restricciones del entorno, garantizar la exclusividad en regiones críticas y asegurar una gestión ordenada de los recursos. Esta estrategia facilita la sincronización entre robots previene situaciones de conflicto.
 
-Para aumentar la precisión en la localización de cada robot dentro del espacio, se agrega el Filtro de Kalman para estimar la posición actual del robot a partir de las lecturas de sus sensores. Al mismo tiempo, el sistema busca resolver desafíos clave de la navegación autónoma, tales como la prevención de colisiones y la mejora de la precisión en la localización del robot dentro de un espacio determinado.
+Al mismo tiempo, implícitamente vemos que es necesario un mecanismo de localización espacial, esto se puede lograr mediante la fusión de datos provenientes de múltiples sensores, lo cual permite mantener información confiable y actualizada sobre el estado del sistema. En conjunto, estas capacidades contribuyen a una navegación autónoma más segura, eficiente y robusta. \cite{papermico} \cite{negenborn2003robot}
 
 \begin{figure}[H]
     \centering

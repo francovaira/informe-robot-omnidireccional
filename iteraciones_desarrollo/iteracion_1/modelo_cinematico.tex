@@ -73,7 +73,7 @@ $$ \alpha_2 = \frac{3\pi}{4} = 135^{\circ} $$
 $$ \alpha_3 = \frac{5\pi}{4} = 225^{\circ} $$
 $$ \alpha_4 = \frac{7\pi}{4} = 315^{\circ} $$
 
-\newpage
+%\newpage
 \textbf{Cinemática Inversa} \mbox{} \vspace{8pt}
 
 Para obtener el modelo cinemático, partimos del desarrollo de cómo afecta cada una de las ruedas al movimiento total del robot. Para ello comenzamos con la descripción del movimiento de un cuerpo rígido descrito en la Figura \ref{fig:movimientocuerporigido} \cite{islassistcontrolomni}.
@@ -198,7 +198,7 @@ De modo que, en primer lugar obtenemos la matriz de conversión que nos permite 
 
 $$ \begin{bmatrix} V_x \\ V_y \\ V_\theta \\ \end{bmatrix} = DK \cdot \begin{bmatrix} w_1 \\ w_2 \\ w_3 \\ w_4 \\ \end{bmatrix} $$
 
-Luego, al realizar pseudoinversa de la matriz $IK$:
+Luego, al realizar la pseudoinversa de la matriz $IK$:
 
 $$  DK = 
     r
@@ -209,7 +209,7 @@ $$  DK =
         {\frac{1}{4L}}  & {\frac{1}{4L}}  & {\frac{1}{4L}}  & {\frac{1}{4L}}  \\
     \end{bmatrix} $$
 
-Por lo que obtenemos la siguiente expresión para obtener el vector de movimiento del robot dependiendo las velocidades de las ruedas:
+Por lo que obtenemos la siguiente expresión para obtener el vector de movimiento del robot dependiendo de las velocidades de las ruedas:
 
 $$ \begin{bmatrix} V_x \\ V_y \\ V_\theta \\ \end{bmatrix} = 
     r
