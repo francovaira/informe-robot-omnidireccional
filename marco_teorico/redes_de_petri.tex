@@ -11,14 +11,14 @@ Las redes de Petri están fuertemente asociadas a la teoría de grafos, ya que l
     \item Arcos: indican las interconexiones entre las plazas y las transiciones, estableciendo el flujo de tokens que sigue el sentido de la flecha.
 \end{itemize}
 
-Una vez definidos sus componentes, se puede decir que una red de Petri es un grafo dirigido con dos tipos de nodos: plazas y transiciones. Estos nodos están vinculados por arcos, los cuales sólo pueden conectar una plaza con una transición o viceversa. Por otro lado, una red de Petri puede ser descrita mediante dos componentes:
+Una vez definidos sus componentes, se puede decir que una red de Petri es un grafo dirigido con dos tipos de nodos: plazas y transiciones. Estos nodos están vinculados por arcos, los cuales sólo puede conectar una plaza con una transición o viceversa. Por otro lado, una red de Petri puede ser descrita mediante dos componentes:
 
 \begin{enumerate}
     \item Una estructura de red
     \item Un marcado inicial
 \end{enumerate}
 
-La estructura de red hace referencia a la red en sí, mientras que el marcador inicial sólo representa el estado inicial del sistema (denominado estado idle), es decir, sin que ninguna transición haya sido disparada. Un ejemplo simple de una red de Petri marcada se muestra en la Figura \ref{fig:rdp_marcada}. Este será utilizado en las secciones siguientes para ilustrar operaciones y/o propiedades de las redes de Petri. Para su creación se utilizó el software Petrinator. \cite{petrinator}
+La estructura de red hace referencia a la red en sí, mientras que el marcador inicial sólo representa el estado inicial del sistema (denominado estado idle), es decir, sin que ninguna transición haya sido disparada. Un ejemplo simple de una red de Petri marcada se muestra en la Figura \ref{fig:rdp_marcada}. Este será utilizado en las secciones siguientes para ilustrar operaciones y/o propiedades de las redes de Petri y para su creación se utilizó el software Petrinator \cite{petrinator}
 
 \begin{figure}[H]
     \centering
@@ -55,7 +55,7 @@ A continuación se explicará la manera de obtener las matrices $I^-$ e $I^+$.
 \subsubsection{Matriz de incidencia}
 Las matrices $I^-$ e $I^+$ son las funciones de incidencia de entrada y salida de las plazas. Para el caso de la matriz $I^+$, denominada post, se tiene que cada elemento $post(P_i, T_j)$ contiene el peso asociado al arco que va desde $T_j$ hasta $P_i$. Este peso indica la cantidad de tokens que se generan en la plaza $P_i$ cuando la transición $T_j$ es disparada.\\
 
-Por otro lado, en la matriz $I^-$, denominada pre, cada elemento $pre(P_i, T_j)$ contiene el peso asociado al arco que va desde $P_i$ hasta $T_j$ e indica la cantidad de tokens que se retiran de la plaza $P_i$ cuando se dispara la transición $T_j$.\\
+Por otro lado, en la matriz $I^-$, denominada pre, cada elemento $pre(P_i, T_j)$ contiene el peso asociado al arco que va desde $P_i$ hasta $T_j$ indica la cantidad de tokens que se retiran de la plaza $P_i$ cuando se dispara la transición $T_j$.\\
 
 Siguiendo con el ejemplo de la Figura \ref{fig:rdp_marcada}, las matrices $I^-$ e $I^+$ asociadas son:
 \begin{equation}
@@ -78,9 +78,9 @@ I^- =
     \end{pmatrix}
 \end{equation}
 
-Las filas de las matrices representan las plazas, mientras que las columnas representan las transiciones, lo cual quiere decir que las matrices tendrán tantas filas como plazas tenga la red de Petri, y tantas columnas como transiciones.\\
+Las filas de las matrices representan las plazas mientras que las columnas representan las transiciones, lo cual quiere decir que las matrices tendrán tantas filas como plazas tenga la red de Petri, y tantas columnas como transiciones.\\
 
-De esta forma se puede observar cómo el elemento $I^-[0][0]$ indica la relación de salida entre $P_1$ y $T_1$. Más precisamente, indica que cuando $T_1$ se dispara, solo un token es retirado de $P_1$ (ya que el peso del arco entre $P_1$ y $T_1$ es 1). De igual manera, el elemento $I^+[0][0] = 0$ indica que cuando la misma transición se dispara, no se genera ningún token en $P_1$ (ya que no existe ningún arco que parta de $T_1$ hacia $P_1$).\\
+De esta forma se puede observar como el elemento $I^-[0][0]$ indica la relación de salida entre $P_1$ y $T_1$. Más precisamente indica que cuando $T_1$ se dispara, solo un token es retirado de $P_1$ (ya que el peso del arco entre $P_1$ y $T_1$ es 1). De igual manera, el elemento $I^+[0][0] = 0$ indica que cuando la misma transición se dispara, no se genera ningún token en $P_1$ (ya que no existe ningún arco que parta de $T_1$ hacia $P_1$).\\
 
 A partir de estas definiciones, se puede obtener la matriz de incidencia de la red. La misma está definida a continuación:\\
 
@@ -117,7 +117,7 @@ I =
 \subsection{Dinámica de una red de Petri}
 Se dice que una transición está sensibilizada cuando el marcado de todas las plazas entrantes a la transición es mayor o igual al peso de los arcos que las unen con dicha transición. \cite{papermico}\\
 
-Antes de expresar la condición de sensibilizado de manera general, es necesario definir los siguientes conjuntos:
+Antes de expresar la condición de sensibilizado de manera general, es necesario definir los siguientes conjuntos funciones:
 
 \begin{itemize}
     \item $\bullet T_j$ es el conjunto compuesto por las plazas entrantes a $T_j$.
@@ -177,7 +177,7 @@ Continuando con el ejemplo anterior, se puede observar en la figura \ref{fig:rdp
     \item Las plazas que no es entrante ni saliente de $T_3(P_3)$ ha mantenido su marcado original.
 \end{itemize}
 
-Cabe destacar que, como consecuencia del disparo de $T_3$, se ha producido la sensibilización de $T_4$.
+Cabe destacar que como consecuencia del disparo de $T_3$, se ha producido la sensibilización de $T_4$.
 
 \begin{figure}[H]
     \centering
@@ -209,7 +209,7 @@ Por otro lado, es necesario introducir la \textbf{ecuación de estado} de las re
 
 \noindent donde $M_{i+1}$ es el marcado luego del disparo de la transición, $M_i$ es el marcado antes del disparo y el segundo término de la ecuación es la función de transferencia.
 
-Siguiendo con el ejemplo hasta ahora analizado, se verá cómo calcular el marcado de la red luego del disparo de la transición $T_3$ haciendo uso de la ecuación de estado.
+Siguiendo con el ejemplo hasta ahora analizado se verá cómo calcular el marcado de la red luego del disparo de la transición $T_3$ haciendo uso de la ecuación de estado.
 
 En la figura \ref{fig:rdp_sensibilizada} se observan las transiciones sensibilizadas de la red para el marcado inicial $M_0$.
 \\
@@ -399,7 +399,8 @@ Tomando el subconjunto de plazas $S = \{P_1 , P_2 \}$ se deben obtener los sigui
 
 En este caso, se comprueba que ${T_2 , T_3} \subseteq \ \{T_1 , T_2 , T_3 \}$, quedando demostrado que $\{P_1,P_2\}$ es en efecto un sifón y que, si la transición $T_1$ se dispara, el token removido de $P_1$ nunca volverá a ingresar al subconjunto. \\ \par
 
-Por otro lado, una \textbf{trampa} se define como un subconjunto de plazas G para el cual se cumple que el subconjunto de transiciones salientes de G está contenido dentro del subconjunto de transiciones entrantes a G. Esto quiere decir que un conjunto de plazas constituyen una trampa si sucede que una vez que un token entra dicho grupo, éste nunca vuelve a salir.
+Por otro lado, una \textbf{trampa} se define como un subconjunto de plazas G para el cual se cumple que el subconjunto de transiciones salientes de G está contenido dentro del subconjunto de transiciones entrantes a G. Esto quiere decir que un conjunto de plazas constituyen una trampa si una vez que un token entra dicho grupo éste nunca vuelve
+a salir.
 
 Siguiendo con el ejemplo de la figura \ref{fig:rdp_sifon_trampa}, se analizará el subconjunto de plazas $G = \{P_3 , P_4\}$.  Los subconjuntos de transiciones serán:
 \begin{itemize}
@@ -484,7 +485,7 @@ Si reemplazamos $Q$ por los vectores característicos $I_q$ , estas dos igualdad
 \paragraph{T-invariantes}
 Un \textbf{invariante de transición} ó \textbf{T-invariante} es el conjunto de transiciones que deben dispararse para que la red de Petri retorne a su estado inicial.
 
-Como se mencionó en el apartado anterior, para el cálculo de las P-invariantes se hace uso de la ecuación $I . x = 0$, siendo $I$ la matriz de incidencia y $x$ un vector característico constituido por las plazas que forman parte de la invariante. En este caso, para el cálculo de los vectores que constituyen las T-invariantes, la ecuación asociada será similar a las P-invariantes, a diferencia de que se hace uso de $I^T$ en vez de $I$:
+Como se mencionó en el apartado anterior, para el cálculo de las P-invariantes se hace uso de la ecuación $I . x = 0$, siendo $I$ la matriz de incidencia y $x$ un vector característico constituido por las plazas que forman parte de la invariante. En este caso, para el cálculo de los vectores que constituyen las T-invariantes, la ecuación asociada será similar a las P-invariantes, a diferencia que se hace uso de  $I^T$ en vez de $I$:
 
 \begin{equation}
     I^T . x = 0
@@ -492,7 +493,7 @@ Como se mencionó en el apartado anterior, para el cálculo de las P-invariantes
 
 Aquí, a diferencia de las P-invariantes, el vector x está constituido por el conjunto de transiciones que deben dispararse para que la red retorne al estado inicial. Un "1" en una posición indica que esa transición es parte de la invariante y un "0" indica lo contrario.
 
-Tomando la figura \ref{fig:rdp_p_invariantes} como ejemplo y se obtienen los siguientes invariantes de transición:
+Tomando la figura \ref{fig:rdp_p_invariantes} como ejemplo y se obtienen las siguientes invariantes de transiciones:
 
 \begin{equation}
     T-invariantes = 
@@ -507,9 +508,9 @@ Ambos vectores cumplen la condición planteada ($I^T .\ x = 0$) y si se observa 
 
 \subsection{Concurrencia y sincronización}
 En los sistemas de computación actuales conviven múltiples procesos que cooperan para lograr determinados objetivos y compiten por recursos del sistema, entre ellos el procesador, la memoria RAM, los puertos de entrada/salida, etc.\\
-Dado que generalmente el número de procesos de un sistema supera ampliamente el número de recursos, se deben establecer formas de comunicación y sincronización entre ellos que hagan que el sistema funcione correctamente. 
+Dado que generalmente el numero de procesos de un sistema supera ampliamente el numero de recursos, se deben establecer formas de comunicación y sincronización entre ellos que hagan que el sistema funcione correctamente. 
 
-\par En esta sección se define cuándo dos programas son concurrentes y/o paralelos, y las condiciones que deben cumplirse para que dos secciones de código fuente puedan ser ejecutadas de manera concurrente. Luego, se verá que la ejecución concurrente de procesos trae aparejados ciertos problemas como el interbloqueo y la inanición.\\
+\par En ésta sección se definirá cuando dos programa son concurrentes y/o paralelos y las condiciones que deben cumplirse para que dos secciones de código fuente puedan ser ejecutadas de manera concurrente. Luego, se verá que la ejecución concurrente de procesos trae aparejados ciertos problemas como el interbloqueo y la inanición.\\
 Por esta razón deben ejecutarse ciertos mecanismos de control para garantizar la correcta ejecución de los programas, entre ellos, los semáforos y monitores.\\
 El objetivo de esta sección es que el lector adquiera una idea general sobre la programación concurrente y sobre los problemas inherentes a la misma.
 
@@ -519,7 +520,7 @@ No es necesario que estos se ejecuten al mismo tiempo, basta con el hecho de que
 La programación concurrente es un paralelismo potencial, dependiente del hardware que lo soporte  \cite{mendez}.
 
 \paragraph{Problemas inherentes a la programación concurrente}
-La intercalación de instrucciones de diferentes procesos debe ser bien manejada y controlada dado que puede producir mal funcionamiento del sistema. Los problemas inherentes a la concurrencia son:
+La intercalación de instrucciones de diferentes procesos, debe ser bien manejada y controlada dado que puede producir mal funcionamiento del sistema. Los problemas inherentes a la concurrencia son:
 \begin{itemize}
     \item \textbf{Exclusión mutua}: Se debe garantizar que si un proceso adquiere el recurso los demás deberán esperar hasta que sea liberado.
 
@@ -531,9 +532,9 @@ La intercalación de instrucciones de diferentes procesos debe ser bien manejada
 \end{itemize}
 
 \paragraph{Exclusión mutua}
-La exclusión mutua implica que dos o más procesos intentan acceder a un único recurso compartido entre ellos, pero solo uno puede acceder a cada instante.
-Cuando se da un caso de estas características, se desea que todo lo que necesite hacer uno de los procesos sobre el recurso se realice de manera indivisible y luego lo deje disponible para que otro proceso ejecute sus instrucciones sobre el recurso.
-\par A la porción de código que se desea que se ejecute de manera indivisible o atómica se le llama \textbf{sección crítica}. Se debe lograr que todas las instrucciones dentro de la sección crítica se ejecuten en exclusión mutua, lo que implica que cuando uno de los procesos esté ejecutando esa porción de código el resto no podrá hacerlo.
+La exclusión mutua implica que dos o más procesos intentan acceder a un único recurso compartido entre ellos pero solo uno puede acceder a cada instante.
+Cuando se da un caso de estas características, se desea que todo lo que necesite hacer unos de los procesos sobre el recurso se realice de manera indivisible y luego lo deje disponible para que otro proceso ejecute sus instrucciones sobre el recurso.
+\par A la porción de código que se desea que se ejecute de manera indivisible o atómica se le llama \textbf{sección crítica}. Se debe lograr que todas las instrucciones dentro de la sección crítica se ejecuten en exclusión mutua lo que implica que el hecho de que cuando uno de los procesos este ejecutando esa porción de código el resto no podrá hacerlo.
 
 \textbf{Solo uno de los procesos podrá estar en la sección crítica en un instante dado.}
 
@@ -544,7 +545,7 @@ Cuando se da un caso de estas características, se desea que todo lo que necesit
     \label{fig:seccion_critica}
 \end{figure}
 
-En la figura \ref{fig:seccion_critica} se observa como dos procesos $P1$ y $P2$ intentan ejecutar una porción de código de una sección crítica. La imagen de la izquierda (a) muestra que el proceso $P1$ consigue ingresar a ejecutar la sección crítica. La imagen de la derecha (b) muestra que el proceso $P2$ puede ingresar solo cuando el proceso $P1$ ya no está en la misma.
+En la figura \ref{fig:seccion_critica} se observa como dos procesos $P1$ y $P2$ intentan ejecutar una porción de código de una sección crítica. La imagen de la izquierda (a) muestra que el proceso $P1$ consigue ingresar a ejecutar la sección crítica. La imagen de la derecha (b) muestra que el proceso $P2$ puede ingresar solo cuando el proceso $P1$ ya no esta en la misma.
 
 \noindent La exclusión mutua se puede representar de la siguiente manera.
 \begin{figure}[H]
@@ -554,14 +555,14 @@ En la figura \ref{fig:seccion_critica} se observa como dos procesos $P1$ y $P2$ 
     \label{fig:rdp_seccion_crítica}
   \end{figure}
 
-En la figura \ref{fig:rdp_seccion_crítica} la plaza \textit{MUTEX} está limitada a un único token y el análisis de invariantes de plazas demuestra formalmente la propiedad de exclusión mutua entre los procesos $P1$ y $P2$. 
+En la figura \ref{fig:rdp_seccion_crítica} la plaza \textit{MUTEX} esta limitada a un único token y el análisis de invariantes de plazas demuestra formalmente la propiedad de exclusión mutua entre los procesos $P1$ y $P2$. 
 
 \begin{equation}
     m(EjecutandoSCP1) + m(MUTEX) + m(EjecutandoSCP2) = 1
 \end{equation}
 
 \subsubsection{Interbloqueo}
-En un sistema donde los procesos compiten por limitados recursos, pueden producirse demandas contradictorias de los mismos. Por ejemplo, si existen dos procesos, \textit{A} y \textit{B}, y dos recursos \textit{R1} y \textit{R2}, y ambos procesos necesitan los dos recursos para proseguir, si el proceso \textit{A} toma el recurso \textit{R1} y el \textit{B} el recurso \textit{R2}, ambos procesos se bloquearán a la espera del otro recurso, pero ninguno liberará el recurso que posee hasta no conseguir los dos. A esta situación se la conoce como interbloqueo. \cite{stallings}
+En un sistema donde los procesos compiten por limitados recursos, pueden producirse demandas contradictorias de los mismos. Por ejemplo, si existen dos procesos, \textit{A} y \textit{B}, y dos recursos \textit{R1} y \textit{R2}, y ambos procesos necesitan los dos recursos para proseguir, si el proceso \textit{A} toma el recurso \textit{R1} y el \textit{B} el recurso \textit{R2}, ambos procesos se bloquearan a la espera del otro recurso, pero ninguno liberará el recurso que posee hasta no conseguir los dos. A esta situación se la conoce como interbloqueo \cite{stallings}. 
 
 \paragraph{Condiciones para producir interbloqueo: }
 \noindent Deben presentarse tres condiciones de gestión para que sea posible un interbloqueo:
@@ -600,10 +601,10 @@ Los semáforos son primitivas con las cuales es difícil expresar una solución 
     \item Las primitivas de control se encuentran esparcidas por todo el código, lo que hace muy difícil la corrección de errores y el mantenimiento del mismo.
 \end{itemize}
 
-Debido a estas razones, existe otro mecanismo de software para el control de concurrencia denominado \textbf{monitor}.
+Debido a estas razones existe otro mecanismo de software para el control de concurrencia denominado \textbf{monitor}.
 
 \paragraph{Monitores}
-Como se dijo, los semáforos, generalmente se encuentran dispersos en el código, lo que lo hace más confuso y muchas veces es difícil notar cuál es el recurso compartido y determinar si está correctamente sincronizado. Por ello, se necesita un sistema que sea igual de versátil que los semáforos pero que permita efectuar un control más estructurado de la exclusión mutua. Una herramienta con estas características fue propuesta por \textit{C.A.R Hoare} en 1975 y es conocida como \textbf{\textit{monitor}}.\\
+Como se dijo, los semáforos, generalmente se encuentran dispersos en el código, lo que lo hace más confuso y muchas veces es difícil notar cual es el recurso compartido y determinar si está correctamente sincronizado. Por ello, se necesita un sistema que sea igual de versátil que los semáforos pero que permita efectuar un control más estructurado de la exclusión mutua. Una herramienta con estas características fue propuesta por \textit{C.A.R Hoare} en 1975 y es conocida como \textbf{\textit{monitor}}.\\
 Un \textbf{monitor} es un mecanismo de abstracción de datos, lo que permite representar de forma abstracta un recurso compartido mediante variables que indican su estado. El acceso a esas variables solo es posible a través de un conjunto de funciones/métodos que el monitor exporta al exterior.\\
 
 Un monitor se compone de los siguientes elementos:
@@ -619,7 +620,7 @@ Un monitor se compone de los siguientes elementos:
 
 \subparagraph{Exclusión mutua en monitores}
 \hfill
-\par El control de la exclusión mutua en un monitor se basa en la existencia de una cola asociada al mismo que se denomina \textit{cola del monitor}. La gestión de esta cola se realiza de la siguiente manera:
+\par El control de la exclusión mutua en un monitor se basa en la existencia de una cola asociada al mismo que se denominara \textit{cola del monitor}. La gestión de esta cola se realiza de la siguiente manera:
 
 \begin{enumerate}
     \item Cuando un proceso activo está dentro del monitor (ejecutando alguno de los procedimientos del mismo) y aparece otro proceso activo que intenta ejecutar otro (o el mismo) procedimiento, el código de acceso al monitor bloquea el proceso que realiza la llamada y lo inserta en la cola del monitor (con política FIFO). Así, se impide que dos procesos estén al mismo tiempo dentro del monitor.
@@ -628,7 +629,7 @@ Un monitor se compone de los siguientes elementos:
 \end{enumerate}
 
 Esto asegura que las variables compartidas nunca son accedidas concurrentemente. Una cuestión importante es que la responsabilidad de bloquear un proceso es del monitor y no del proceso.
-Al comparar este sistema con un semáforo, vemos que para ellos son los propios procesos activos los que manejan las políticas de acceso a variables compartidas.
+Al comparar este sistema con un semáforo se ve que en el caso de los semáforos son los propios procesos activos los que manejan las políticas de acceso a variables compartidas.
 
 \subparagraph{Condición de sincronización en monitores}
 \hfill
@@ -651,9 +652,9 @@ Al comparar este sistema con un semáforo, vemos que para ellos son los propios 
 
 La operación delay se realiza sobre una variable de condición. Si se supone la existencia de una variable C, al realizar \textit{delay(C)}, el proceso que la ejecutó libera el mutex del monitor, se bloquea y se envía al final de la cola asociada a la condición C. A diferencia de la operación wait que se utiliza en los semáforos, delay bloquea al proceso incondicionalmente.\\
 
-\par La operación resume, cuando se realiza sobre una variable C, libera al primer proceso que ejecutó \textit{delay(C)}. Si la cola está vacía, resume es una operación nula. Por otra parte, la función empty simplemente devuelve un valor booleano true si una cola se encuentra vacía o false en caso contrario.\\
+\par La operación resume, cuando se realiza sobre una variable C, libera al primer proceso que ejecutó \textit{delay(C)}. Si la cola está vacía, resume es una operación nula. Por otra parte, la función empty simplemente devuelve un valor boolean true si una cola se encuentra vacía o false en caso contrario.\\
 
-Con lo dicho hasta este punto, se podría decir que si un proceso que se está ejecutando dentro del monitor ejecuta una operación \textit{resume(C)}, se desbloqueará un proceso de esa cola que continuará con su ejecución dentro del monitor también. Esto lleva a una situación con dos procesos dentro del monitor, lo que violaría la exclusión mutua. Para evitar esto, el proceso que ejecuta el \textit{resume} cederá la exclusión mutua al recién desbloqueado. Y espera en una cola diferente llamada \textbf{cola de cortesía} hasta que el proceso recién desbloqueado por el \textit{resume(C)} termine su ejecución, teniendo preferencia por sobre los procesos que esperan en otras colas.
+Con lo dicho hasta este punto, se podría decir que si un proceso que se está ejecutando dentro del monitor ejecuta una operación \textit{resume(C)}, se desbloqueará un proceso de esa cola que continuará con su ejecución dentro del monitor también. Esto lleva a una situación con dos procesos dentro del monitor, lo que violaría la exclusión mutua. Para evitar esto, el proceso que ejecuta el \textit{resume} cederá la exclusión mutua al recién desbloqueado. Y espera en una cola diferente llamada \textbf{cola de cortesía} hasta que el proceso recién desbloqueado por el \textit{resume(C)} termine su ejecución teniendo preferencia por sobre los procesos esperando en otras colas.
 
 \begin{figure}[H]
     \centering
@@ -666,7 +667,7 @@ Con lo dicho hasta este punto, se podría decir que si un proceso que se está e
 Es posible ver a un monitor formado por dos secciones: primero, la referida a la política de colas que se debe ejecutar para lograr que sólo un proceso esté en el monitor, que se bloqueen los procesos que no tienen los recursos y que se desbloqueen los que obtuvieron los recursos, y segundo, la lógica con que se administran los recursos.\\
 En la figura \ref{fig:monitormico} se puede observar que existe una cola de entrada, para los procesos que aún no ingresaron al monitor y desean hacerlo, una serie de colas, una por cada recurso (cada condición de sincronización) y una cola de cortesía para que  proceso dentro del monitor pueda, de manera segura, ceder la exclusión mutua al cambiar el estado de un recurso.\\
 
-\par \textbf{\textit{Una red de Petri puede realizar el trabajo de la lógica del monitor}}, es decir, la administración y sincronización de recursos disponibles; esto es cuando el vector de estado que resultó del disparo no tiene componentes negativas porque los recursos están disponibles, el disparo de la transición solicitada conduce a un nuevo estado válido. De no ser así, en caso de existir algún valor negativo en el nuevo vector de estado, se llegó a un estado no válido que indica que el recurso no está disponible. Además, el vector de estado indica si el disparo ha devuelto o tomado recursos. Si la cantidad de tokens para un recurso dado disminuye, significa que se han tomado recursos; en caso contrario, que se han devuelto recursos \cite{papermico}.
+\par \textbf{\textit{Una red de Petri puede realizar el trabajo de la lógica del monitor}}, es decir, la administración y sincronización de recursos disponibles; esto es cuando el vector de estado que resultó del disparo no tiene componentes negativas es porque los recursos están disponibles, el disparo de la transición solicitada conduce a un nuevo estado valido. De no ser así, en caso de existir algún valor negativo en el nuevo vector de estado, se llegó a un estado no válido que indica que el recurso no está disponible. Además el vector de estado indica si el disparo ha devuelto o tomado recursos. Si la cantidad de tokens para un recurso dado disminuye, significa que se han tomado recursos, en caso contrario, que se han devuelto recursos \cite{papermico}.
 
 \begin{figure}[H]
     \centering

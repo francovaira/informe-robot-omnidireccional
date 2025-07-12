@@ -9,9 +9,9 @@ Mencionamos anteriormente que el payload de los códigos QR contienen las coorde
    \label{fig:ejemplo_foto_centro}
 \end{figure}
 
-Entonces si nos basamos en la Figura \ref{fig:ejemplo_foto_centro} para determinar la posición del robot, obtenemos una posición más precisa ya que si durante el procesamiento de la fotografía verificamos que el código QR se encuentra desplazado hacia la derecha, el robot va a estar desplazado hacia la izquierda sobre el eje $X$. Y si también el código QR detectado es de mayor dimensión en la imagen, el robot se encuentra posicionado más cerca del código QR.
+Entonces si nos basamos en la Figura \ref{fig:ejemplo_foto_centro} para determinar la posición del robot, obtenemos una posición mas precisa ya que si durante el procesamiento de la fotografía verificamos que el código QR se encuentra desplazado hacía la derecha, el robot va a estar desplazado hacía la izquierda sobre el eje $X$. Y si también el código QR detectado es de mayor dimensión en la imagen, el robot se encuentra posicionado más cerca del código QR.
 
-Además, cómo se mencionó anteriormente, el contenido del payload incluye las coordenadas en donde se encuentra el código dentro del plano. Entonces, si tenemos el ejemplo donde un robot posicionado en la coordenada $(4,2)$ desea llegar a la coordenada $(4,0)$ donde se encuentra ubicado un código QR con las coordenadas descritas, nos encontramos en la situación en la que, por su posición actual, le es imposible al robot reconocer el código QR por la gran distancia que existe entre él y la cámara del robot, por lo tanto, estimamos que el robot mientras realiza desplazamientos entre celdas, siempre va a terminar posicionado al centro de ella.
+Además cómo se mencionó mas arriba, el contenido del payload incluye las coordenadas en donde se encuentra el código dentro del plano. Entonces si tenemos el ejemplo donde un robot posicionado en la coordenada $(4,2)$ desea llegar a la coordenada $(4,0)$ donde se encuentra ubicado un código QR con las coordenadas descritas, nos encontramos en la situación en la que, por su posición actual, le es imposible al robot reconocer el código QR por la gran distancia que existe entre él y la cámara del robot, por lo tanto estimamos que el robot mientras realiza desplazamientos entre celda y celda siempre va a terminar posicionado al centro de ella.
 
 \begin{figure}[H]
    \centering
@@ -20,7 +20,7 @@ Además, cómo se mencionó anteriormente, el contenido del payload incluye las 
    \label{fig:robot_posicion_0}
 \end{figure}
 
-Ahora si el robot se encuentra llegando a su destino, la coordenada $(4,0)$ y se encuentra dentro del rango de distancia de reconocimiento de códigos QR, va a calcular la distancia tanto en el eje $Y$ como en el $X$ y sumarla al payload del código QR para después poder reportar esa coordenada. Entonces en ese momento, así como muestra la figura \ref{fig:robot_posicion_1} el robot en realidad se encuentra ubicado en la coordenada $(4.2,0.5)$ y no en el centro de la celda como uno supone cuando no tiene el reporte de su ubicación en todo momento.
+Ahora si el robot se encuentra llegando a su destino, la coordenada $(4,0)$ y se encuentra dentro del rango de distancia de reconocimiento de códigos QR, va a calcular la distancia tanto en el eje $Y$ como en el $X$ y sumarla al payload del código QR para después poder reportar esa coordenada. Entonces en ese momento, así como muestra la figura \ref{fig:robot_posicion_1} el robot en realidad se encuentra ubicado en la coordenada $(4.2,0.5)$ y no el centro de la celda como uno supone cuando no tiene el reporte de su ubicación en todo momento.
 
 \begin{figure}[H]
    \centering
@@ -29,7 +29,7 @@ Ahora si el robot se encuentra llegando a su destino, la coordenada $(4,0)$ y se
    \label{fig:robot_posicion_1}
 \end{figure}
 
-La Figura \ref{fig:qrcamararobot} muestra una fotografía capturada por el robot en movimiento, junto con la lectura del payload. Como se observa, la imagen presenta una nitidez y enfoque adecuados, lo que permite un procesamiento más preciso.
+La siguiente imagen \ref{fig:qrcamararobot} muestra cómo es una fotografía captada en movimiento por el robot y la lectura que hace del payload, cómo se puede observar es una imagen bastante nítida y con buen enfoque lo que permite que el procesamiento de la misma se realice con mayor precisión.
 
 \begin{figure}[H]
    \centering

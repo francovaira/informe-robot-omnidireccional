@@ -4,9 +4,9 @@ Un sensor es un dispositivo eléctrico y/o mecánico capaz de convertir magnitud
 
 Para nuestro caso en particular, usamos los sensores para medir la velocidad de los motores. Como el objetivo es construir un sistema de lazo cerrado que controle la velocidad de los motores con el fin de aproximar la trayectoria calculada.
 
-Para medir la velocidad en revoluciones por minuto (RPM), se colocó, en el eje del motor, una rueda con patrón impreso el cual es detectado por un sensor infrarrojo (optoacoplador de ranura). El patrón impreso consta de líneas perforadas, ranuras, en la rueda con el fin de generar interrupciones. Se realizaron 24 ranuras en cada rueda para poder realizar el cálculo de la distancia recorrida.
+Para medir la velocidad en revoluciones por minuto (RPM), se colocó, en el eje del motor, una rueda con patrón impreso el cual es detectado por un sensor infrarrojo (opto acoplador de ranura). El patrón impreso consta de líneas perforadas, ranuras, en la rueda con el fin de generar interrupciones. Se realizaron 24 ranuras en cada rueda para poder realizar el cálculo de la distancia recorrida.
 
-Para realizar la medición de RPM se experimentaron tres métodos diferentes:
+Para realizar la medición de RPM se experimentó tres métodos diferentes:
 
 \begin{itemize}
    \item Generando una interrupción con el flanco de señal obtenida del sensor infrarrojo. Las RPM se determinan en función de la cantidad de interrupciones contadas en el periodo de una base de tiempo implementada para este fin.
@@ -22,4 +22,4 @@ Para realizar la medición de RPM se experimentaron tres métodos diferentes:
   \label{fig:encoder}
 \end{figure}
 
-Por último, se debe destacar que es necesario filtrar el rebote de los flancos de subida y bajada en cada interrupción.
+Por último se debe destacar que es necesario filtrar el rebote de los flancos de subida y bajada en cada interrupción.

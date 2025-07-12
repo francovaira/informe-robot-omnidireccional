@@ -9,15 +9,15 @@ La cinemática se define como la ciencia que estudia el movimiento de objetos si
 
 Para lograr representar matemáticamente al robot se utilizan ecuaciones que relacionan las velocidades de las ruedas con la velocidad lineal y angular del robot en el plano. Estas ecuaciones se derivan de la disposición geométrica de las ruedas y las características de las ruedas omnidireccionales. Utilizando matrices de transformación, es posible describir cómo las velocidades de las ruedas se combinan para producir el movimiento deseado del robot. Para ello se definen dos elementos fundamentales, la ecuación cinemática directa y la ecuación cinemática inversa. \cite{tzafestas2013introduction}
 
-En el contexto de un robot omnidireccional de 4 ruedas, la cinemática directa permite traducir un vector de movimiento lineal del robot en velocidades específicas para cada rueda independiente. Cada rueda se mueve independientemente y, por su configuración, permite que el robot se pueda desplazar lateralmente, hacia adelante, hacia atrás, gire sobre su propio eje y realice trayectorias curvas. \cite{rijalusalamkinematics}
+En el contexto de un robot omnidireccional de 4 ruedas, la cinemática directa permite traducir un vector de movimiento lineal del robot en velocidades específicas para cada rueda independiente. Cada rueda se mueve independientemente y por su configuración, permite que el robot se pueda desplazar lateralmente, hacia adelante, hacia atrás, gire sobre su propio eje y realice trayectorias curvas. \cite{rijalusalamkinematics}
 
-Es importante que tengamos en cuenta que para tener un sistema de control acotado y predecible, es necesario compensarlo de algún modo. En este caso, debemos ser capaces de obtener el vector de movimiento del robot en base a las velocidades angulares medidas en las ruedas y así lograr detectar diferencias con el vector de movimiento deseado. Para ello, nos resulta útil la cinemática inversa, que implica medir las velocidades angulares de cada una de las cuatro ruedas para obtener el vector de movimiento que el robot realiza. Esto es crucial para el control y navegación del robot dado que corrige las alteraciones de un entorno dinámico.
+Es importante que tengamos en cuenta que para tener un sistema de control acotado y predecible, es necesario compensarlo de algún modo. En este caso debemos ser capaces de obtener el vector de movimiento del robot en base a las velocidades angulares medidas en las ruedas y así lograr detectar diferencias con el vector de movimiento deseado. Para ello nos resulta útil la cinemática inversa, que implica medir las velocidades angulares de cada una de las cuatro ruedas para obtener el vector de movimiento que el robot realiza. Esto es crucial para el control y navegación del robot dado que corrige las alteraciones de un entorno dinámico.
 
 El desarrollo de estas ecuaciones implica calcular cómo las velocidades de cada rueda contribuyen al movimiento global del robot y cómo se deben ajustar estas velocidades para lograr una trayectoria específica. En otras palabras, estas ecuaciones toman en cuenta la disposición y orientación de las ruedas y cómo contribuyen al movimiento global del robot, aprovechando al máximo la capacidad omnidireccional del robot.
 
 Una vez logrado un modelo cinemático que aproxime bien el sistema real, deberíamos poder establecer un vector de movimiento deseado y obtener la velocidad a la que se debe colocar cada rueda para poder transcurrirlo. No solo debería poder hacer movimientos rectos en cualquier dirección, sino que también sería capaz de hacer movimientos rotatorios con traslación sobre el plano, formando trayectorias elípticas. \cite{rijalusalamkinematics}
 
-En nuestro caso se trata de un robot cuadrado con 1 rueda por cada lado cuya orientación respecto al robot es fija. Además de ello, se utilizan ruedas de tipo Omni-wheel, las cuales son similares a las ruedas Mecanum. Son ruedas que cuentan con pequeños discos (llamados rodillos) alrededor de la circunferencia perpendiculares a la dirección de giro. El efecto es que la rueda puede moverse con toda su fuerza, pero también se deslizará lateralmente con gran facilidad.
+En nuestro caso se trata de un robot cuadrado con 1 rueda por cada lado cuya orientación respecto al robot es fija. Ademas de ello, se utilizan ruedas de tipo Omni-wheel, las cuales son similares a las ruedas Mecanum. Son ruedas que cuentan con pequeños discos (llamados rodillos) alrededor de la circunferencia perpendiculares a la dirección de giro. El efecto es que la rueda puede moverse con toda su fuerza, pero también se deslizará lateralmente con gran facilidad.
 
 \begin{figure}[H]
     \centering
@@ -57,7 +57,7 @@ Definimos al robot sobre el plano cartesiano, donde se establece el marco de ref
     \label{fig:marcorefrobotenelplano}
 \end{figure}
 
-Además, podemos representar el robot y la distribución de ruedas del siguiente modo:
+Además podemos representar el robot y la distribución de ruedas del siguiente modo:
 
 \begin{figure}[H]
     \centering
@@ -66,14 +66,14 @@ Además, podemos representar el robot y la distribución de ruedas del siguiente
     \label{fig:vectoresrobotmodelocinem}
 \end{figure}
 
-Se establece que el ángulo entre las ruedas y el cuerpo del robot es fijo y está dado por:
+Se establece que el angulo entre las ruedas y el cuerpo del robot es fijo y está dado por:
 
 $$ \alpha_1 = \frac{\pi}{4} = 45^{\circ} $$
 $$ \alpha_2 = \frac{3\pi}{4} = 135^{\circ} $$
 $$ \alpha_3 = \frac{5\pi}{4} = 225^{\circ} $$
 $$ \alpha_4 = \frac{7\pi}{4} = 315^{\circ} $$
 
-%\newpage
+\newpage
 \textbf{Cinemática Inversa} \mbox{} \vspace{8pt}
 
 Para obtener el modelo cinemático, partimos del desarrollo de cómo afecta cada una de las ruedas al movimiento total del robot. Para ello comenzamos con la descripción del movimiento de un cuerpo rígido descrito en la Figura \ref{fig:movimientocuerporigido} \cite{islassistcontrolomni}.
@@ -94,7 +94,7 @@ $$ V_{R4} = V_{04} + \omega_4 \times r_4 $$
     \label{fig:movimientocuerporigido}
 \end{figure}
 
-Se consideran $ V_{01}, V_{02}, V_{03}, V_{04} $ nulos dado que no existe deslizamiento entre las ruedas y el piso, por otra parte, si todas las ruedas tienen el mismo radio podemos expresar:
+Se consideran $ V_{01}, V_{02}, V_{03}, V_{04} $ nulos dado que no existe deslizamiento entre las ruedas y el piso, además si todas las ruedas tienen el mismo radio, podemos expresar:
 
 $$ V_{R1} = \omega_1 \times r $$
 $$ V_{R2} = \omega_2 \times r $$
@@ -198,7 +198,7 @@ De modo que, en primer lugar obtenemos la matriz de conversión que nos permite 
 
 $$ \begin{bmatrix} V_x \\ V_y \\ V_\theta \\ \end{bmatrix} = DK \cdot \begin{bmatrix} w_1 \\ w_2 \\ w_3 \\ w_4 \\ \end{bmatrix} $$
 
-Luego, al realizar la pseudoinversa de la matriz $IK$:
+Luego, al realizar pseudoinversa de la matriz $IK$:
 
 $$  DK = 
     r
@@ -209,7 +209,7 @@ $$  DK =
         {\frac{1}{4L}}  & {\frac{1}{4L}}  & {\frac{1}{4L}}  & {\frac{1}{4L}}  \\
     \end{bmatrix} $$
 
-Por lo que obtenemos la siguiente expresión para obtener el vector de movimiento del robot dependiendo de las velocidades de las ruedas:
+Por lo que obtenemos la siguiente expresión para obtener el vector de movimiento del robot dependiendo las velocidades de las ruedas:
 
 $$ \begin{bmatrix} V_x \\ V_y \\ V_\theta \\ \end{bmatrix} = 
     r

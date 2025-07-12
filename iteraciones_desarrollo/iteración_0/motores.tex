@@ -2,9 +2,9 @@
 
 El sistema de locomoción es el responsable de la traslación del robot. Las configuraciones más comunes son las siguientes: diferencial, sincrónico, triciclo, ackerman y omnidireccional.
 
-Como nosotros tomamos como base la estructura ya definida para el robot Hermes III, adoptamos el sistema mecánico de locomoción omnidireccional, el cual permite mayor libertad de movimiento que los sistemas de ruedas clásicos. Los robots que implementan este sistema pueden moverse en cualquier dirección sobre el plano y en cualquier momento sin la necesidad de hacer movimientos previos para modificar su trayectoria. Requiere ruedas que permitan movimientos en más de una dirección. Este sistema puede ser implementado con tres o cuatro ruedas.
+Como nosotros tomamos como base la estructura ya definida para el robot Hermes III, adoptamos el sistema mecánico de locomoción omnidireccional, el cual permite mayor libertad de movimiento que los sistemas de ruedas clásicos, Los robots que implementan este sistema pueden moverse en cualquier dirección sobre el plano y en cualquier momento sin la necesidad de hacer movimientos previos para modificar su trayectoria. Requiere ruedas que permitan movimientos en más de una dirección. Este sistema puede ser implementado con tres o cuatro ruedas.
 
-Las ruedas omnidireccionales ruedan en el sentido de avance, pero también se pueden desplazar lateralmente con gran facilidad, como se observa en la siguiente figura:
+Las ruedas omnidireccionales ruedan en el sentido de avance, pero, también se pueden desplazar lateralmente con gran facilidad como se observa en la siguiente figura:
 
 \begin{figure}[H]
     \centering
@@ -27,7 +27,7 @@ Los actuadores tienen por misión generar el movimiento de los elementos del rob
    \item Asíncronos
 \end{itemize}
 
-Se opta por motores de corriente continua, como el que se muestra en la figura siguiente, pues el torque generado es proporcional a la diferencia de potencial aplicada a los terminales de alimentación y el sentido de giro depende de la polaridad, facilitando de este modo el control. El modelo de motor elegido se muestra en la imagen debajo, es un motorreductor de $12V\ @\ 100\ RPM$.
+Se opta por motores de corriente continua, como el que se muestra en la figura siguiente, pues el torque generado es proporcional a la diferencia de potencial aplicado a los terminales de alimentación y el sentido de giro depende de la polaridad, facilitando de este manera el control. El modelo de motor elegido se muestra en la imagen debajo, es un motorreductor de $12V\ @\ 100\ RPM$.
 
 \begin{figure}[H]
     \centering
@@ -36,9 +36,9 @@ Se opta por motores de corriente continua, como el que se muestra en la figura s
 \end{figure}
 
 
-Este tipo de motores pequeños y de bajo costo generalmente presentan como inconveniente que no publican sus curvas. Para resolver este inconveniente se realizaron distintos experimentos. Esencialmente se construyó un montaje que consta de una polea con un peso conocido, que no es más que un recipiente con agua, como muestra la siguiente figura. La polea se fija al eje del motor para realizar los experimentos.
+Este tipo de motores pequeños y de bajo costo generalmente presentan como inconveniente que no publican sus curvas. Para resolver este inconveniente se realizaron distintos experimentos. Esencialmente se construyó un montaje que consta de una polea con un peso conocido, que no es más que un recipiente con agua como muestra la siguiente figura, la polea se fija al eje del motor para realizar los experimentos.
 
-Se realizaron distintas corridas variando la tensión y corriente, se tomaron mediciones de velocidad y torque. Con estos datos se construyeron las curvas de RPM-torque y corriente-torque, como se muestra en la siguiente tabla:
+Se realizaron distintas corridas variando la tensión y corriente, se tomaron mediciones de velocidad y torque. Con estos datos se construyeron las curvas de rpm-torque y corriente-torque, como se muestra la siguiente tabla:
 
 \begin{center} \begin{tabular}{|c|c|c|}
    \hline \rowcolor{test_header_color}
@@ -52,7 +52,7 @@ Se realizaron distintas corridas variando la tensión y corriente, se tomaron me
    \hline
 \end{tabular} \end{center}
 
-Con estos experimentos también se midió la respuesta del sistema a un escalón, detallado en la siguiente iteración.
+Con estos experimentos, también, se midió la respuesta del sistema a un escalón, detallado en la siguiente iteración.
 
 \begin{figure}[H]
     \centering
@@ -61,10 +61,10 @@ Con estos experimentos también se midió la respuesta del sistema a un escalón
     \label{fig:medicion_torque}
 \end{figure}
 
-Para la alimentación de los motores es necesario un circuito integrado especial que permite manipular de manera segura la corriente eléctrica de los motores y, a su vez, brinde la posibilidad de controlar la polaridad de los bornes donde se conectan los mismos para cambiar su sentido de giro.
+Para la alimentación de los motores es necesario un circuito integrado especial que permite manipular de manera segura la corriente eléctrica de los motores y a su vez brinde la posibilidad de controlar la polaridad de los bornes donde se conectan los mismos para cambiar su sentido de giro.
 
 Esta solución se ofrece en el mercado en el integrado comúnmente denominado "Driver Dual para Motores L298N", también conocido como "puente H", el cual posee a su vez un regulador de voltaje LM7805 para alimentar la parte lógica del integrado L298N.
 
 El sentido de giro de un motor estará definido por dos pines cuyos valores establecerán la polaridad de los terminales de alimentación del motor respectivamente. Existen dos pares de pines por cada motor.
 
-Para el control de estos integrados, vamos a usar cuatro canales PWM del microcontrolador ESP-32, los cuales van a establecer el sentido de giro y fuerza del motor.
+Para el control de estos integrados vamos a usar cuatro canales PWM del microcontrolador ESP-32, los cuales van a establecer el sentido de giro y fuerza del motor.
