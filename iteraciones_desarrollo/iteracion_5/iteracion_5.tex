@@ -57,7 +57,7 @@ Por otra parte, los requerimientos no funcionales que abordaremos son:
 
 Como principal resultado de esta iteración, el uso del Filtro de Kalman, basado en las entradas proporcionadas por los sensores del sistema y complementado con el PID y el Modelo Cinemático del robot, permitió una mejora drástica en las trayectorias lineales del robot. Estas mejoras se tradujeron en una compensación efectiva que optimiza el desempeño del sistema.
 
-A través de este enfoque, se logró reducir significativamente el error en las trayectorias estimadas, garantizando un alto nivel de precisión en el movimiento del robot. Esto se evidencia en las representaciones gráficas obtenidas, donde la trayectoria deseada, indicada en fucsia, y la trayectoria real estimada, marcada en verde, muestran en la Figura \ref{fig:ejemplofiltrokalman} que se tiene un bajo error para todos los puntos de la misma. Cabe aclarar que los ejes cartesianos del gráfico están expresados en $[metros]$. Esta trayectoria esta compuesta por la secuencia de coordenadas:
+A través de este enfoque, se logró reducir significativamente el error en las trayectorias estimadas, garantizando un alto nivel de precisión en el movimiento del robot. Esto se evidencia en las representaciones gráficas obtenidas, donde la trayectoria deseada, indicada en fucsia, y la trayectoria real estimada, marcada en verde, muestran en la Figura \ref{fig:ejemplofiltrokalman} que se tiene un bajo error para todos los puntos de la misma. Cabe aclarar que los ejes cartesianos del gráfico están expresados en $[metros]$. Esta trayectoria está compuesta por la secuencia de coordenadas:
 
 $$ [(3,3), (2,3), (1,3), (1,2), (1,1), (2,1), (3,1)] $$
 
@@ -71,7 +71,7 @@ $$ [(3,3), (2,3), (1,3), (1,2), (1,1), (2,1), (3,1)] $$
 Sin embargo, durante las pruebas se identificó que el Filtro de Kalman, al estar implementado en la interfaz de Python, necesita operar a través de la red con un intercambio constante de información con el robot mediante MQTT, generando un cuello de botella en el sistema. A futuro, se considera como una mejora significativa trasladar la ejecución del Filtro de Kalman directamente al robot, eliminando la dependencia de la comunicación por red para la compensación de vectores y distancia.
 
 \subsection{Riesgos superados}
-El desarrollo de la presente iteración se corresponde con unas de las mas importantes del proyecto dado que termina de superar riesgos importantes como ser RI-04 y RI-03.
+El desarrollo de la presente iteración se corresponde con unas de las más importantes del proyecto dado que termina de superar riesgos importantes como ser RI-04 y RI-03.
 
 Al mismo tiempo, se logra una integración efectiva entre los nuevos y ya existentes componentes, por lo que se logran progresos sobre el riesgo RI-02.
 
