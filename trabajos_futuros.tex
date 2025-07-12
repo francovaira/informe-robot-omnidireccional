@@ -1,20 +1,21 @@
-\section{Trabajos futuros}
+\newpage
+\chapter{Trabajos futuros}
 
-El desarrollo realizado habilita múltiples líneas de mejora y expansión para futuras iteraciones, orientadas a optimizar el desempeño general del sistema.
+El desarrollo del proyecto ha abierto diversas oportunidades para realizar mejoras y ampliaciones en futuras iteraciones, con el objetivo de optimizar aún más el desempeño del sistema y su interacción con el entorno.
 
 \begin{itemize}
-    \item \underline{Compensación de trayectoria con códigos QR:} \\
-    Integrar mediciones desde códigos QR al Filtro de Kalman permitiría corregir en tiempo real la posición estimada del robot, mejorando su precisión.
-    
-    \item \underline{Reemplazar QR por AprilTags para mayor robustez} \\
-    Este tipo de códigos están diseñados para localización de alta precisión y contienen payloads mas pequeños, pero permitiendo ser detectados a mayor distancia y de manera más robusta.
+	\item \underline{Compensación de trayectoria con códigos QR:} \\
+	La implementación de un sistema de compensación de trayectoria basado en la captura de códigos QR proporciona al Filtro de Kalman mediciones para mejorar la precisión de las estimaciones y corregir la posición del robot en tiempo real. \\
 
-    \item \underline{Ejecución local del Filtro de Kalman:} \\
-    Trasladar el filtro al robot eliminaría la dependencia de la red para la compensación de trayectoria, reduciendo latencia y aumentando la robustez. En determinadas ocasiones se han observado tiempos de respuesta mayores a $500[ms]$, afectando al desempeño.
+	\item \underline{Optimización de la comunicación:} \\
+	Actualmente, la dependencia de la red para la compensación de trayectoria y el envío de feedback al Filtro de Kalman representa un cuello de botella en el sistema. Para abordar esta limitación, se propone trasladar la ejecución del Filtro de Kalman directamente al robot, eliminando la necesidad de comunicación constante con la interfaz Python a través de la red. \\
 
-    \item \underline{Migración desde Python:} \\
-    Debido a sus limitaciones en concurrencia, se propone evaluar lenguajes como C, C++ o Java para escalar mejor el sistema multi-robot.
+	\item \underline{Reemplazo de Python por una alternativa más adecuada:} \\
+	Python, aunque versátil y ampliamente utilizado, presenta limitaciones significativas en la gestión de procesos concurrentes, lo que afecta el diseño del sistema en escenarios que requieren alta concurrencia. Por ello, se sugiere explorar otras plataformas o lenguajes de programación que ofrezcan mejores capacidades de concurrencia y escalabilidad, como ser C, C++ o Java. \\
 
-    \item \underline{Expansión multi-robot:} \\
-    Si bien el sistema admite múltiples robots, solo se construyó uno. Una futura integración colaborativa permitiría validar escenarios con re-cálculo dinámico de trayectorias y mayor concurrencia.
+	\item \underline{Integración con otros robots en el espacio:} \\
+	Este enfoque permitiría coordinar varios robots omnidireccionales para trabajar de manera colaborativa en un mismo espacio, además de la ejecución de trayectorias complejas y presentar escenarios de re-cálculo de trayectoria por conflictos. Esto llevaría a explotar aún más la concurrencia del sistema y por ende la complejidad del mismo. Aunque todo el sistema fue desarrollado para que soporte múltiples robots, se ha construido un solo robot.
+
+	\item \underline{Integración de inteligencia artificial para prescindir de códigos QR} \\
+	Integrar reconocimiento de imágenes con inteligencia artificial posibilita que el robot tome una fotografía de cualquier parte del espacio y determinar en qué posición se encuentra con mínimas referencias visuales, sin necesidad que exista un código QR en la imagen. Esto solo requeriría un reconocimiento fotográfico previo del espacio, que puede realizarse mediante técnicas de SLAM. \cite{micolini2022hermes} \\
 \end{itemize}

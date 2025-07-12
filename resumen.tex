@@ -1,10 +1,13 @@
-% fuentes de esta seccion
+% fuentes de esta sección
 % https://www.sewio.net/uwb-technology/two-way-ranging/
 
-\begin{abstract}
-Este trabajo describe el diseño e implementación de un robot omnidireccional low-cost con compensación jerárquica, un Filtro de Kalman para estimación y corrección de la posición con un error de $\pm3cm$, medición de distancia mediante códigos QR y un conjunto red de Petri/Monitor que administra el mapa compartido con otros robots.
-\end{abstract}
+\newpage
+\chapter*{Resumen}
 
-\begin{IEEEkeywords}
-Robot omnidireccional, Red de Petri, Monitor, Filtro de Kalman, fotogrametría
-\end{IEEEkeywords}
+En el presente proyecto se detalla el proceso de diseño y puesta en marcha de un sistema ciber físico el cual usa cómo base la estructura del robot móvil omnidireccional Hermes III, desarrollado como proyecto integrador de la carrera de grado Ingeniería en Computación en la Facultad de Ciencias Exactas, Físicas y Naturales.
+
+Este proyecto está centrado en el estudio del comportamiento y modelado de un sistema compuesto por varios robots que deben seguir cada uno una trayectoria de un conjunto de trayectorias posibles calculadas previamente con algoritmos de planificación. Cada robot cuenta con un sistema de control compensado para corregir errores en los movimientos.
+
+Partiendo de un conjunto de trayectorias prefijadas para cada robot, se modela el sistema mediante el uso de Redes de Petri y el entorno en el que se mueven los robots se considera particionado en regiones, y cada región del mapa se modela como un lugar en la Red de Petri. Para evitar colisiones se establecen regiones con capacidad finita donde no pueden pasar por ellas más de un robot al mismo tiempo, de modo que si un segundo robot quiere pasar por esa misma región deberá esperar.
+
+Por otra parte, nos interesa lograr que el sistema pueda ubicar al robot con precisión dentro del plano, de modo que se utilizan herramientas como el Filtro de Kalman para lograr una estimación de la posición actual en base a la fusión de lecturas de los diversos sensores.
