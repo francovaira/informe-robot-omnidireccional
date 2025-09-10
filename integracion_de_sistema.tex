@@ -55,7 +55,7 @@ Durante el desarrollo se realizaron un número de iteraciones que condujeron al 
 
     \item Iteración 6: Mediciones con códigos QR
         \begin{itemize}
-        \item Captura y envío de fotografías por WiFi
+        \item Captura y envío de fotografías por Wi-Fi
         \item Procesamiento de las imágenes captadas
     \end{itemize}
 \end{itemize}
@@ -119,7 +119,7 @@ En el cuadro inferior izquierdo se observa la salida del lector de códigos QR, 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/integ_sistema_interfaz_python.png}
-    \caption{Monitoreo del robot en tiempo real}
+    \caption{Monitoreo del robot en tiempo real en la interfaz de usuario}
     \label{fig:integsistemainterfaz}
 \end{figure}
 
@@ -131,6 +131,94 @@ En el cuadro inferior izquierdo se observa la salida del lector de códigos QR, 
     \label{fig:integsistemainterfazgrafana}
 \end{figure}
 
+
+\section{Resultados y métricas finales}
+
+A continuación se detallan algunas métricas de relevancia obtenidas a lo largo del proyecto.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+	\hline \rowcolor{test_header_color}
+        Descripción & Valor & Unidad de medida \\
+        \hline
+            Tamaño de celda del mapa        & $0.5$         & $m$ \\
+        \hline
+            Distancia entre imanes          & $0.15$        & $m$ \\
+        \hline
+            Dimensiones totales de la pista & $1.4\ x\ 1.4$ & $m\ x\ m$ \\
+        \hline
+\end{tabular}
+\caption{Parámetros del mapa y la pista}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+	\hline \rowcolor{test_header_color}
+        Descripción & Valor & Unidad de medida \\
+        \hline
+            Velocidad de desplazamiento lineal      & $0.25$    & $m/seg$ \\
+        \hline
+            Velocidad de desplazamiento rotacional  & $0.18$    & $m/seg$ \\
+        \hline
+\end{tabular}
+\caption{Métricas de desplazamiento}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+	\hline \rowcolor{test_header_color}
+        Descripción & Valor & Unidad de medida \\
+        \hline
+            Distancia máxima de reconocimiento QR & $50 \pm 2$ & $cm$ \\
+        \hline
+            Resolución cámara & $1080x720$ & $PX$ \\
+        \hline
+            Tamaño máximo de fotografía & $120$ & $KBytes$ \\
+        \hline
+            Frecuencia de captura de imágenes & $2$ & $FPS$ \\
+        \hline
+            Tamaño máximo de paquete MQTT & $256$ & $KBytes$ \\
+        \hline
+            Latencia promedio con el broker en la red local & $100$ & $ms$ \\
+        \hline
+    \end{tabular}
+\caption{Mediciones capturadas en el envío de imágenes}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+	\hline \rowcolor{test_header_color}
+        Descripción & Valor & Unidad de medida \\
+        \hline
+            Tiempo promedio de recepción de muestras/mediciones & $560$ & $ms$ \\
+        \hline
+            Tiempo máximo de recepción de muestras/mediciones: & $1090$ & $ms$ \\
+        \hline
+    \end{tabular}
+    \caption{Tiempos registrados en la recepción de muestras}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+	\hline \rowcolor{test_header_color}
+        Descripción & Valor & Unidad de medida \\
+    \hline
+        Error de posicionamiento promedio sin modelo cinemático, solo PID           & $\pm11$   & $cm\text{ por metro}$ \\
+    \hline
+        Error de posicionamiento promedio con modelo cinemático                     & $\pm6$    & $cm\text{ por metro}$ \\
+    \hline
+        Error de posicionamiento promedio con modelo cinemático y Filtro de Kalman  & $\pm3$    & $cm\text{ por metro}$ \\
+    \hline
+        Error de medición promedio con códigos QR                                   & $\pm5$    & $cm\text{ por metro}$ \\
+    \hline
+\end{tabular}
+\caption{Errores promedio}
+\end{table}
 
 \section{Problemas enfrentados}
 

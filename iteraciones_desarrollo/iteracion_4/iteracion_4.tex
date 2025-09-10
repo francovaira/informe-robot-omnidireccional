@@ -1,8 +1,8 @@
 \newpage
-\section{Iteración 4: Red de Petri y monitor}
+\section{Iteración 4: Red de Petri y Monitor}
 
 \subsection{Introducción}
-El control de navegación de un robot omnidireccional es un desafío complejo que requiere la coordinación de múltiples tareas, como la planificación de trayectorias, el eludir obstáculos y la ejecución de movimientos precisos. Las redes de Petri son una herramienta matemática y gráfica que permite modelar, analizar y controlar sistemas discretos y concurrentes, lo que las hace particularmente útiles para gestionar la navegación de robots en entornos dinámicos. A continuación se establece la relación entre el control de navegación y las redes de Petri.
+El control de navegación de un robot omnidireccional es un desafío complejo que requiere la coordinación de múltiples tareas, como la planificación de trayectorias, el eludir obstáculos y la ejecución de movimientos precisos. Las Redes de Petri son una herramienta matemática y gráfica que permite modelar, analizar y controlar sistemas discretos y concurrentes, lo que las hace particularmente útiles para gestionar la navegación de robots en entornos dinámicos. A continuación se establece la relación entre el control de navegación y las Redes de Petri.
 
 \input{iteraciones_desarrollo/iteracion_4/requerimientos}
 
@@ -17,11 +17,11 @@ El control de navegación de un robot omnidireccional es un desafío complejo qu
 \input{iteraciones_desarrollo/iteracion_4/testing_pruebas}
 
 \subsection{Resultados}
-Como muestran las pruebas realizadas del módulo Monitor implementado en Python, el algoritmo se comporta de forma correcta y las validaciones realizadas sobre la red de Petri, productor-consumidor, entregaron los resultados suficientes para poder llevar este procedimiento a las redes que representan los mapas donde los robots se van a desplazar y tener la validez que el monitor va a permitir que estos se muevan de forma coordinada y puedan llegar a su destino.
+Como muestran las pruebas realizadas del módulo Monitor implementado en Python, el algoritmo se comporta de forma correcta y las validaciones realizadas sobre la Red de Petri, productor-consumidor, entregaron los resultados suficientes para poder llevar este procedimiento a las redes que representan los mapas donde los robots se van a desplazar y tener la validez que el Monitor va a permitir que estos se muevan de forma coordinada y puedan llegar a su destino.
 
 \subsection{Riesgos superados}
 
-En la iteración presente se corresponde con un avance muy importante sobre la superación de los riesgos RI-02 y RI-03, esto porque la integración de una red de Petri para el control de los robots ayuda significativamente a la intercomunicación entre el mapa y los robots. Mientras que todo el procesamiento que requiere la ejecución del Monitor es soportado por el lenguaje elegido.
+En la iteración presente se corresponde con un avance muy importante sobre la superación de los riesgos RI-02 y RI-03, esto porque la integración de una Red de Petri para el control de los robots ayuda significativamente a la intercomunicación entre el mapa y los robots. Mientras que todo el procesamiento que requiere la ejecución del Monitor es soportado por el lenguaje elegido.
 
 \begin{center}
     \begin{tabular} {
@@ -37,6 +37,6 @@ En la iteración presente se corresponde con un avance muy importante sobre la s
 \end{center}
 
 \subsection{Conclusiones}
-El desarrollo del sistema de control para robots omnidireccionales, basado en redes de Petri, demostró ser altamente efectivo en la gestión de trayectorias y prevención de colisiones en entornos multi-robot. Mediante la discretización del mapa en celdas y su representación como lugares en la red, se logró un modelo claro y funcional que garantiza la ocupación exclusiva de regiones con capacidad limitada. La implementación de políticas de prioridad dinámica, donde los robots con mayor recorrido tienen preferencia, permitió resolver conflictos de manera eficiente, evitando bloqueos y asegurando un flujo continuo de operaciones.
+El desarrollo del sistema de control para robots omnidireccionales, basado en Redes de Petri, demostró ser altamente efectivo en la gestión de trayectorias y prevención de colisiones en entornos multi-robot. Mediante la discretización del mapa en celdas y su representación como lugares en la red, se logró un modelo claro y funcional que garantiza la ocupación exclusiva de regiones con capacidad limitada. La implementación de políticas de prioridad dinámica, donde los robots con mayor recorrido tienen preferencia, permitió resolver conflictos de manera eficiente, evitando bloqueos y asegurando un flujo continuo de operaciones.
 
-En síntesis, el sistema desarrollado no solo cumple con los requerimientos funcionales y no funcionales planteados, sino que también sienta las bases para extensiones más complejas, destacando la versatilidad de las redes de Petri en el ámbito del control y la automatización.
+En síntesis, el sistema desarrollado no solo cumple con los requerimientos funcionales y no funcionales planteados, sino que también sienta las bases para extensiones más complejas, destacando la versatilidad de las Redes de Petri en el ámbito del control y la automatización.

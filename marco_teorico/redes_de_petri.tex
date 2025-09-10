@@ -1,8 +1,8 @@
 \section{Redes de Petri}
 
-Una red de Petri es un modelo gráfico, formal y abstracto para la representación de sistemas distribuidos y el análisis del flujo de información. Este modelo facilita la comprensión sobre la estructura y el comportamiento dinámico y estático del sistema modelado. Las redes de Petri son de utilidad principalmente en el diseño de sistemas de hardware y software para especificación, simulación y diseño de diversos problemas de ingeniería, especialmente útiles para representar procesos concurrentes, así como procesos donde puedan existir restricciones en cuanto a la simultaneidad, la precedencia o la frecuencia de eventos concurrentes. \cite{brams}
+Una Red de Petri es un modelo gráfico, formal y abstracto para la representación de sistemas distribuidos y el análisis del flujo de información. Este modelo facilita la comprensión sobre la estructura y el comportamiento dinámico y estático del sistema modelado. Las Redes de Petri son de utilidad principalmente en el diseño de sistemas de hardware y software para especificación, simulación y diseño de diversos problemas de ingeniería, especialmente útiles para representar procesos concurrentes, así como procesos donde puedan existir restricciones en cuanto a la simultaneidad, la precedencia o la frecuencia de eventos concurrentes. \cite{brams} \cite{marwedelcyberphysical}
 
-Las redes de Petri están fuertemente asociadas a la teoría de grafos, ya que las mismas pueden representarse como un grafo dirigido bipartito compuesto por cuatro elementos \cite{libropopn}:
+Las Redes de Petri están fuertemente asociadas a la teoría de grafos, ya que las mismas pueden representarse como un grafo dirigido bipartito compuesto por cuatro elementos \cite{libropopn}:
 
 \begin{itemize}
     \item Plazas: representan los estados del sistema. Estas son variables de estado que pueden tomar valores enteros.
@@ -11,14 +11,14 @@ Las redes de Petri están fuertemente asociadas a la teoría de grafos, ya que l
     \item Arcos: indican las interconexiones entre las plazas y las transiciones, estableciendo el flujo de tokens que sigue el sentido de la flecha.
 \end{itemize}
 
-Una vez definidos sus componentes, se puede decir que una red de Petri es un grafo dirigido con dos tipos de nodos: plazas y transiciones. Estos nodos están vinculados por arcos, los cuales sólo pueden conectar una plaza con una transición o viceversa. Por otro lado, una red de Petri puede ser descrita mediante dos componentes:
+Una vez definidos sus componentes, se puede decir que una Red de Petri es un grafo dirigido con dos tipos de nodos: plazas y transiciones. Estos nodos están vinculados por arcos, los cuales sólo pueden conectar una plaza con una transición o viceversa. Por otro lado, una Red de Petri puede ser descrita mediante dos componentes:
 
 \begin{enumerate}
     \item Una estructura de red
     \item Un marcado inicial
 \end{enumerate}
 
-La estructura de red hace referencia a la red en sí, mientras que el marcador inicial sólo representa el estado inicial del sistema (denominado estado idle), es decir, sin que ninguna transición haya sido disparada. Un ejemplo simple de una red de Petri marcada se muestra en la Figura \ref{fig:rdp_marcada}. Este será utilizado en las secciones siguientes para ilustrar operaciones y/o propiedades de las redes de Petri. Para su creación se utilizó el software Petrinator. \cite{petrinator}
+La estructura de red hace referencia a la red en sí, mientras que el marcador inicial sólo representa el estado inicial del sistema (denominado estado idle), es decir, sin que ninguna transición haya sido disparada. Un ejemplo simple de una Red de Petri marcada se muestra en la Figura \ref{fig:rdp_marcada}. Este será utilizado en las secciones siguientes para ilustrar operaciones y/o propiedades de las Redes de Petri. Para su creación se utilizó el software Petrinator. \cite{petrinator}
 
 \begin{figure}[H]
     \centering
@@ -27,8 +27,8 @@ La estructura de red hace referencia a la red en sí, mientras que el marcador i
     \label{fig:rdp_marcada}
 \end{figure}
 
-\subsection{Estructura de una red de Petri ordinaria}
-La estructura de una red de Petri puede definirse como una tupla de 5 elementos (5-tupla) \cite{falko} de la siguiente manera:
+\subsection{Estructura de una Red de Petri ordinaria}
+La estructura de una Red de Petri puede definirse como una tupla de 5 elementos (5-tupla) \cite{falko} de la siguiente manera:
 
 \begin{equation}
     N = (P, T, I^-, I^+, M_0)
@@ -78,7 +78,7 @@ I^- =
     \end{pmatrix}
 \end{equation}
 
-Las filas de las matrices representan las plazas, mientras que las columnas representan las transiciones, lo cual quiere decir que las matrices tendrán tantas filas como plazas tenga la red de Petri, y tantas columnas como transiciones.\\
+Las filas de las matrices representan las plazas, mientras que las columnas representan las transiciones, lo cual quiere decir que las matrices tendrán tantas filas como plazas tenga la Red de Petri, y tantas columnas como transiciones.\\
 
 De esta forma se puede observar cómo el elemento $I^-[0][0]$ indica la relación de salida entre $P_1$ y $T_1$. Más precisamente, indica que cuando $T_1$ se dispara, solo un token es retirado de $P_1$ (ya que el peso del arco entre $P_1$ y $T_1$ es 1). De igual manera, el elemento $I^+[0][0] = 0$ indica que cuando la misma transición se dispara, no se genera ningún token en $P_1$ (ya que no existe ningún arco que parta de $T_1$ hacia $P_1$).\\
 
@@ -86,9 +86,9 @@ A partir de estas definiciones, se puede obtener la matriz de incidencia de la r
 
 \begin{equation} I = I^+ -\ I^- \end{equation}
 
-Cabe aclarar que una red de Petri puede reconstruirse completamente a partir de sus matrices $I^-$ e $I^+$, pero no así si se tiene sólo la matriz de incidencia $I$. Esto quiere decir que puede haber varias redes de Petri distintas con la misma matriz de incidencia, pero solamente una para las matrices $I^-$ e $I^+$. Sin embargo, cuando una red de Petri no tiene autobucles (presente cuando se tienen dos arcos con sentidos contrarios entre una misma plaza y transición), su matriz de incidencia determina completamente su estructura.\\
+Cabe aclarar que una Red de Petri puede reconstruirse completamente a partir de sus matrices $I^-$ e $I^+$, pero no así si se tiene sólo la matriz de incidencia $I$. Esto quiere decir que puede haber varias Redes de Petri distintas con la misma matriz de incidencia, pero solamente una para las matrices $I^-$ e $I^+$. Sin embargo, cuando una Red de Petri no tiene autobucles (presente cuando se tienen dos arcos con sentidos contrarios entre una misma plaza y transición), su matriz de incidencia determina completamente su estructura.\\
 
-La matriz de incidencia asociada a la red de Petri de la Figura \ref{fig:rdp_marcada} será entonces:
+La matriz de incidencia asociada a la Red de Petri de la Figura \ref{fig:rdp_marcada} será entonces:
 
 \begin{equation}
 I =
@@ -114,7 +114,7 @@ I =
     \end{pmatrix}
 \end{equation}
 
-\subsection{Dinámica de una red de Petri}
+\subsection{Dinámica de una Red de Petri}
 Se dice que una transición está sensibilizada cuando el marcado de todas las plazas entrantes a la transición es mayor o igual al peso de los arcos que las unen con dicha transición. \cite{papermico}\\
 
 Antes de expresar la condición de sensibilizado de manera general, es necesario definir los siguientes conjuntos:
@@ -146,7 +146,7 @@ En la figura \ref{fig:rdp_sensibilizada} se resaltan las transiciones sensibiliz
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{images/rdp_sensibilizada.png}
-    \caption{Transiciones sensibilizadas de la red de Petri}
+    \caption{Transiciones sensibilizadas de la Red de Petri expresadas en rojo}
     \label{fig:rdp_sensibilizada}
 \end{figure}
 
@@ -182,7 +182,7 @@ Cabe destacar que, como consecuencia del disparo de $T_3$, se ha producido la se
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{images/rdp_marcado_nuevo.png}
-    \caption{Nuevo marcado de la red de Petri}
+    \caption{Nuevo marcado de la Red de Petri}
     \label{fig:rdp_marcado_nuevo}
 \end{figure}
 
@@ -200,7 +200,7 @@ La misma se denomina \textbf{función de transferencia} y está definida como el
     \item $\delta[i] = 0 \ \forall \ i/i \neq j$
 \end{itemize}
 
-Por otro lado, es necesario introducir la \textbf{ecuación de estado} de las redes de Petri. Con esta ecuación es posible obtener el siguiente estado del sistema luego del disparo de una transición. Esta es una manera más simple que la metodología gráfica para analizar la evolución de los sistemas. La ecuación de estado en un tiempo $i$, para calcular el nuevo marcado de la red en un tiempo $i+1$ se define como:
+Por otro lado, es necesario introducir la \textbf{ecuación de estado} de las Redes de Petri. Con esta ecuación es posible obtener el siguiente estado del sistema luego del disparo de una transición. Esta es una manera más simple que la metodología gráfica para analizar la evolución de los sistemas. La ecuación de estado en un tiempo $i$, para calcular el nuevo marcado de la red en un tiempo $i+1$ se define como:
 
 \begin{equation}
     M_{i+1} = M_i + I \ . \ \vec{\delta}
@@ -298,9 +298,9 @@ Como se mencionó en la sección anterior, la ecuación \ref{ec:estado} permite 
 
 \noindent donde $\vec{S}$ = \{ 1, 1, 1, 1 \} e $I$ es la matriz de incidencia asociada a la red.
 
-\subsection{Propiedades de las redes de Petri}
+\subsection{Propiedades de las Redes de Petri}
 \subsubsection{Propiedades de limitación}
-Dada una red de Petri definida por $PN = \{ P, T, I^-, I^+, M_0 \}$, se dice que una plaza P está k-limitada si existe un número entero k que, para todo marcado posible de la red, se verifica que la cantidad de tokens de la plaza siempre es igual o menor a k. Es decir:
+Dada una Red de Petri definida por $PN = \{ P, T, I^-, I^+, M_0 \}$, se dice que una plaza P está k-limitada si existe un número entero k que, para todo marcado posible de la red, se verifica que la cantidad de tokens de la plaza siempre es igual o menor a k. Es decir:
 
 \begin{equation}
     \exists \ k \ \in \ N \ / \ \forall \ M \ \in \ marcados (PN) \Rightarrow M(P) \leq k
@@ -310,28 +310,28 @@ Dada una red de Petri definida por $PN = \{ P, T, I^-, I^+, M_0 \}$, se dice que
 
 A partir de la definición de limitación surgen varios conceptos, entre los cuales se encuentran los siguientes:
 \begin{itemize}
-    \item Una red de Petri es \textbf{segura} si todas sus plazas son \textbf{1-limitadas}. Esto significa que nunca puede darse un disparo si la plaza de llegada ya contiene un $token$.
-    \item Una red de Petri es \textbf{cíclica} si siempre existe la posibilidad de alcanzar el marcado inicial desde cualquier otro marcado alcanzable. Es decir, \break $\forall \ M  \in \ marcados(PN),\ M_0$ es dinámicamente alcanzable desde $M$.
-    \item Una red de Petri es \textbf{repetitiva} si existe una secuencia de disparos $\sigma$ que contiene todas las transiciones de la red y existe un marcado $M$ que para el cual $M \xrightarrow{\sigma} M$. Es decir, existe una secuencia de disparos que contiene todas las transiciones y que lleva la red del marcado actual al mismo marcado.
-    \item  Una red de Petri es \textbf{conservativa} si se cumple que $\forall \ M\ \in marcados (PN)$, el número total de $tokens$ en el marcado M es igual al número de tokens en el marcado $M_0$. En otras palabras, la red siempre contiene la misma cantidad de marcas.
+    \item Una Red de Petri es \textbf{segura} si todas sus plazas son \textbf{1-limitadas}. Esto significa que nunca puede darse un disparo si la plaza de llegada ya contiene un $token$.
+    \item Una Red de Petri es \textbf{cíclica} si siempre existe la posibilidad de alcanzar el marcado inicial desde cualquier otro marcado alcanzable. Es decir, \break $\forall \ M  \in \ marcados(PN),\ M_0$ es dinámicamente alcanzable desde $M$.
+    \item Una Red de Petri es \textbf{repetitiva} si existe una secuencia de disparos $\sigma$ que contiene todas las transiciones de la red y existe un marcado $M$ que para el cual $M \xrightarrow{\sigma} M$. Es decir, existe una secuencia de disparos que contiene todas las transiciones y que lleva la red del marcado actual al mismo marcado.
+    \item  Una Red de Petri es \textbf{conservativa} si se cumple que $\forall \ M\ \in marcados (PN)$, el número total de $tokens$ en el marcado M es igual al número de tokens en el marcado $M_0$. En otras palabras, la red siempre contiene la misma cantidad de marcas.
 \end{itemize}
 
 \subsubsection{Propiedades de vivacidad}
-La \textbf{vivacidad} de una transición indica que, en todo instante de la  evolución de la red, su disparo es posible. Este concepto es particularmente relevante ya que determina si la ejecución de la red puede  o no detenerse en un estado determinado. A partir de esto se puede definir la vivacidad de una red de Petri. Esta propiedad indica que una red $N = \{P, T, I^- , I^+ , M_0 \}$ es viva para un marcado si todas sus transiciones lo son.
+La \textbf{vivacidad} de una transición indica que, en todo instante de la  evolución de la red, su disparo es posible. Este concepto es particularmente relevante ya que determina si la ejecución de la red puede  o no detenerse en un estado determinado. A partir de esto se puede definir la vivacidad de una Red de Petri. Esta propiedad indica que una red $N = \{P, T, I^- , I^+ , M_0 \}$ es viva para un marcado si todas sus transiciones lo son.
 
-Por otro lado, la \textbf{cuasi-vivacidad} de una transición expresa la posibilidad de dispararla al menos una vez a partir de un marcado inicial $M_0$. De la misma manera que para el caso de la vivacidad, una red de Petri es cuasi-viva si todas sus transiciones lo son.
+Por otro lado, la \textbf{cuasi-vivacidad} de una transición expresa la posibilidad de dispararla al menos una vez a partir de un marcado inicial $M_0$. De la misma manera que para el caso de la vivacidad, una Red de Petri es cuasi-viva si todas sus transiciones lo son.
 
 Gracias a esta última definición, se puede definir la vivacidad en función de la cuasi-vivacidad de la siguiente manera: una transición es viva si la misma es cuasi-viva en la red para todo marcado alcanzable desde $M_0$. \\ \par
 
-\noindent La vivacidad está directamente asociada con la ausencia de \textbf{deadlock} o interbloqueo. En términos generales, el deadlock es el bloqueo permanente de un conjunto de procesos o hilos de ejecución en un sistema concurrente que compiten por recursos del sistema o bien se comunican entre ellos. En el caso de una red de Petri, esto suele ocurrir cuando dos o más transiciones esperan mutuamente por el disparo de la otra, produciendo el bloqueo permanente de esa porción de la red. 
-Una red de Petri viva garantiza la ausencia de interbloqueo sin importar la secuencia de disparos.
+\noindent La vivacidad está directamente asociada con la ausencia de \textbf{deadlock} o interbloqueo. En términos generales, el deadlock es el bloqueo permanente de un conjunto de procesos o hilos de ejecución en un sistema concurrente que compiten por recursos del sistema o bien se comunican entre ellos. En el caso de una Red de Petri, esto suele ocurrir cuando dos o más transiciones esperan mutuamente por el disparo de la otra, produciendo el bloqueo permanente de esa porción de la red. 
+Una Red de Petri viva garantiza la ausencia de interbloqueo sin importar la secuencia de disparos.
 
-\subsubsection{Alcanzabilidad de una red de Petri}
-La \textbf{alcanzabilidad} de una red de Petri es fundamental para el análisis de las propiedades dinámicas de un sistema. A grandes rasgos, permite determinar si el sistema modelado puede alcanzar un determinado estado.
+\subsubsection{Alcanzabilidad de una Red de Petri}
+La \textbf{alcanzabilidad} de una Red de Petri es fundamental para el análisis de las propiedades dinámicas de un sistema. A grandes rasgos, permite determinar si el sistema modelado puede alcanzar un determinado estado.
 
 Un marcado $M_i$ es alcanzable desde $M_0$ si existe una secuencia finita de disparos $\sigma$ tal que $M_0 \xrightarrow{\sigma} M_i$.
 
-Los marcados alcanzables por la red pueden ser representados como nodos de un grafo o árbol, donde los arcos indican los disparos necesarios para alcanzar dicho marcado. El algoritmo para determinar el árbol de alcanzabilidad de una red de Petri será explicado con detalle en el desarrollo del proyecto.
+Los marcados alcanzables por la red pueden ser representados como nodos de un grafo o árbol, donde los arcos indican los disparos necesarios para alcanzar dicho marcado. El algoritmo para determinar el árbol de alcanzabilidad de una Red de Petri será explicado con detalle en el desarrollo del proyecto.
 
 Entonces, el grafo de alcanzabilidad $A$ se define como el menor conjunto que cumpla con las expresiones \ref{ec:marcado_inicial} y \ref{ec:marcado_alcanzable}.
 
@@ -354,7 +354,7 @@ Entonces, el grafo de alcanzabilidad $A$ se define como el menor conjunto que cu
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{images/rdp_3_estados.png}
-    \caption{Red de Petri 3 estados posibles}
+    \caption{Situación Red de Petri con 3 estados posibles}
     \label{fig:rdp_3_estados}
 \end{figure}
 
@@ -372,7 +372,7 @@ Luego del segundo disparo no existen disparos posibles. Por lo tanto, la red de 
 \end{figure}
 
 \subsubsection{Sifones y Trampas}
-Los conceptos de sifón y trampa están directamente relacionados con las propiedades de \textbf{interbloqueo} y \textbf{vivacidad} de una red de Petri.
+Los conceptos de sifón y trampa están directamente relacionados con las propiedades de \textbf{interbloqueo} y \textbf{vivacidad} de una Red de Petri.
 
 Un \textbf{sifón} se define como un subconjunto no vacío de plazas S para el cual se cumple que el subconjunto de transiciones entrantes a S está contenido dentro del subconjunto de transiciones salientes de S.
 En otras palabras, un grupo de plazas es un sifón si, una vez que un token sale del grupo de dichas plazas, el mismo nunca puede volver a entrar. 
@@ -424,7 +424,7 @@ Esto se puede observar en el ejemplo de la figura \ref{fig:rdp_p_invariantes}:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/rdp_p_invariantes.png}
-    \caption{P-invariantes de la red de Petri}
+    \caption{P-invariantes de la Red de Petri}
     \label{fig:rdp_p_invariantes}
 \end{figure}
 
@@ -482,7 +482,7 @@ Si reemplazamos $Q$ por los vectores característicos $I_q$ , estas dos igualdad
 \noindent donde $I^T$ es la matriz de incidencia transpuesta.
 
 \paragraph{T-invariantes}
-Un \textbf{invariante de transición} ó \textbf{T-invariante} es el conjunto de transiciones que deben dispararse para que la red de Petri retorne a su estado inicial.
+Un \textbf{invariante de transición} ó \textbf{T-invariante} es el conjunto de transiciones que deben dispararse para que la Red de Petri retorne a su estado inicial.
 
 Como se mencionó en el apartado anterior, para el cálculo de las P-invariantes se hace uso de la ecuación $I . x = 0$, siendo $I$ la matriz de incidencia y $x$ un vector característico constituido por las plazas que forman parte de la invariante. En este caso, para el cálculo de los vectores que constituyen las T-invariantes, la ecuación asociada será similar a las P-invariantes, a diferencia de que se hace uso de $I^T$ en vez de $I$:
 
@@ -540,7 +540,7 @@ Cuando se da un caso de estas características, se desea que todo lo que necesit
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.4]{images/seccion_critica.jpg}
-    \caption{Sección crítica}
+    \caption{Sección crítica donde solo un proceso accede por vez}
     \label{fig:seccion_critica}
 \end{figure}
 
@@ -550,7 +550,7 @@ En la figura \ref{fig:seccion_critica} se observa como dos procesos $P1$ y $P2$ 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.7]{images/rdp_seccion_crítica.png}
-    \caption{Sección crítica}
+    \caption{Sección crítica modelada con una Red de Petri}
     \label{fig:rdp_seccion_crítica}
   \end{figure}
 
@@ -604,11 +604,11 @@ Debido a estas razones, existe otro mecanismo de software para el control de con
 
 \paragraph{Monitores}
 Como se dijo, los semáforos, generalmente se encuentran dispersos en el código, lo que lo hace más confuso y muchas veces es difícil notar cuál es el recurso compartido y determinar si está correctamente sincronizado. Por ello, se necesita un sistema que sea igual de versátil que los semáforos pero que permita efectuar un control más estructurado de la exclusión mutua. Una herramienta con estas características fue propuesta por \textit{C.A.R Hoare} en 1975 y es conocida como \textbf{\textit{monitor}}.\\
-Un \textbf{monitor} es un mecanismo de abstracción de datos, lo que permite representar de forma abstracta un recurso compartido mediante variables que indican su estado. El acceso a esas variables solo es posible a través de un conjunto de funciones/métodos que el monitor exporta al exterior.\\
+Un \textbf{monitor} es un mecanismo de abstracción de datos, lo que permite representar de forma abstracta un recurso compartido mediante variables que indican su estado. El acceso a esas variables solo es posible a través de un conjunto de funciones/métodos que el Monitor exporta al exterior.\\
 
-Un monitor se compone de los siguientes elementos:
+Un Monitor se compone de los siguientes elementos:
 \begin{itemize}
-    \item Un \textit{conjunto de variables} locales que pueden denominarse permanentes. Se utilizan para almacenar el estado interno del recurso que representa el monitor. Se denominan permanentes ya que permanecen sin modificarse entre dos llamadas consecutivas al monitor y solo pueden ser accedidas dentro del mismo.
+    \item Un \textit{conjunto de variables} locales que pueden denominarse permanentes. Se utilizan para almacenar el estado interno del recurso que representa el Monitor. Se denominan permanentes ya que permanecen sin modificarse entre dos llamadas consecutivas al Monitor y solo pueden ser accedidas dentro del mismo.
     
     \item Un \textit{código de inicialización} que se ejecuta antes que la primera instrucción ejecutable del programa y su fin es inicializar las variables permanentes. 
 
@@ -619,25 +619,25 @@ Un monitor se compone de los siguientes elementos:
 
 \subparagraph{Exclusión mutua en monitores}
 \hfill
-\par El control de la exclusión mutua en un monitor se basa en la existencia de una cola asociada al mismo que se denomina \textit{cola del monitor}. La gestión de esta cola se realiza de la siguiente manera:
+\par El control de la exclusión mutua en un Monitor se basa en la existencia de una cola asociada al mismo que se denomina \textit{cola del Monitor}. La gestión de esta cola se realiza de la siguiente manera:
 
 \begin{enumerate}
-    \item Cuando un proceso activo está dentro del monitor (ejecutando alguno de los procedimientos del mismo) y aparece otro proceso activo que intenta ejecutar otro (o el mismo) procedimiento, el código de acceso al monitor bloquea el proceso que realiza la llamada y lo inserta en la cola del monitor (con política FIFO). Así, se impide que dos procesos estén al mismo tiempo dentro del monitor.
+    \item Cuando un proceso activo está dentro del Monitor (ejecutando alguno de los procedimientos del mismo) y aparece otro proceso activo que intenta ejecutar otro (o el mismo) procedimiento, el código de acceso al Monitor bloquea el proceso que realiza la llamada y lo inserta en la cola del Monitor (con política FIFO). Así, se impide que dos procesos estén al mismo tiempo dentro del Monitor.
 
-    \item Cuando un proceso activo abandona el monitor, este ultimo selecciona el proceso que esta al frente de la cola del monitor y lo desbloquea para que comience a ejecutar las operaciones que le solicitó al monitor. Si la cola estaba vacía, el monitor queda libre y cualquier proceso activo que llame alguno de sus procedimientos entrará al monitor.
+    \item Cuando un proceso activo abandona el Monitor, este ultimo selecciona el proceso que esta al frente de la cola del Monitor y lo desbloquea para que comience a ejecutar las operaciones que le solicitó al Monitor. Si la cola estaba vacía, el Monitor queda libre y cualquier proceso activo que llame alguno de sus procedimientos entrará al Monitor.
 \end{enumerate}
 
-Esto asegura que las variables compartidas nunca son accedidas concurrentemente. Una cuestión importante es que la responsabilidad de bloquear un proceso es del monitor y no del proceso.
+Esto asegura que las variables compartidas nunca son accedidas concurrentemente. Una cuestión importante es que la responsabilidad de bloquear un proceso es del Monitor y no del proceso.
 Al comparar este sistema con un semáforo, vemos que para ellos son los propios procesos activos los que manejan las políticas de acceso a variables compartidas.
 
 \subparagraph{Condición de sincronización en monitores}
 \hfill
-\par El procedimiento anterior sólo controla la exclusión mutua, es decir, pueden haber casos donde un proceso activo tenga acceso al monitor (ha obtenido la exclusión mutua al mismo) pero no puede seguir su ejecución debido a alguna razón, tal como un \textit{buffer} lleno que no puede ser escrito. En estos casos, es necesario bloquear ese proceso y permitir que otro ingrese al monitor. Para realizar esto surgen nuevos componentes que deben formar parte del monitor:
+\par El procedimiento anterior sólo controla la exclusión mutua, es decir, pueden haber casos donde un proceso activo tenga acceso al Monitor (ha obtenido la exclusión mutua al mismo) pero no puede seguir su ejecución debido a alguna razón, tal como un \textit{buffer} lleno que no puede ser escrito. En estos casos, es necesario bloquear ese proceso y permitir que otro ingrese al Monitor. Para realizar esto surgen nuevos componentes que deben formar parte del Monitor:
 
 \begin{itemize}
     \item Variables de condición
     \begin{itemize}
-        \item Las mismas son declaradas en el monitor. 
+        \item Las mismas son declaradas en el Monitor.
         \item Deben ser privadas. 
         \item Tienen una cola \textit{FIFO} asociada.
     \end{itemize}
@@ -649,24 +649,24 @@ Al comparar este sistema con un semáforo, vemos que para ellos son los propios 
     \end{itemize}
 \end{itemize}
 
-La operación delay se realiza sobre una variable de condición. Si se supone la existencia de una variable C, al realizar \textit{delay(C)}, el proceso que la ejecutó libera el mutex del monitor, se bloquea y se envía al final de la cola asociada a la condición C. A diferencia de la operación wait que se utiliza en los semáforos, delay bloquea al proceso incondicionalmente.\\
+La operación delay se realiza sobre una variable de condición. Si se supone la existencia de una variable C, al realizar \textit{delay(C)}, el proceso que la ejecutó libera el mutex del Monitor, se bloquea y se envía al final de la cola asociada a la condición C. A diferencia de la operación wait que se utiliza en los semáforos, delay bloquea al proceso incondicionalmente.\\
 
 \par La operación resume, cuando se realiza sobre una variable C, libera al primer proceso que ejecutó \textit{delay(C)}. Si la cola está vacía, resume es una operación nula. Por otra parte, la función empty simplemente devuelve un valor booleano true si una cola se encuentra vacía o false en caso contrario.\\
 
-Con lo dicho hasta este punto, se podría decir que si un proceso que se está ejecutando dentro del monitor ejecuta una operación \textit{resume(C)}, se desbloqueará un proceso de esa cola que continuará con su ejecución dentro del monitor también. Esto lleva a una situación con dos procesos dentro del monitor, lo que violaría la exclusión mutua. Para evitar esto, el proceso que ejecuta el \textit{resume} cederá la exclusión mutua al recién desbloqueado. Y espera en una cola diferente llamada \textbf{cola de cortesía} hasta que el proceso recién desbloqueado por el \textit{resume(C)} termine su ejecución, teniendo preferencia por sobre los procesos que esperan en otras colas.
+Con lo dicho hasta este punto, se podría decir que si un proceso que se está ejecutando dentro del Monitor ejecuta una operación \textit{resume(C)}, se desbloqueará un proceso de esa cola que continuará con su ejecución dentro del Monitor también. Esto lleva a una situación con dos procesos dentro del Monitor, lo que violaría la exclusión mutua. Para evitar esto, el proceso que ejecuta el \textit{resume} cederá la exclusión mutua al recién desbloqueado. Y espera en una cola diferente llamada \textbf{cola de cortesía} hasta que el proceso recién desbloqueado por el \textit{resume(C)} termine su ejecución, teniendo preferencia por sobre los procesos que esperan en otras colas.
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{images/monitor_mico.png}
-    \caption[Monitor.]{Figura adaptada del Proyecto Integrador \textit{Desarrollo de IP cores con procesamiento de Redes de Petri Temporales para sistemas multicore en FPGA}}\cite{papermico}
+    \caption[Monitor.]{Figura adaptada del Proyecto Integrador \textit{Desarrollo de IP cores con procesamiento de Redes de Petri Temporales para sistemas multicore en FPGA}\cite{papermico}}
     \label{fig:monitormico}
 \end{figure}
 
-\paragraph{Implementación de monitores con redes de Petri}
-Es posible ver a un monitor formado por dos secciones: primero, la referida a la política de colas que se debe ejecutar para lograr que sólo un proceso esté en el monitor, que se bloqueen los procesos que no tienen los recursos y que se desbloqueen los que obtuvieron los recursos, y segundo, la lógica con que se administran los recursos.\\
-En la figura \ref{fig:monitormico} se puede observar que existe una cola de entrada, para los procesos que aún no ingresaron al monitor y desean hacerlo, una serie de colas, una por cada recurso (cada condición de sincronización) y una cola de cortesía para que  proceso dentro del monitor pueda, de manera segura, ceder la exclusión mutua al cambiar el estado de un recurso.\\
+\paragraph{Implementación de monitores con Redes de Petri}
+Es posible ver a un Monitor formado por dos secciones: primero, la referida a la política de colas que se debe ejecutar para lograr que sólo un proceso esté en el Monitor, que se bloqueen los procesos que no tienen los recursos y que se desbloqueen los que obtuvieron los recursos, y segundo, la lógica con que se administran los recursos.\\
+En la figura \ref{fig:monitormico} se puede observar que existe una cola de entrada, para los procesos que aún no ingresaron al Monitor y desean hacerlo, una serie de colas, una por cada recurso (cada condición de sincronización) y una cola de cortesía para que  proceso dentro del Monitor pueda, de manera segura, ceder la exclusión mutua al cambiar el estado de un recurso.\\
 
-\par \textbf{\textit{Una red de Petri puede realizar el trabajo de la lógica del monitor}}, es decir, la administración y sincronización de recursos disponibles; esto es cuando el vector de estado que resultó del disparo no tiene componentes negativas porque los recursos están disponibles, el disparo de la transición solicitada conduce a un nuevo estado válido. De no ser así, en caso de existir algún valor negativo en el nuevo vector de estado, se llegó a un estado no válido que indica que el recurso no está disponible. Además, el vector de estado indica si el disparo ha devuelto o tomado recursos. Si la cantidad de tokens para un recurso dado disminuye, significa que se han tomado recursos; en caso contrario, que se han devuelto recursos \cite{papermico}.
+\par \textbf{\textit{Una Red de Petri puede realizar el trabajo de la lógica del Monitor}}, es decir, la administración y sincronización de recursos disponibles; esto es cuando el vector de estado que resultó del disparo no tiene componentes negativas porque los recursos están disponibles, el disparo de la transición solicitada conduce a un nuevo estado válido. De no ser así, en caso de existir algún valor negativo en el nuevo vector de estado, se llegó a un estado no válido que indica que el recurso no está disponible. Además, el vector de estado indica si el disparo ha devuelto o tomado recursos. Si la cantidad de tokens para un recurso dado disminuye, significa que se han tomado recursos; en caso contrario, que se han devuelto recursos \cite{papermico}.
 
 \begin{figure}[H]
     \centering
@@ -675,6 +675,6 @@ En la figura \ref{fig:monitormico} se puede observar que existe una cola de entr
     \label{fig:monitormico1}
 \end{figure}
 
-Por lo tanto, el monitor integra la red de Petri (lógica), la política y las acciones, conformando un sistema heterogéneo. La importancia de la metodología aquí planteada radica en desacoplar la lógica de la política y las acciones, con el fin de obtener un sistema resultante modular, simple, mantenible y verificable. 
+Por lo tanto, el Monitor integra la Red de Petri (lógica), la política y las acciones, conformando un sistema heterogéneo. La importancia de la metodología aquí planteada radica en desacoplar la lógica de la política y las acciones, con el fin de obtener un sistema resultante modular, simple, mantenible y verificable. 
 
 En la figura \ref{fig:monitormico1} se expone la arquitectura modular de un sistema reactivo y guiado por eventos.

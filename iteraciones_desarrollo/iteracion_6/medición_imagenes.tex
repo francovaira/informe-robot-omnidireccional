@@ -5,7 +5,7 @@ En base a los modelos anteriores del robot que utilizaron sensores de ultrasonid
 
 Esta medición en tiempo real puede ser sumada como una entrada adicional al filtro de Kalman, pudiendo mejorar significativamente la estimación de la posición del robot. Esto es porque no teniendo ningún tipo de medición sobre el entorno y los movimientos, el único parámetro medible es la distancia recorrida por las ruedas y, como ya hemos visto en iteraciones anteriores, no es suficiente para determinar con precisión la ubicación del robot. En nuestro caso nos limitaremos solo a tomar mediciones de distancia desde el robot a los códigos QR, dejando el agregado de estas mediciones al Filtro de Kalman como futura implementación.
 
-El microcontrolador ESP-32 cuenta con un modelo que incorpora la posibilidad de añadirle una cámara extraíble, desafortunadamente no es el mismo modelo el cual maneja la lógica del comportamiento del robot por lo cual fue necesario la incorporación de un nuevo microcontrolador y sumarle un sostén por encima del robot para que este sostenga la cámara y podamos obtener imágenes de manera más cómoda.
+El microcontrolador ESP32 cuenta con un modelo que incorpora la posibilidad de añadirle una cámara extraíble, desafortunadamente no es el mismo modelo el cual maneja la lógica del comportamiento del robot por lo cual fue necesario la incorporación de un nuevo microcontrolador y sumarle un sostén por encima del robot para que este sostenga la cámara y podamos obtener imágenes de manera más cómoda.
 
 \begin{figure}[H]
    \centering
